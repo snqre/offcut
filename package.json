@@ -1,0 +1,32 @@
+{
+  "name": "offcut",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.0",
+    "@types/express": "^4.17.21",
+    "@types/fast-levenshtein": "^0.0.4",
+    "@xstate/react": "^4.1.2",
+    "axios": "^1.7.7",
+    "doka-tools": "^0.0.3",
+    "express": "^4.21.0",
+    "fast-levenshtein": "^3.0.0",
+    "fbemitter": "^3.0.0",
+    "openai": "^4.62.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-search-box": "^3.0.0",
+    "react-spring": "^9.7.4",
+    "ts-results": "^3.3.0",
+    "xstate": "^5.18.1",
+    "xstate-react": "^0.1.1"
+  }
+}
