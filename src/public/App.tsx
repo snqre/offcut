@@ -1,36 +1,12 @@
-import type {ReactNode} from "react";
-import type {Root} from "react-dom/client";
-import {HomePage} from "./component/page/HomePage";
-import {SignInPage} from "./component/page/SignInPage";
-import {SignUpPage} from "./component/page/SignUpPage";
-import {StyleFormPage} from "./component/page/StyleFormPage";
-import {BrowserRouter} from "react-router-dom";
-import {Routes} from "react-router-dom";
-import {Route} from "react-router-dom";
-import {createRoot} from "react-dom/client";
-import {useState} from "react";
+import * as Client from "./Client";
 import React from "react";
 
-((node: ReactNode): void => {
-    let element: HTMLElement | null = document.getElementById("root");
-    if (!element) return;
-    let root: Root = createRoot(element);
-    root.render(node);
-    return;
-})(<App/>);
-
-function App(): ReactNode {    
-    let [selectedImage, setSelectedImage] = useState<string | null>(null);
-    let [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-
-    return <>
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<HomePage setSelectedImage={setSelectedImage}/>}/>
-                <Route path="/style-form" element={<StyleFormPage/>}/>
-                <Route path="/sign-in" element={<SignInPage/>}/>
-                <Route path="/sign-up" element={<SignUpPage/>}/>
-            </Routes>
-        </BrowserRouter>
-    </>;
-}
+Client.Render.render(<>
+    <Client.ReactRouterDom.BrowserRouter>
+        <Client.ReactRouterDom.Routes>
+            <Client.ReactRouterDom.Route path="/" element={<Client.Component.Page.Home/>}/>
+            <Client.ReactRouterDom.Route path="/sign-in"/>
+            <Client.ReactRouterDom.Route path="/sign-up"/>
+        </Client.ReactRouterDom.Routes>
+    </Client.ReactRouterDom.BrowserRouter>
+</>);

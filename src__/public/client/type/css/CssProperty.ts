@@ -1,0 +1,1 @@
+export type CssProperty = "-moz-initial" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";

@@ -1,0 +1,1 @@
+export type RelCssUnit = "em" | "ex" | "ch" | "vw" | "vh" | "rem" | "vmin" | "vmax" | "%";

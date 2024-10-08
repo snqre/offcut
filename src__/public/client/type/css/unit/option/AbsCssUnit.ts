@@ -1,0 +1,1 @@
+export type AbsCssUnit = "cm" | "mm" | "in" | "px" | "pt" | "pc";
