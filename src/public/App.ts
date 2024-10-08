@@ -55,7 +55,27 @@ import * as Host from "@host";
             }
         })
         .post("/user/sign-in", async (request, response) => {
-            
+            try {
+                let schema: Host.Joi.ObjectSchema =
+                    Host.Joi.object({
+                        username:
+                            Host.Joi
+                                .string()
+                                .required(),
+                        password:
+                            Host.Joi
+                                .string()
+                                .required()
+                    });
+                Host.Validator.assert(!schema.validate(request.body).error, "INVALID_REQUEST_BODY");
+                let username: Host.Misc.Username = Host.Misc.Username(request.body.username);
+                let password: Host.Misc.Password = Host.Misc.Password(request.body.password);
+                let user: Host.Misc.User = await userLedger.signIn(username, password);
+                return response.json({message: "SIGN_IN_SUCCESSFUL", user: user.pack()});
+            }
+            catch (e: unknown) {
+                return response.json({message: (e as Error).message});
+            }
         })
         .listen(3000);
     console.log(buffer.toString("utf8"));
