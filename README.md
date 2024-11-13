@@ -1,0 +1,6 @@
+ENV_ERR
+INPUT_ERR
+ERR
+CRIT_ERR
+TYPE_ERR
+EXT_ERR -> External error
