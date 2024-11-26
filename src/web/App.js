@@ -23738,6 +23738,209 @@ var require_client = __commonJS((exports) => {
   var i;
 });
 
+// node_modules/fbemitter/lib/EventSubscription.js
+var require_EventSubscription = __commonJS((exports, module) => {
+  var EventSubscription = /* @__PURE__ */ function() {
+    function EventSubscription2(subscriber) {
+      this.subscriber = subscriber;
+    }
+    var _proto = EventSubscription2.prototype;
+    _proto.remove = function remove() {
+      if (this.subscriber) {
+        this.subscriber.removeSubscription(this);
+        this.subscriber = null;
+      }
+    };
+    return EventSubscription2;
+  }();
+  module.exports = EventSubscription;
+});
+
+// node_modules/fbemitter/lib/EmitterSubscription.js
+var require_EmitterSubscription = __commonJS((exports, module) => {
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
+  var EventSubscription = require_EventSubscription();
+  var EmitterSubscription = /* @__PURE__ */ function(_EventSubscription) {
+    _inheritsLoose(EmitterSubscription2, _EventSubscription);
+    function EmitterSubscription2(subscriber, listener, context) {
+      var _this;
+      _this = _EventSubscription.call(this, subscriber) || this;
+      _this.listener = listener;
+      _this.context = context;
+      return _this;
+    }
+    return EmitterSubscription2;
+  }(EventSubscription);
+  module.exports = EmitterSubscription;
+});
+
+// node_modules/fbjs/lib/invariant.js
+var require_invariant = __commonJS((exports, module) => {
+  var validateFormat = function(format) {
+    if (format === undefined) {
+      throw new Error("invariant(...): Second argument must be a string.");
+    }
+  };
+  function invariant2(condition, format) {
+    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2;_key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+    validateFormat(format);
+    if (!condition) {
+      var error;
+      if (format === undefined) {
+        error = new Error("Minified exception occurred; use the non-minified dev environment " + "for the full error message and additional helpful warnings.");
+      } else {
+        var argIndex = 0;
+        error = new Error(format.replace(/%s/g, function() {
+          return String(args[argIndex++]);
+        }));
+        error.name = "Invariant Violation";
+      }
+      error.framesToPop = 1;
+      throw error;
+    }
+  }
+  module.exports = invariant2;
+});
+
+// node_modules/fbemitter/lib/EventSubscriptionVendor.js
+var require_EventSubscriptionVendor = __commonJS((exports, module) => {
+  var invariant2 = require_invariant();
+  var EventSubscriptionVendor = /* @__PURE__ */ function() {
+    function EventSubscriptionVendor2() {
+      this._subscriptionsForType = {};
+      this._currentSubscription = null;
+    }
+    var _proto = EventSubscriptionVendor2.prototype;
+    _proto.addSubscription = function addSubscription(eventType, subscription) {
+      !(subscription.subscriber === this) && invariant2(false, "The subscriber of the subscription is incorrectly set.");
+      if (!this._subscriptionsForType[eventType]) {
+        this._subscriptionsForType[eventType] = [];
+      }
+      var key = this._subscriptionsForType[eventType].length;
+      this._subscriptionsForType[eventType].push(subscription);
+      subscription.eventType = eventType;
+      subscription.key = key;
+      return subscription;
+    };
+    _proto.removeAllSubscriptions = function removeAllSubscriptions(eventType) {
+      if (eventType === undefined) {
+        this._subscriptionsForType = {};
+      } else {
+        delete this._subscriptionsForType[eventType];
+      }
+    };
+    _proto.removeSubscription = function removeSubscription(subscription) {
+      var eventType = subscription.eventType;
+      var key = subscription.key;
+      var subscriptionsForType = this._subscriptionsForType[eventType];
+      if (subscriptionsForType) {
+        delete subscriptionsForType[key];
+      }
+    };
+    _proto.getSubscriptionsForType = function getSubscriptionsForType(eventType) {
+      return this._subscriptionsForType[eventType];
+    };
+    return EventSubscriptionVendor2;
+  }();
+  module.exports = EventSubscriptionVendor;
+});
+
+// node_modules/fbjs/lib/emptyFunction.js
+var require_emptyFunction = __commonJS((exports, module) => {
+  function makeEmptyFunction(arg) {
+    return function() {
+      return arg;
+    };
+  }
+  var emptyFunction = function emptyFunction() {
+  };
+  emptyFunction.thatReturns = makeEmptyFunction;
+  emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+  emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+  emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+  emptyFunction.thatReturnsThis = function() {
+    return this;
+  };
+  emptyFunction.thatReturnsArgument = function(arg) {
+    return arg;
+  };
+  module.exports = emptyFunction;
+});
+
+// node_modules/fbemitter/lib/BaseEventEmitter.js
+var require_BaseEventEmitter = __commonJS((exports, module) => {
+  var EmitterSubscription = require_EmitterSubscription();
+  var EventSubscriptionVendor = require_EventSubscriptionVendor();
+  var invariant2 = require_invariant();
+  var emptyFunction = require_emptyFunction();
+  var BaseEventEmitter = /* @__PURE__ */ function() {
+    function BaseEventEmitter2() {
+      this._subscriber = new EventSubscriptionVendor;
+      this._currentSubscription = null;
+    }
+    var _proto = BaseEventEmitter2.prototype;
+    _proto.addListener = function addListener(eventType, listener, context) {
+      return this._subscriber.addSubscription(eventType, new EmitterSubscription(this._subscriber, listener, context));
+    };
+    _proto.once = function once(eventType, listener, context) {
+      var emitter = this;
+      return this.addListener(eventType, function() {
+        emitter.removeCurrentListener();
+        listener.apply(context, arguments);
+      });
+    };
+    _proto.removeAllListeners = function removeAllListeners(eventType) {
+      this._subscriber.removeAllSubscriptions(eventType);
+    };
+    _proto.removeCurrentListener = function removeCurrentListener() {
+      !this._currentSubscription && invariant2(false, "Not in an emitting cycle; there is no current subscription");
+      this._subscriber.removeSubscription(this._currentSubscription);
+    };
+    _proto.listeners = function listeners(eventType) {
+      var subscriptions = this._subscriber.getSubscriptionsForType(eventType);
+      return subscriptions ? subscriptions.filter(emptyFunction.thatReturnsTrue).map(function(subscription) {
+        return subscription.listener;
+      }) : [];
+    };
+    _proto.emit = function emit(eventType) {
+      var subscriptions = this._subscriber.getSubscriptionsForType(eventType);
+      if (subscriptions) {
+        var keys = Object.keys(subscriptions);
+        for (var ii = 0;ii < keys.length; ii++) {
+          var key = keys[ii];
+          var subscription = subscriptions[key];
+          if (subscription) {
+            this._currentSubscription = subscription;
+            this.__emitToSubscription.apply(this, [subscription].concat(Array.prototype.slice.call(arguments)));
+          }
+        }
+        this._currentSubscription = null;
+      }
+    };
+    _proto.__emitToSubscription = function __emitToSubscription(subscription, eventType) {
+      var args = Array.prototype.slice.call(arguments, 2);
+      subscription.listener.apply(subscription.context, args);
+    };
+    return BaseEventEmitter2;
+  }();
+  module.exports = BaseEventEmitter;
+});
+
+// node_modules/fbemitter/index.js
+var require_fbemitter = __commonJS((exports, module) => {
+  var fbemitter = {
+    EventEmitter: require_BaseEventEmitter(),
+    EmitterSubscription: require_EmitterSubscription()
+  };
+  module.exports = fbemitter;
+});
+
 // node_modules/react-router-dom/dist/index.js
 var React2 = __toESM(require_react(), 1);
 var ReactDOM = __toESM(require_react_dom(), 1);
@@ -25688,7 +25891,6 @@ var SNOW = "#FAF6F6";
 var LIGHT_SEA_GREEN = "#17C3B2";
 var MOONSTONE = "#00B2CA";
 var JASPER = "#C75146";
-var GHOST_WHITE = "#ECEBF3";
 
 // node_modules/axios/lib/helpers/bind.js
 function bind(fn, thisArg) {
@@ -32474,6 +32676,17 @@ function SignUpPage() {
   }, undefined, false, undefined, this);
 }
 
+// src/web/page/ProductsPage.tsx
+var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
+function ProductsPage() {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(ResponsiveAnchorPage, {}, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+
+// src/web/App.tsx
+var import_client = __toESM(require_client(), 1);
+
 // node_modules/@stripe/stripe-js/dist/index.mjs
 var V3_URL = "https://js.stripe.com/v3";
 var V3_URL_REGEX = /^https:\/\/js\.stripe\.com\/v3\/?(\?.*)?$/;
@@ -32611,15 +32824,15 @@ var loadStripe = function loadStripe2() {
 var STRIPE_PUBLIC_KEY = "pk_test_51QKRBU2K2roHgsZDHs8cgu29fIqzRlvzF1nmV5mPdSHZhe93bgEQ9HqwoDTderzA7DWwDfFDpiJTMfjqHvgjIDQx00bF0qqWUL";
 
 // src/web/components/CheckoutButton.tsx
-var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
 function CheckoutButton({
   order,
   style,
   children,
   ...more
 }) {
-  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("button", {
+  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("button", {
       onClick: async () => {
         try {
           let response = await axios_default.post("*/checkout", order);
@@ -32660,357 +32873,817 @@ function CheckoutButton({
   }, undefined, false, undefined, this);
 }
 
-// src/web/page/CartPage.tsx
-var import_react25 = __toESM(require_react(), 1);
-var import_react26 = __toESM(require_react(), 1);
-var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
-function CartPage() {
-  let [user2, setUser] = import_react26.useState(null);
-  import_react25.useEffect(() => {
-    setUser(user());
+// src/web/core/Ref.ts
+var import_fbemitter = __toESM(require_fbemitter(), 1);
+function Ref(_item) {
+  let _e = new import_fbemitter.EventEmitter;
+  {
+    return { get: get2, set, mount };
+  }
+  function get2() {
+    return _item;
+  }
+  function set(item) {
+    let now = item;
+    let old = get2();
+    _item = now;
+    _e.emit("change", now, old);
     return;
+  }
+  function mount(listener) {
+    let subscription = _e.addListener("change", listener);
+    return () => subscription.remove();
+  }
+}
+
+// node_modules/ts-results/esm/utils.js
+function toString3(val) {
+  var value = String(val);
+  if (value === "[object Object]") {
+    try {
+      value = JSON.stringify(val);
+    } catch (_a) {
+    }
+  }
+  return value;
+}
+
+// node_modules/ts-results/esm/option.js
+var NoneImpl = function() {
+  function NoneImpl2() {
+    this.some = false;
+    this.none = true;
+  }
+  NoneImpl2.prototype[Symbol.iterator] = function() {
+    return {
+      next: function() {
+        return { done: true, value: undefined };
+      }
+    };
+  };
+  NoneImpl2.prototype.unwrapOr = function(val) {
+    return val;
+  };
+  NoneImpl2.prototype.expect = function(msg) {
+    throw new Error("" + msg);
+  };
+  NoneImpl2.prototype.unwrap = function() {
+    throw new Error("Tried to unwrap None");
+  };
+  NoneImpl2.prototype.map = function(_mapper) {
+    return this;
+  };
+  NoneImpl2.prototype.andThen = function(op) {
+    return this;
+  };
+  NoneImpl2.prototype.toResult = function(error) {
+    return Err(error);
+  };
+  NoneImpl2.prototype.toString = function() {
+    return "None";
+  };
+  return NoneImpl2;
+}();
+var None = new NoneImpl;
+Object.freeze(None);
+var SomeImpl = function() {
+  function SomeImpl2(val) {
+    if (!(this instanceof SomeImpl2)) {
+      return new SomeImpl2(val);
+    }
+    this.some = true;
+    this.none = false;
+    this.val = val;
+  }
+  SomeImpl2.prototype[Symbol.iterator] = function() {
+    var obj = Object(this.val);
+    return Symbol.iterator in obj ? obj[Symbol.iterator]() : {
+      next: function() {
+        return { done: true, value: undefined };
+      }
+    };
+  };
+  SomeImpl2.prototype.unwrapOr = function(_val) {
+    return this.val;
+  };
+  SomeImpl2.prototype.expect = function(_msg) {
+    return this.val;
+  };
+  SomeImpl2.prototype.unwrap = function() {
+    return this.val;
+  };
+  SomeImpl2.prototype.map = function(mapper) {
+    return Some(mapper(this.val));
+  };
+  SomeImpl2.prototype.andThen = function(mapper) {
+    return mapper(this.val);
+  };
+  SomeImpl2.prototype.toResult = function(error) {
+    return Ok(this.val);
+  };
+  SomeImpl2.prototype.safeUnwrap = function() {
+    return this.val;
+  };
+  SomeImpl2.prototype.toString = function() {
+    return "Some(" + toString3(this.val) + ")";
+  };
+  SomeImpl2.EMPTY = new SomeImpl2(undefined);
+  return SomeImpl2;
+}();
+var Some = SomeImpl;
+var Option;
+(function(Option2) {
+  function all2() {
+    var options = [];
+    for (var _i = 0;_i < arguments.length; _i++) {
+      options[_i] = arguments[_i];
+    }
+    var someOption = [];
+    for (var _a = 0, options_1 = options;_a < options_1.length; _a++) {
+      var option = options_1[_a];
+      if (option.some) {
+        someOption.push(option.val);
+      } else {
+        return option;
+      }
+    }
+    return Some(someOption);
+  }
+  Option2.all = all2;
+  function any() {
+    var options = [];
+    for (var _i = 0;_i < arguments.length; _i++) {
+      options[_i] = arguments[_i];
+    }
+    for (var _a = 0, options_2 = options;_a < options_2.length; _a++) {
+      var option = options_2[_a];
+      if (option.some) {
+        return option;
+      } else {
+        return option;
+      }
+    }
+    return None;
+  }
+  Option2.any = any;
+  function isOption(value) {
+    return value instanceof Some || value === None;
+  }
+  Option2.isOption = isOption;
+})(Option || (Option = {}));
+
+// node_modules/ts-results/esm/result.js
+var ErrImpl = function() {
+  function ErrImpl2(val) {
+    if (!(this instanceof ErrImpl2)) {
+      return new ErrImpl2(val);
+    }
+    this.ok = false;
+    this.err = true;
+    this.val = val;
+    var stackLines = new Error().stack.split("\n").slice(2);
+    if (stackLines && stackLines.length > 0 && stackLines[0].includes("ErrImpl")) {
+      stackLines.shift();
+    }
+    this._stack = stackLines.join("\n");
+  }
+  ErrImpl2.prototype[Symbol.iterator] = function() {
+    return {
+      next: function() {
+        return { done: true, value: undefined };
+      }
+    };
+  };
+  ErrImpl2.prototype.else = function(val) {
+    return val;
+  };
+  ErrImpl2.prototype.unwrapOr = function(val) {
+    return val;
+  };
+  ErrImpl2.prototype.expect = function(msg) {
+    throw new Error(msg + " - Error: " + toString3(this.val) + "\n" + this._stack);
+  };
+  ErrImpl2.prototype.unwrap = function() {
+    throw new Error("Tried to unwrap Error: " + toString3(this.val) + "\n" + this._stack);
+  };
+  ErrImpl2.prototype.map = function(_mapper) {
+    return this;
+  };
+  ErrImpl2.prototype.andThen = function(op) {
+    return this;
+  };
+  ErrImpl2.prototype.mapErr = function(mapper) {
+    return new Err(mapper(this.val));
+  };
+  ErrImpl2.prototype.toOption = function() {
+    return None;
+  };
+  ErrImpl2.prototype.toString = function() {
+    return "Err(" + toString3(this.val) + ")";
+  };
+  Object.defineProperty(ErrImpl2.prototype, "stack", {
+    get: function() {
+      return this + "\n" + this._stack;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  ErrImpl2.EMPTY = new ErrImpl2(undefined);
+  return ErrImpl2;
+}();
+var Err = ErrImpl;
+var OkImpl = function() {
+  function OkImpl2(val) {
+    if (!(this instanceof OkImpl2)) {
+      return new OkImpl2(val);
+    }
+    this.ok = true;
+    this.err = false;
+    this.val = val;
+  }
+  OkImpl2.prototype[Symbol.iterator] = function() {
+    var obj = Object(this.val);
+    return Symbol.iterator in obj ? obj[Symbol.iterator]() : {
+      next: function() {
+        return { done: true, value: undefined };
+      }
+    };
+  };
+  OkImpl2.prototype.else = function(_val) {
+    return this.val;
+  };
+  OkImpl2.prototype.unwrapOr = function(_val) {
+    return this.val;
+  };
+  OkImpl2.prototype.expect = function(_msg) {
+    return this.val;
+  };
+  OkImpl2.prototype.unwrap = function() {
+    return this.val;
+  };
+  OkImpl2.prototype.map = function(mapper) {
+    return new Ok(mapper(this.val));
+  };
+  OkImpl2.prototype.andThen = function(mapper) {
+    return mapper(this.val);
+  };
+  OkImpl2.prototype.mapErr = function(_mapper) {
+    return this;
+  };
+  OkImpl2.prototype.toOption = function() {
+    return Some(this.val);
+  };
+  OkImpl2.prototype.safeUnwrap = function() {
+    return this.val;
+  };
+  OkImpl2.prototype.toString = function() {
+    return "Ok(" + toString3(this.val) + ")";
+  };
+  OkImpl2.EMPTY = new OkImpl2(undefined);
+  return OkImpl2;
+}();
+var Ok = OkImpl;
+var Result;
+(function(Result2) {
+  function all2() {
+    var results = [];
+    for (var _i = 0;_i < arguments.length; _i++) {
+      results[_i] = arguments[_i];
+    }
+    var okResult = [];
+    for (var _a = 0, results_1 = results;_a < results_1.length; _a++) {
+      var result = results_1[_a];
+      if (result.ok) {
+        okResult.push(result.val);
+      } else {
+        return result;
+      }
+    }
+    return new Ok(okResult);
+  }
+  Result2.all = all2;
+  function any() {
+    var results = [];
+    for (var _i = 0;_i < arguments.length; _i++) {
+      results[_i] = arguments[_i];
+    }
+    var errResult = [];
+    for (var _a = 0, results_2 = results;_a < results_2.length; _a++) {
+      var result = results_2[_a];
+      if (result.ok) {
+        return result;
+      } else {
+        errResult.push(result.val);
+      }
+    }
+    return new Err(errResult);
+  }
+  Result2.any = any;
+  function wrap(op) {
+    try {
+      return new Ok(op());
+    } catch (e) {
+      return new Err(e);
+    }
+  }
+  Result2.wrap = wrap;
+  function wrapAsync(op) {
+    try {
+      return op().then(function(val) {
+        return new Ok(val);
+      }).catch(function(e) {
+        return new Err(e);
+      });
+    } catch (e) {
+      return Promise.resolve(new Err(e));
+    }
+  }
+  Result2.wrapAsync = wrapAsync;
+  function isResult(val) {
+    return val instanceof Err || val instanceof Ok;
+  }
+  Result2.isResult = isResult;
+})(Result || (Result = {}));
+// src/web/page/Cart.tsx
+var React5 = __toESM(require_react(), 1);
+var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
+var Item = (item) => item;
+var _set = Ref([]);
+var _user2 = Ref(None);
+var _order = Ref(None);
+function items(i) {
+  if (i) {
+    let item = _set.get().at(Number(i));
+    if (item)
+      return Some(item);
+    return None;
+  }
+  return _set.get();
+}
+function insert(item) {
+  if (_keyof(item.name) === -1n)
+    return _set.set([...items().slice(), item]);
+  items()[Number(_keyof(item.name))].amount += 1n;
+  return;
+}
+function remove(name) {
+  let key = _keyof(name);
+  if (key === -1n)
+    return;
+  let remaining = items()[Number(_keyof(name))].amount -= 1n;
+  if (remaining !== 0n)
+    return;
+  _set.set(items().filter((_, i) => BigInt(i) !== key));
+  return;
+}
+function _keyof(name) {
+  return BigInt(items().findIndex((item) => item.name === name));
+}
+function Page() {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Scaffold, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Table, {}, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Checkout, {}, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _Scaffold(props) {
+  let table$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    flexGrow: 1
+  };
+  let checkout$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "end",
+    height: "100%",
+    paddingLeft: 10,
+    paddingRight: 10
+  };
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(ResponsiveAnchorPage, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: table$,
+          children: props.children[0]
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: checkout$,
+          children: props.children[1]
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _Table(props) {
+  let set = React5.useState([]);
+  let nav = useNavigate();
+  let container$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    flexGrow: 1,
+    overflowY: "scroll",
+    padding: 20,
+    gap: 20
+  };
+  React5.useEffect(() => {
+    let user2 = user();
+    if (user2)
+      _user2.set(Some(user2));
+    else
+      return nav("/sign-in");
+    let copy = _set.get();
+    set[1](copy);
+    const del = _set.mount((copy2) => set[1](copy2));
+    return () => del();
   }, []);
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(ResponsiveAnchorPage, {
-      children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageContainer, {
-        children: [
-          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageSlice, {
-            style: {
-              alignItems: "start",
-              overflowY: "scroll",
-              padding: 20,
-              gap: 20
-            },
-            children: [
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRow, {
-                slots: [
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowHeading, {
-                    label: "Name"
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowHeading, {
-                    label: "Amount"
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowHeading, {
-                    label: "Price"
-                  }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowHeading, {
-                    label: "Stock"
-                  }, undefined, false, undefined, this)
-                ]
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowProduct, {
-                name: "Jeans",
-                amount: 5n,
-                price: 500n,
-                stock: 50n
-              }, undefined, false, undefined, this)
-            ]
-          }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageSlice, {
-            style: {
-              alignItems: "end",
-              paddingLeft: 10,
-              paddingRight: 10
-            },
-            children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageContainer, {
-              children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageUtilContainer, {
-                children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CheckoutButton, {
-                  order: {
-                    buyer: {
-                      username: "Joe",
-                      hash: "123"
-                    },
-                    items: [[
-                      5000,
-                      {
-                        name: "Cheetos",
-                        description: "",
-                        price: 50,
-                        stock: 60
-                      }
-                    ]],
-                    status: "waiting"
-                  },
-                  children: "Pay Now"
-                }, undefined, false, undefined, this)
-              }, undefined, false, undefined, this)
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: container$,
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeadingRow, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+              children: "Product"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+              children: "Amount"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+              children: "Price"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+              children: "Stock"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+              children: " "
             }, undefined, false, undefined, this)
-          }, undefined, false, undefined, this)
-        ]
-      }, undefined, true, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        set[0]?.map((item) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableItem, {
+          name: item.name,
+          amount: item.amount,
+          price: item.price,
+          stock: item.stock
+        }, undefined, false, undefined, this))
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _TableItem(props) {
+  function insertItem() {
+    insert(Item({
+      name: props.name,
+      amount: props.amount,
+      price: props.price,
+      stock: props.stock
+    }));
+    return;
+  }
+  function removeItem() {
+    remove(props.name);
+    return;
+  }
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableRow, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+          children: props.name
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+          children: props.amount.toLocaleString()
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+          children: props.price
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+          children: props.stock.toLocaleString()
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableSymbolButton, {
+              color: MOONSTONE,
+              onClick: () => insertItem(),
+              children: "+"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableSymbolButton, {
+              color: JASPER,
+              onClick: () => removeItem(),
+              children: "-"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _TableHeadingRow(props) {
+  let style$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    padding: 10,
+    boxShadow: TAILWIND_0,
+    gap: 10
+  };
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: style$,
+      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+        children: child
+      }, undefined, false, undefined, this))
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
-function CartPageContainer({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-        flexGrow: 1
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageSlice({
-  style,
-  children,
-  ...more
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        height: "100%",
-        ...style
-      },
-      ...more,
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageRow({
-  slots,
-  style,
-  children,
-  ...more
-}) {
-  let components = slots.map((slot) => /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowItem, {
-    children: slot
-  }, undefined, false, undefined, this));
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        alignItems: "center",
-        minWidth: 700,
-        minHeight: 50,
-        boxShadow: TAILWIND_0,
-        background: GHOST_WHITE,
-        padding: 10,
-        ...style
-      },
-      ...more,
-      children: components
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageRowItem({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-        flexGrow: 1
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageRowHeading({
-  label
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+function _TableRow(props) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        fontSize: "1em",
-        fontWeight: "bold",
+        width: "100%",
+        gap: 10
+      },
+      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+        children: child
+      }, undefined, false, undefined, this))
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _TableHeading(props) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
+        fontSize: "1.25em",
+        fontWeight: "normal",
         fontFamily: "suisse-intl-regular",
         color: OBSIDIAN
       },
-      children: label
+      children: props.children
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
-function CartPageRowProductName({
-  name
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+function _TableCell(props) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "start",
         alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
         fontSize: "1em",
         fontWeight: "normal",
         fontFamily: "suisse-intl-regular",
         color: OBSIDIAN,
         gap: 10
       },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowCharButton, {
-          char: "-",
-          color: JASPER,
-          onClick: () => {
-          }
-        }, undefined, false, undefined, this),
-        name,
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowCharButton, {
-          char: "+",
-          color: LIGHT_SEA_GREEN,
-          onClick: () => {
-          }
-        }, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageRowCharButton({
-  char,
-  color,
-  onClick
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      onClick,
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "1em",
-        fontWeight: "normal",
-        fontFamily: "suisse-intl-regular",
-        padding: 5,
-        borderRadius: 5,
-        boxShadow: TAILWIND_0,
-        color,
-        width: 30,
-        height: 30,
-        background: OBSIDIAN,
-        aspectRatio: 1 / 1,
-        pointerEvents: "auto",
-        cursor: "pointer"
-      },
-      children: char
+      children: props.children
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
-function CartPageRowProduct({
-  name,
-  amount,
-  price,
-  stock
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRow, {
-      style: {
-        background: "transparent"
-      },
-      slots: [
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowProductName, {
-          name
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowProductItem, {
-          data: amount.toLocaleString()
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowProductItem, {
-          data: (Number(price) / 10 ** 2).toLocaleString()
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(CartPageRowProductItem, {
-          data: stock.toLocaleString()
-        }, undefined, false, undefined, this)
-      ]
+function _TableSymbolButton(props) {
+  let style$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 30,
+    aspectRatio: 1 / 1,
+    boxShadow: TAILWIND_0,
+    fontSize: "1em",
+    fontWeight: "normal",
+    fontFamily: "suisse-intl-regular",
+    color: props.color,
+    pointerEvents: "auto",
+    cursor: "pointer",
+    padding: 5
+  };
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: style$,
+      onClick: (e) => props.onClick(e),
+      children: props.children
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
-function CartPageRowProductItem({
-  data
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "1em",
-        fontWeight: "normal",
-        fontFamily: "suisse-intl-regular"
-      },
-      children: data
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function CartPageUtilContainer({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "start",
-        width: "100%",
-        padding: 5,
-        boxShadow: TAILWIND_0
-      },
-      children
+function _Checkout() {
+  let order = React5.useState(None);
+  let container$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    flexGrow: 1,
+    padding: 20
+  };
+  let checkoutButtonContainer$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%"
+  };
+  let checkoutButton$ = {
+    padding: 5,
+    borderRadius: 5
+  };
+  React5.useEffect(() => {
+    order[1](_order.get());
+    const del = _order.mount((copy) => order[1](copy));
+    return () => del();
+  }, []);
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: container$,
+      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        style: checkoutButtonContainer$,
+        children: order[0].some ? /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(CheckoutButton, {
+          style: checkoutButton$,
+          order: order[0].unwrap(),
+          children: "Checkout"
+        }, undefined, false, undefined, this) : undefined
+      }, undefined, false, undefined, this)
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
 
-// src/web/page/ProductsPage.tsx
-var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
-function ProductsPage() {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(ResponsiveAnchorPage, {}, undefined, false, undefined, this)
+// src/web/components/Inspo.tsx
+var import_react27 = __toESM(require_react(), 1);
+
+// src/web/hook/VisibilityObserver.ts
+var import_react25 = __toESM(require_react(), 1);
+var import_react26 = __toESM(require_react(), 1);
+function useVisibilityObserver({ onVisible, onHidden }) {
+  let observer = import_react26.useRef(null);
+  return import_react25.useCallback((element) => {
+    observer.current?.disconnect();
+    observer.current = new IntersectionObserver((entries) => entries[0]?.isIntersecting ? onVisible && onVisible() : onHidden && onHidden());
+    element && observer.current.observe(element);
+    return;
+  }, [onVisible, onHidden]);
+}
+
+// src/web/components/Inspo.tsx
+var jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime(), 1);
+function Page2() {
+  let device = useDevice();
+  let mounted = import_react27.default.useState([]);
+  let loading = import_react27.default.useState(true);
+  let hasMore = import_react27.default.useState(true);
+  let page$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
+    width: "100%",
+    minHeight: "100vh",
+    background: SNOW
+  };
+  let innerPage$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
+    width: device === "laptop" ? 1024 : device === "tablet" ? 760 : device === "mobile" ? 320 : 1024,
+    minHeight: "auto"
+  };
+  let card$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: 300,
+    boxShadow: TAILWIND_0
+  };
+  let row$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%"
+  };
+  let footer$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%"
+  };
+  let obs$ = {
+    width: "100%",
+    height: 50
+  };
+  let load = async () => {
+    return [/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+      children: "S"
+    }, undefined, false, undefined, this)];
+  };
+  let obs = useVisibilityObserver({
+    onVisible: async () => {
+      if (!hasMore)
+        return;
+      loading[1](true);
+      let components = await load();
+      if (components.length === 0) {
+        hasMore[1](false);
+        loading[1](false);
+        return;
+      }
+      mounted[1]((mounted2) => [...mounted2, ...components]);
+      loading[1](false);
+      return;
+    },
+    onHidden: async () => loading[1](false)
+  });
+  const loader = /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {}, undefined, false, undefined, this);
+  const footer = /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {}, undefined, false, undefined, this);
+  return /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+      style: page$,
+      children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+        style: innerPage$,
+        children: [
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Nav, {}, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+            style: card$
+          }, undefined, false, undefined, this),
+          mounted[0].map((component, key) => /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+            style: row$,
+            children: component
+          }, key, false, undefined, this)),
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+            style: footer$,
+            children: loading[0] ? loader : footer
+          }, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+            style: obs$,
+            ref: obs
+          }, undefined, false, undefined, this)
+        ]
+      }, undefined, true, undefined, this)
+    }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
 
 // src/web/App.tsx
-var import_client = __toESM(require_client(), 1);
-var jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime(), 1);
 var App;
 ((_App) => {
   function App2() {
-    return /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
-      children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(BrowserRouter, {
-        children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Routes, {
+    return /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(jsx_dev_runtime13.Fragment, {
+      children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(BrowserRouter, {
+        children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Routes, {
           children: [
-            /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
               path: "/",
-              element: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(HomePage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(HomePage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
               path: "/sign-in",
-              element: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(SignInPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(SignInPage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
               path: "/sign-up",
-              element: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(SignUpPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(SignUpPage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
               path: "/cart",
-              element: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(CartPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Page, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
               path: "/products",
-              element: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(ProductsPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(ProductsPage, {}, undefined, false, undefined, this)
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+              path: "/inspo",
+              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Page2, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this)
           ]
         }, undefined, true, undefined, this)
@@ -33022,7 +33695,7 @@ var App;
     let element = document.getElementById("root");
     if (!element)
       throw "ERR_RENDER_TARGET_REQUIRED";
-    import_client.createRoot(element).render(/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(App2, {}, undefined, false, undefined, this));
+    import_client.createRoot(element).render(/* @__PURE__ */ jsx_dev_runtime13.jsxDEV(App2, {}, undefined, false, undefined, this));
     return null;
   }
   _App.render = render;
