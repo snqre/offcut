@@ -33587,7 +33587,9 @@ function Page2() {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: "100%"
+    width: "100%",
+    gap: 10,
+    paddingBottom: 10
   };
   let footer$ = {
     display: "flex",
@@ -33601,22 +33603,48 @@ function Page2() {
     height: 50
   };
   let load = async () => {
-    return [/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
-      children: "S"
-    }, undefined, false, undefined, this)];
+    let row$2 = {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      gap: 20,
+      paddingBottom: 19,
+      paddingTop: 10
+    };
+    let rowItem$ = {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      flexGrow: 1,
+      aspectRatio: 1 / 1,
+      boxShadow: TAILWIND_0
+    };
+    return Some(/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+      children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+        style: row$2,
+        children: ["h", "x"].map((content) => /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+          style: rowItem$,
+          children: content
+        }, undefined, false, undefined, this))
+      }, undefined, false, undefined, this)
+    }, undefined, false, undefined, this));
   };
   let obs = useVisibilityObserver({
     onVisible: async () => {
       if (!hasMore)
         return;
       loading[1](true);
-      let components = await load();
-      if (components.length === 0) {
+      let component = await load();
+      if (component.none) {
         hasMore[1](false);
         loading[1](false);
         return;
       }
-      mounted[1]((mounted2) => [...mounted2, ...components]);
+      mounted[1]((mounted2) => [...mounted2, component.unwrap()]);
       loading[1](false);
       return;
     },

@@ -1,6 +1,10 @@
 import {default as React} from "react";
 import {ResponsiveAnchorPage} from "./ResponsiveAnchorPage";
 import {Nav} from "./Nav";
+import {Ref} from "@web/core/Ref";
+import {Option} from "ts-results";
+import {Some} from "ts-results";
+import {None} from "ts-results";
 import * as VisibilityObserver from "../hook/VisibilityObserver";
 import * as BoxShadow from "../constant/BoxShadow";
 import * as Device from "../hook/Device";
@@ -48,7 +52,9 @@ export function Page(): React.ReactNode {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        width: "100%"
+        width: "100%",
+        gap: 10,
+        paddingBottom: 10
     };
     let footer$: React.CSSProperties = {
         display: "flex",
@@ -62,22 +68,49 @@ export function Page(): React.ReactNode {
         height: 50
     };
 
-    let load = async (): Promise<Array<React.ReactNode>> => {
-        /// todo
-        return [<>S</>];
+    let load = async (): Promise<Option<React.ReactNode>> => {
+        let row$: React.CSSProperties = {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            gap: 20,
+            paddingBottom: 19,
+            paddingTop: 10
+        };
+        let rowItem$: React.CSSProperties = {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            flexGrow: 1,
+            aspectRatio: 1 / 1,
+            boxShadow: BoxShadow.TAILWIND_0
+        };
+
+        return Some(<>
+            <div style={row$}>
+               {["h", "x"].map(content =>
+                <div style={rowItem$}>
+                    {content}
+                </div>)} 
+            </div>
+        </>);
     };
 
     let obs = VisibilityObserver.useVisibilityObserver({
         onVisible: async () => {
             if (!hasMore) return;
             loading[1](true);
-            let components: React.ReactNode[] = await load();
-            if (components.length === 0) {
+            let component: Option<React.ReactNode> = await load();
+            if (component.none) {
                 hasMore[1](false);
                 loading[1](false);
                 return;
             }
-            mounted[1](mounted => [... mounted, ... components]);
+            mounted[1](mounted => [... mounted, component.unwrap()]);
             loading[1](false);
             return;
         },
