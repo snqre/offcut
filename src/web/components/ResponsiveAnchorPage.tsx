@@ -2,9 +2,9 @@ import type {ReactNode} from "react";
 import type {ComponentPropsWithRef} from "react-spring";
 import type {Maybe} from "@web/util/Maybe";
 import type {Device} from "@web/hook/Device";
-import {Nav} from "./Nav";
 import {useDevice} from "@web/hook/Device";
 import {animated} from "react-spring";
+import * as Nav from "./Nav";
 import * as ColorPalette from "@web/constant/ColorPalette";
 
 export type ResponsiveAnchorPageProps =
@@ -44,7 +44,7 @@ export function ResponsiveAnchorPage({style, children, ... more}: ResponsiveAnch
                     width: size() ?? undefined,
                     height: "100%"
                 })}>
-                <Nav/>
+                <Nav.Root/>
                 <animated.div
                     style={{
                         display: "flex",

@@ -2,9 +2,9 @@ import type {Device} from "@web/hook/Device";
 import type {ComponentPropsWithRef} from "react-spring";
 import type {Maybe} from "@web/util/Maybe";
 import type {ReactNode} from "react";
-import {Nav} from "@web/components/Nav";
 import {useDevice} from "@web/hook/Device";
 import {animated} from "react-spring";
+import * as Nav from "./Nav";
 import * as ColorPalette from "@web/constant/ColorPalette";
 
 export type ResponsivePageProps =
@@ -43,7 +43,6 @@ export function ResponsivePage({style, children, ... more}: ResponsivePageProps)
                     alignItems: "center",
                     width: size() ?? undefined
                 })}>
-                <Nav/>
                 {children}
             </animated.div>
         </animated.div>

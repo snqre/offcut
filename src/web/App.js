@@ -22629,7 +22629,7 @@ var require_react_dom = __commonJS((exports, module) => {
 
 // node_modules/react/cjs/react-jsx-dev-runtime.development.js
 var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
-  var React3 = __toESM(require_react(), 1);
+  var React5 = __toESM(require_react(), 1);
   if (true) {
     (function() {
       var REACT_ELEMENT_TYPE = Symbol.for("react.element");
@@ -22657,7 +22657,7 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
         }
         return null;
       }
-      var ReactSharedInternals = React3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           {
@@ -22776,7 +22776,7 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
         }
         return null;
       }
-      var assign = Object.assign;
+      var assign2 = Object.assign;
       var disabledDepth = 0;
       var prevLog;
       var prevInfo;
@@ -22827,25 +22827,25 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
               writable: true
             };
             Object.defineProperties(console, {
-              log: assign({}, props, {
+              log: assign2({}, props, {
                 value: prevLog
               }),
-              info: assign({}, props, {
+              info: assign2({}, props, {
                 value: prevInfo
               }),
-              warn: assign({}, props, {
+              warn: assign2({}, props, {
                 value: prevWarn
               }),
-              error: assign({}, props, {
+              error: assign2({}, props, {
                 value: prevError
               }),
-              group: assign({}, props, {
+              group: assign2({}, props, {
                 value: prevGroup
               }),
-              groupCollapsed: assign({}, props, {
+              groupCollapsed: assign2({}, props, {
                 value: prevGroupCollapsed
               }),
-              groupEnd: assign({}, props, {
+              groupEnd: assign2({}, props, {
                 value: prevGroupEnd
               })
             });
@@ -22856,18 +22856,18 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
         }
       }
       var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-      var prefix;
+      var prefix2;
       function describeBuiltInComponentFrame(name, source, ownerFn) {
         {
-          if (prefix === undefined) {
+          if (prefix2 === undefined) {
             try {
               throw Error();
             } catch (x) {
               var match = x.stack.trim().match(/\n( *(at )?)/);
-              prefix = match && match[1] || "";
+              prefix2 = match && match[1] || "";
             }
           }
-          return "\n" + prefix + name;
+          return "\n" + prefix2 + name;
         }
       }
       var reentry = false;
@@ -23103,7 +23103,7 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
         }
       }
       var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
-      var RESERVED_PROPS = {
+      var RESERVED_PROPS2 = {
         key: true,
         ref: true,
         __self: true,
@@ -23115,34 +23115,34 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
       {
         didWarnAboutStringRefs = {};
       }
-      function hasValidRef(config) {
+      function hasValidRef(config2) {
         {
-          if (hasOwnProperty.call(config, "ref")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "ref").get;
+          if (hasOwnProperty.call(config2, "ref")) {
+            var getter = Object.getOwnPropertyDescriptor(config2, "ref").get;
             if (getter && getter.isReactWarning) {
               return false;
             }
           }
         }
-        return config.ref !== undefined;
+        return config2.ref !== undefined;
       }
-      function hasValidKey(config) {
+      function hasValidKey(config2) {
         {
-          if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+          if (hasOwnProperty.call(config2, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config2, "key").get;
             if (getter && getter.isReactWarning) {
               return false;
             }
           }
         }
-        return config.key !== undefined;
+        return config2.key !== undefined;
       }
-      function warnIfStringRefCannotBeAutoConverted(config, self2) {
+      function warnIfStringRefCannotBeAutoConverted(config2, self2) {
         {
-          if (typeof config.ref === "string" && ReactCurrentOwner.current && self2 && ReactCurrentOwner.current.stateNode !== self2) {
+          if (typeof config2.ref === "string" && ReactCurrentOwner.current && self2 && ReactCurrentOwner.current.stateNode !== self2) {
             var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
             if (!didWarnAboutStringRefs[componentName]) {
-              error('Component "%s" contains the string ref "%s". ' + "Support for string refs will be removed in a future major release. " + "This case cannot be automatically converted to an arrow function. " + "We ask you to manually fix this case by using useRef() or createRef() instead. " + "Learn more about using refs safely here: " + "https://reactjs.org/link/strict-mode-string-ref", getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+              error('Component "%s" contains the string ref "%s". ' + "Support for string refs will be removed in a future major release. " + "This case cannot be automatically converted to an arrow function. " + "We ask you to manually fix this case by using useRef() or createRef() instead. " + "Learn more about using refs safely here: " + "https://reactjs.org/link/strict-mode-string-ref", getComponentNameFromType(ReactCurrentOwner.current.type), config2.ref);
               didWarnAboutStringRefs[componentName] = true;
             }
           }
@@ -23214,7 +23214,7 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
         }
         return element;
       };
-      function jsxDEV(type, config, maybeKey, source, self2) {
+      function jsxDEV(type, config2, maybeKey, source, self2) {
         {
           var propName;
           var props = {};
@@ -23226,19 +23226,19 @@ var require_react_jsx_dev_runtime_development = __commonJS((exports) => {
             }
             key = "" + maybeKey;
           }
-          if (hasValidKey(config)) {
+          if (hasValidKey(config2)) {
             {
-              checkKeyStringCoercion(config.key);
+              checkKeyStringCoercion(config2.key);
             }
-            key = "" + config.key;
+            key = "" + config2.key;
           }
-          if (hasValidRef(config)) {
-            ref = config.ref;
-            warnIfStringRefCannotBeAutoConverted(config, self2);
+          if (hasValidRef(config2)) {
+            ref = config2.ref;
+            warnIfStringRefCannotBeAutoConverted(config2, self2);
           }
-          for (propName in config) {
-            if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
-              props[propName] = config[propName];
+          for (propName in config2) {
+            if (hasOwnProperty.call(config2, propName) && !RESERVED_PROPS2.hasOwnProperty(propName)) {
+              props[propName] = config2[propName];
             }
           }
           if (type && type.defaultProps) {
@@ -23503,215 +23503,6 @@ var require_jsx_dev_runtime = __commonJS((exports, module) => {
   }
 });
 
-// node_modules/fastest-levenshtein/mod.js
-var require_mod = __commonJS((exports) => {
-  exports.__esModule = true;
-  exports.distance = exports.closest = undefined;
-  var peq = new Uint32Array(65536);
-  var myers_32 = function(a, b) {
-    var n = a.length;
-    var m = b.length;
-    var lst = 1 << n - 1;
-    var pv = -1;
-    var mv = 0;
-    var sc = n;
-    var i = n;
-    while (i--) {
-      peq[a.charCodeAt(i)] |= 1 << i;
-    }
-    for (i = 0;i < m; i++) {
-      var eq = peq[b.charCodeAt(i)];
-      var xv = eq | mv;
-      eq |= (eq & pv) + pv ^ pv;
-      mv |= ~(eq | pv);
-      pv &= eq;
-      if (mv & lst) {
-        sc++;
-      }
-      if (pv & lst) {
-        sc--;
-      }
-      mv = mv << 1 | 1;
-      pv = pv << 1 | ~(xv | mv);
-      mv &= xv;
-    }
-    i = n;
-    while (i--) {
-      peq[a.charCodeAt(i)] = 0;
-    }
-    return sc;
-  };
-  var myers_x = function(b, a) {
-    var n = a.length;
-    var m = b.length;
-    var mhc = [];
-    var phc = [];
-    var hsize = Math.ceil(n / 32);
-    var vsize = Math.ceil(m / 32);
-    for (var i = 0;i < hsize; i++) {
-      phc[i] = -1;
-      mhc[i] = 0;
-    }
-    var j = 0;
-    for (;j < vsize - 1; j++) {
-      var mv_1 = 0;
-      var pv_1 = -1;
-      var start_1 = j * 32;
-      var vlen_1 = Math.min(32, m) + start_1;
-      for (var k = start_1;k < vlen_1; k++) {
-        peq[b.charCodeAt(k)] |= 1 << k;
-      }
-      for (var i = 0;i < n; i++) {
-        var eq = peq[a.charCodeAt(i)];
-        var pb = phc[i / 32 | 0] >>> i & 1;
-        var mb = mhc[i / 32 | 0] >>> i & 1;
-        var xv = eq | mv_1;
-        var xh = ((eq | mb) & pv_1) + pv_1 ^ pv_1 | eq | mb;
-        var ph = mv_1 | ~(xh | pv_1);
-        var mh = pv_1 & xh;
-        if (ph >>> 31 ^ pb) {
-          phc[i / 32 | 0] ^= 1 << i;
-        }
-        if (mh >>> 31 ^ mb) {
-          mhc[i / 32 | 0] ^= 1 << i;
-        }
-        ph = ph << 1 | pb;
-        mh = mh << 1 | mb;
-        pv_1 = mh | ~(xv | ph);
-        mv_1 = ph & xv;
-      }
-      for (var k = start_1;k < vlen_1; k++) {
-        peq[b.charCodeAt(k)] = 0;
-      }
-    }
-    var mv = 0;
-    var pv = -1;
-    var start = j * 32;
-    var vlen = Math.min(32, m - start) + start;
-    for (var k = start;k < vlen; k++) {
-      peq[b.charCodeAt(k)] |= 1 << k;
-    }
-    var score = m;
-    for (var i = 0;i < n; i++) {
-      var eq = peq[a.charCodeAt(i)];
-      var pb = phc[i / 32 | 0] >>> i & 1;
-      var mb = mhc[i / 32 | 0] >>> i & 1;
-      var xv = eq | mv;
-      var xh = ((eq | mb) & pv) + pv ^ pv | eq | mb;
-      var ph = mv | ~(xh | pv);
-      var mh = pv & xh;
-      score += ph >>> m - 1 & 1;
-      score -= mh >>> m - 1 & 1;
-      if (ph >>> 31 ^ pb) {
-        phc[i / 32 | 0] ^= 1 << i;
-      }
-      if (mh >>> 31 ^ mb) {
-        mhc[i / 32 | 0] ^= 1 << i;
-      }
-      ph = ph << 1 | pb;
-      mh = mh << 1 | mb;
-      pv = mh | ~(xv | ph);
-      mv = ph & xv;
-    }
-    for (var k = start;k < vlen; k++) {
-      peq[b.charCodeAt(k)] = 0;
-    }
-    return score;
-  };
-  var distance = function(a, b) {
-    if (a.length < b.length) {
-      var tmp = b;
-      b = a;
-      a = tmp;
-    }
-    if (b.length === 0) {
-      return a.length;
-    }
-    if (a.length <= 32) {
-      return myers_32(a, b);
-    }
-    return myers_x(a, b);
-  };
-  exports.distance = distance;
-  var closest = function(str, arr) {
-    var min_distance = Infinity;
-    var min_index = 0;
-    for (var i = 0;i < arr.length; i++) {
-      var dist = distance(str, arr[i]);
-      if (dist < min_distance) {
-        min_distance = dist;
-        min_index = i;
-      }
-    }
-    return arr[min_index];
-  };
-  exports.closest = closest;
-});
-
-// node_modules/fast-levenshtein/levenshtein.js
-var require_levenshtein = __commonJS((exports, module) => {
-  (function() {
-    var collator;
-    try {
-      collator = typeof Intl !== "undefined" && typeof Intl.Collator !== "undefined" ? Intl.Collator("generic", { sensitivity: "base" }) : null;
-    } catch (err) {
-      console.log("Collator could not be initialized and wouldn't be used");
-    }
-    var levenshtein = require_mod();
-    var prevRow = [], str2Char = [];
-    var Levenshtein = {
-      get: function(str1, str2, options) {
-        var useCollator = options && collator && options.useCollator;
-        if (useCollator) {
-          var str1Len = str1.length, str2Len = str2.length;
-          if (str1Len === 0)
-            return str2Len;
-          if (str2Len === 0)
-            return str1Len;
-          var curCol, nextCol, i, j, tmp;
-          for (i = 0;i < str2Len; ++i) {
-            prevRow[i] = i;
-            str2Char[i] = str2.charCodeAt(i);
-          }
-          prevRow[str2Len] = str2Len;
-          var strCmp;
-          for (i = 0;i < str1Len; ++i) {
-            nextCol = i + 1;
-            for (j = 0;j < str2Len; ++j) {
-              curCol = nextCol;
-              strCmp = collator.compare(str1.charAt(i), String.fromCharCode(str2Char[j])) === 0;
-              nextCol = prevRow[j] + (strCmp ? 0 : 1);
-              tmp = curCol + 1;
-              if (nextCol > tmp) {
-                nextCol = tmp;
-              }
-              tmp = prevRow[j + 1] + 1;
-              if (nextCol > tmp) {
-                nextCol = tmp;
-              }
-              prevRow[j] = curCol;
-            }
-            prevRow[j] = nextCol;
-          }
-          return nextCol;
-        }
-        return levenshtein.distance(str1, str2);
-      }
-    };
-    if (typeof define !== "undefined" && define !== null && define.amd) {
-      define(function() {
-        return Levenshtein;
-      });
-    } else if (typeof module !== "undefined" && module !== null && typeof exports !== "undefined" && module.exports === exports) {
-      module.exports = Levenshtein;
-    } else if (typeof self !== "undefined" && typeof self.postMessage === "function" && typeof self.importScripts === "function") {
-      self.Levenshtein = Levenshtein;
-    } else if (typeof window !== "undefined" && window !== null) {
-      window.Levenshtein = Levenshtein;
-    }
-  })();
-});
-
 // node_modules/react-dom/client.js
 var require_client = __commonJS((exports) => {
   var m = __toESM(require_react_dom(), 1);
@@ -23939,6 +23730,215 @@ var require_fbemitter = __commonJS((exports, module) => {
     EmitterSubscription: require_EmitterSubscription()
   };
   module.exports = fbemitter;
+});
+
+// node_modules/fastest-levenshtein/mod.js
+var require_mod = __commonJS((exports) => {
+  exports.__esModule = true;
+  exports.distance = exports.closest = undefined;
+  var peq = new Uint32Array(65536);
+  var myers_32 = function(a, b) {
+    var n = a.length;
+    var m = b.length;
+    var lst = 1 << n - 1;
+    var pv = -1;
+    var mv = 0;
+    var sc = n;
+    var i = n;
+    while (i--) {
+      peq[a.charCodeAt(i)] |= 1 << i;
+    }
+    for (i = 0;i < m; i++) {
+      var eq = peq[b.charCodeAt(i)];
+      var xv = eq | mv;
+      eq |= (eq & pv) + pv ^ pv;
+      mv |= ~(eq | pv);
+      pv &= eq;
+      if (mv & lst) {
+        sc++;
+      }
+      if (pv & lst) {
+        sc--;
+      }
+      mv = mv << 1 | 1;
+      pv = pv << 1 | ~(xv | mv);
+      mv &= xv;
+    }
+    i = n;
+    while (i--) {
+      peq[a.charCodeAt(i)] = 0;
+    }
+    return sc;
+  };
+  var myers_x = function(b, a) {
+    var n = a.length;
+    var m = b.length;
+    var mhc = [];
+    var phc = [];
+    var hsize = Math.ceil(n / 32);
+    var vsize = Math.ceil(m / 32);
+    for (var i = 0;i < hsize; i++) {
+      phc[i] = -1;
+      mhc[i] = 0;
+    }
+    var j = 0;
+    for (;j < vsize - 1; j++) {
+      var mv_1 = 0;
+      var pv_1 = -1;
+      var start_1 = j * 32;
+      var vlen_1 = Math.min(32, m) + start_1;
+      for (var k = start_1;k < vlen_1; k++) {
+        peq[b.charCodeAt(k)] |= 1 << k;
+      }
+      for (var i = 0;i < n; i++) {
+        var eq = peq[a.charCodeAt(i)];
+        var pb = phc[i / 32 | 0] >>> i & 1;
+        var mb = mhc[i / 32 | 0] >>> i & 1;
+        var xv = eq | mv_1;
+        var xh = ((eq | mb) & pv_1) + pv_1 ^ pv_1 | eq | mb;
+        var ph = mv_1 | ~(xh | pv_1);
+        var mh = pv_1 & xh;
+        if (ph >>> 31 ^ pb) {
+          phc[i / 32 | 0] ^= 1 << i;
+        }
+        if (mh >>> 31 ^ mb) {
+          mhc[i / 32 | 0] ^= 1 << i;
+        }
+        ph = ph << 1 | pb;
+        mh = mh << 1 | mb;
+        pv_1 = mh | ~(xv | ph);
+        mv_1 = ph & xv;
+      }
+      for (var k = start_1;k < vlen_1; k++) {
+        peq[b.charCodeAt(k)] = 0;
+      }
+    }
+    var mv = 0;
+    var pv = -1;
+    var start2 = j * 32;
+    var vlen = Math.min(32, m - start2) + start2;
+    for (var k = start2;k < vlen; k++) {
+      peq[b.charCodeAt(k)] |= 1 << k;
+    }
+    var score = m;
+    for (var i = 0;i < n; i++) {
+      var eq = peq[a.charCodeAt(i)];
+      var pb = phc[i / 32 | 0] >>> i & 1;
+      var mb = mhc[i / 32 | 0] >>> i & 1;
+      var xv = eq | mv;
+      var xh = ((eq | mb) & pv) + pv ^ pv | eq | mb;
+      var ph = mv | ~(xh | pv);
+      var mh = pv & xh;
+      score += ph >>> m - 1 & 1;
+      score -= mh >>> m - 1 & 1;
+      if (ph >>> 31 ^ pb) {
+        phc[i / 32 | 0] ^= 1 << i;
+      }
+      if (mh >>> 31 ^ mb) {
+        mhc[i / 32 | 0] ^= 1 << i;
+      }
+      ph = ph << 1 | pb;
+      mh = mh << 1 | mb;
+      pv = mh | ~(xv | ph);
+      mv = ph & xv;
+    }
+    for (var k = start2;k < vlen; k++) {
+      peq[b.charCodeAt(k)] = 0;
+    }
+    return score;
+  };
+  var distance = function(a, b) {
+    if (a.length < b.length) {
+      var tmp = b;
+      b = a;
+      a = tmp;
+    }
+    if (b.length === 0) {
+      return a.length;
+    }
+    if (a.length <= 32) {
+      return myers_32(a, b);
+    }
+    return myers_x(a, b);
+  };
+  exports.distance = distance;
+  var closest = function(str, arr) {
+    var min_distance = Infinity;
+    var min_index = 0;
+    for (var i = 0;i < arr.length; i++) {
+      var dist2 = distance(str, arr[i]);
+      if (dist2 < min_distance) {
+        min_distance = dist2;
+        min_index = i;
+      }
+    }
+    return arr[min_index];
+  };
+  exports.closest = closest;
+});
+
+// node_modules/fast-levenshtein/levenshtein.js
+var require_levenshtein = __commonJS((exports, module) => {
+  (function() {
+    var collator;
+    try {
+      collator = typeof Intl !== "undefined" && typeof Intl.Collator !== "undefined" ? Intl.Collator("generic", { sensitivity: "base" }) : null;
+    } catch (err) {
+      console.log("Collator could not be initialized and wouldn't be used");
+    }
+    var levenshtein = require_mod();
+    var prevRow = [], str2Char = [];
+    var Levenshtein = {
+      get: function(str1, str2, options) {
+        var useCollator = options && collator && options.useCollator;
+        if (useCollator) {
+          var str1Len = str1.length, str2Len = str2.length;
+          if (str1Len === 0)
+            return str2Len;
+          if (str2Len === 0)
+            return str1Len;
+          var curCol, nextCol, i, j, tmp;
+          for (i = 0;i < str2Len; ++i) {
+            prevRow[i] = i;
+            str2Char[i] = str2.charCodeAt(i);
+          }
+          prevRow[str2Len] = str2Len;
+          var strCmp;
+          for (i = 0;i < str1Len; ++i) {
+            nextCol = i + 1;
+            for (j = 0;j < str2Len; ++j) {
+              curCol = nextCol;
+              strCmp = collator.compare(str1.charAt(i), String.fromCharCode(str2Char[j])) === 0;
+              nextCol = prevRow[j] + (strCmp ? 0 : 1);
+              tmp = curCol + 1;
+              if (nextCol > tmp) {
+                nextCol = tmp;
+              }
+              tmp = prevRow[j + 1] + 1;
+              if (nextCol > tmp) {
+                nextCol = tmp;
+              }
+              prevRow[j] = curCol;
+            }
+            prevRow[j] = nextCol;
+          }
+          return nextCol;
+        }
+        return levenshtein.distance(str1, str2);
+      }
+    };
+    if (typeof define !== "undefined" && define !== null && define.amd) {
+      define(function() {
+        return Levenshtein;
+      });
+    } else if (typeof module !== "undefined" && module !== null && typeof exports !== "undefined" && module.exports === exports) {
+      module.exports = Levenshtein;
+    } else if (typeof self !== "undefined" && typeof self.postMessage === "function" && typeof self.importScripts === "function") {
+      self.Levenshtein = Levenshtein;
+    } else if (typeof window !== "undefined" && window !== null) {
+      window.Levenshtein = Levenshtein;
+    }
+  })();
 });
 
 // node_modules/react-router-dom/dist/index.js
@@ -25858,2968 +25858,12 @@ function useViewTransitionState(to, opts) {
   return matchPath(path.pathname, nextPath) != null || matchPath(path.pathname, currentPath) != null;
 }
 
-// src/web/components/Link.tsx
-var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
-function Link2({
-  to,
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV(jsx_dev_runtime.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV(Link, {
-      to: to ?? "/",
-      style: {
-        all: "unset"
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-
-// src/web/components/Nav.tsx
+// src/web/hook/Device.ts
 var import_react = __toESM(require_react(), 1);
 var import_react2 = __toESM(require_react(), 1);
-var import_react3 = __toESM(require_react(), 1);
-var Lev = __toESM(require_levenshtein(), 1);
-
-// src/web/constant/BoxShadow.ts
-var TAILWIND_0 = "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px";
-
-// src/web/constant/ColorPalette.ts
-var OBSIDIAN = "#0C0527";
-var OFFCUT_YELLOW = "#F1D550";
-var SNOW = "#FAF6F6";
-var LIGHT_SEA_GREEN = "#17C3B2";
-var MOONSTONE = "#00B2CA";
-var JASPER = "#C75146";
-
-// node_modules/axios/lib/helpers/bind.js
-function bind(fn, thisArg) {
-  return function wrap() {
-    return fn.apply(thisArg, arguments);
-  };
-}
-
-// node_modules/axios/lib/utils.js
-var { toString } = Object.prototype;
-var { getPrototypeOf } = Object;
-var kindOf = ((cache) => (thing) => {
-  const str = toString.call(thing);
-  return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
-})(Object.create(null));
-var kindOfTest = (type) => {
-  type = type.toLowerCase();
-  return (thing) => kindOf(thing) === type;
-};
-var typeOfTest = (type) => (thing) => typeof thing === type;
-var { isArray } = Array;
-var isUndefined = typeOfTest("undefined");
-function isBuffer(val) {
-  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && isFunction(val.constructor.isBuffer) && val.constructor.isBuffer(val);
-}
-var isArrayBuffer = kindOfTest("ArrayBuffer");
-function isArrayBufferView(val) {
-  let result;
-  if (typeof ArrayBuffer !== "undefined" && ArrayBuffer.isView) {
-    result = ArrayBuffer.isView(val);
-  } else {
-    result = val && val.buffer && isArrayBuffer(val.buffer);
-  }
-  return result;
-}
-var isString = typeOfTest("string");
-var isFunction = typeOfTest("function");
-var isNumber = typeOfTest("number");
-var isObject = (thing) => thing !== null && typeof thing === "object";
-var isBoolean = (thing) => thing === true || thing === false;
-var isPlainObject = (val) => {
-  if (kindOf(val) !== "object") {
-    return false;
-  }
-  const prototype = getPrototypeOf(val);
-  return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in val) && !(Symbol.iterator in val);
-};
-var isDate = kindOfTest("Date");
-var isFile = kindOfTest("File");
-var isBlob = kindOfTest("Blob");
-var isFileList = kindOfTest("FileList");
-var isStream = (val) => isObject(val) && isFunction(val.pipe);
-var isFormData = (thing) => {
-  let kind;
-  return thing && (typeof FormData === "function" && thing instanceof FormData || isFunction(thing.append) && ((kind = kindOf(thing)) === "formdata" || kind === "object" && isFunction(thing.toString) && thing.toString() === "[object FormData]"));
-};
-var isURLSearchParams = kindOfTest("URLSearchParams");
-var [isReadableStream, isRequest, isResponse, isHeaders] = ["ReadableStream", "Request", "Response", "Headers"].map(kindOfTest);
-var trim = (str) => str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
-function forEach(obj, fn, { allOwnKeys = false } = {}) {
-  if (obj === null || typeof obj === "undefined") {
-    return;
-  }
-  let i;
-  let l;
-  if (typeof obj !== "object") {
-    obj = [obj];
-  }
-  if (isArray(obj)) {
-    for (i = 0, l = obj.length;i < l; i++) {
-      fn.call(null, obj[i], i, obj);
-    }
-  } else {
-    const keys = allOwnKeys ? Object.getOwnPropertyNames(obj) : Object.keys(obj);
-    const len = keys.length;
-    let key;
-    for (i = 0;i < len; i++) {
-      key = keys[i];
-      fn.call(null, obj[key], key, obj);
-    }
-  }
-}
-function findKey(obj, key) {
-  key = key.toLowerCase();
-  const keys = Object.keys(obj);
-  let i = keys.length;
-  let _key;
-  while (i-- > 0) {
-    _key = keys[i];
-    if (key === _key.toLowerCase()) {
-      return _key;
-    }
-  }
-  return null;
-}
-var _global = (() => {
-  if (typeof globalThis !== "undefined")
-    return globalThis;
-  return typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : global;
-})();
-var isContextDefined = (context) => !isUndefined(context) && context !== _global;
-function merge() {
-  const { caseless } = isContextDefined(this) && this || {};
-  const result = {};
-  const assignValue = (val, key) => {
-    const targetKey = caseless && findKey(result, key) || key;
-    if (isPlainObject(result[targetKey]) && isPlainObject(val)) {
-      result[targetKey] = merge(result[targetKey], val);
-    } else if (isPlainObject(val)) {
-      result[targetKey] = merge({}, val);
-    } else if (isArray(val)) {
-      result[targetKey] = val.slice();
-    } else {
-      result[targetKey] = val;
-    }
-  };
-  for (let i = 0, l = arguments.length;i < l; i++) {
-    arguments[i] && forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-var extend = (a, b, thisArg, { allOwnKeys } = {}) => {
-  forEach(b, (val, key) => {
-    if (thisArg && isFunction(val)) {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
-    }
-  }, { allOwnKeys });
-  return a;
-};
-var stripBOM = (content) => {
-  if (content.charCodeAt(0) === 65279) {
-    content = content.slice(1);
-  }
-  return content;
-};
-var inherits = (constructor, superConstructor, props, descriptors) => {
-  constructor.prototype = Object.create(superConstructor.prototype, descriptors);
-  constructor.prototype.constructor = constructor;
-  Object.defineProperty(constructor, "super", {
-    value: superConstructor.prototype
-  });
-  props && Object.assign(constructor.prototype, props);
-};
-var toFlatObject = (sourceObj, destObj, filter, propFilter) => {
-  let props;
-  let i;
-  let prop;
-  const merged = {};
-  destObj = destObj || {};
-  if (sourceObj == null)
-    return destObj;
-  do {
-    props = Object.getOwnPropertyNames(sourceObj);
-    i = props.length;
-    while (i-- > 0) {
-      prop = props[i];
-      if ((!propFilter || propFilter(prop, sourceObj, destObj)) && !merged[prop]) {
-        destObj[prop] = sourceObj[prop];
-        merged[prop] = true;
-      }
-    }
-    sourceObj = filter !== false && getPrototypeOf(sourceObj);
-  } while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
-  return destObj;
-};
-var endsWith = (str, searchString, position) => {
-  str = String(str);
-  if (position === undefined || position > str.length) {
-    position = str.length;
-  }
-  position -= searchString.length;
-  const lastIndex = str.indexOf(searchString, position);
-  return lastIndex !== -1 && lastIndex === position;
-};
-var toArray = (thing) => {
-  if (!thing)
-    return null;
-  if (isArray(thing))
-    return thing;
-  let i = thing.length;
-  if (!isNumber(i))
-    return null;
-  const arr = new Array(i);
-  while (i-- > 0) {
-    arr[i] = thing[i];
-  }
-  return arr;
-};
-var isTypedArray = ((TypedArray) => {
-  return (thing) => {
-    return TypedArray && thing instanceof TypedArray;
-  };
-})(typeof Uint8Array !== "undefined" && getPrototypeOf(Uint8Array));
-var forEachEntry = (obj, fn) => {
-  const generator = obj && obj[Symbol.iterator];
-  const iterator = generator.call(obj);
-  let result;
-  while ((result = iterator.next()) && !result.done) {
-    const pair = result.value;
-    fn.call(obj, pair[0], pair[1]);
-  }
-};
-var matchAll = (regExp, str) => {
-  let matches;
-  const arr = [];
-  while ((matches = regExp.exec(str)) !== null) {
-    arr.push(matches);
-  }
-  return arr;
-};
-var isHTMLForm = kindOfTest("HTMLFormElement");
-var toCamelCase = (str) => {
-  return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function replacer(m, p1, p2) {
-    return p1.toUpperCase() + p2;
-  });
-};
-var hasOwnProperty = (({ hasOwnProperty: hasOwnProperty2 }) => (obj, prop) => hasOwnProperty2.call(obj, prop))(Object.prototype);
-var isRegExp = kindOfTest("RegExp");
-var reduceDescriptors = (obj, reducer) => {
-  const descriptors = Object.getOwnPropertyDescriptors(obj);
-  const reducedDescriptors = {};
-  forEach(descriptors, (descriptor, name) => {
-    let ret;
-    if ((ret = reducer(descriptor, name, obj)) !== false) {
-      reducedDescriptors[name] = ret || descriptor;
-    }
-  });
-  Object.defineProperties(obj, reducedDescriptors);
-};
-var freezeMethods = (obj) => {
-  reduceDescriptors(obj, (descriptor, name) => {
-    if (isFunction(obj) && ["arguments", "caller", "callee"].indexOf(name) !== -1) {
-      return false;
-    }
-    const value = obj[name];
-    if (!isFunction(value))
-      return;
-    descriptor.enumerable = false;
-    if ("writable" in descriptor) {
-      descriptor.writable = false;
-      return;
-    }
-    if (!descriptor.set) {
-      descriptor.set = () => {
-        throw Error("Can not rewrite read-only method \'" + name + "\'");
-      };
-    }
-  });
-};
-var toObjectSet = (arrayOrString, delimiter) => {
-  const obj = {};
-  const define2 = (arr) => {
-    arr.forEach((value) => {
-      obj[value] = true;
-    });
-  };
-  isArray(arrayOrString) ? define2(arrayOrString) : define2(String(arrayOrString).split(delimiter));
-  return obj;
-};
-var noop = () => {
-};
-var toFiniteNumber = (value, defaultValue) => {
-  return value != null && Number.isFinite(value = +value) ? value : defaultValue;
-};
-var ALPHA = "abcdefghijklmnopqrstuvwxyz";
-var DIGIT = "0123456789";
-var ALPHABET = {
-  DIGIT,
-  ALPHA,
-  ALPHA_DIGIT: ALPHA + ALPHA.toUpperCase() + DIGIT
-};
-var generateString = (size = 16, alphabet = ALPHABET.ALPHA_DIGIT) => {
-  let str = "";
-  const { length } = alphabet;
-  while (size--) {
-    str += alphabet[Math.random() * length | 0];
-  }
-  return str;
-};
-function isSpecCompliantForm(thing) {
-  return !!(thing && isFunction(thing.append) && thing[Symbol.toStringTag] === "FormData" && thing[Symbol.iterator]);
-}
-var toJSONObject = (obj) => {
-  const stack = new Array(10);
-  const visit = (source, i) => {
-    if (isObject(source)) {
-      if (stack.indexOf(source) >= 0) {
-        return;
-      }
-      if (!("toJSON" in source)) {
-        stack[i] = source;
-        const target = isArray(source) ? [] : {};
-        forEach(source, (value, key) => {
-          const reducedValue = visit(value, i + 1);
-          !isUndefined(reducedValue) && (target[key] = reducedValue);
-        });
-        stack[i] = undefined;
-        return target;
-      }
-    }
-    return source;
-  };
-  return visit(obj, 0);
-};
-var isAsyncFn = kindOfTest("AsyncFunction");
-var isThenable = (thing) => thing && (isObject(thing) || isFunction(thing)) && isFunction(thing.then) && isFunction(thing.catch);
-var _setImmediate = ((setImmediateSupported, postMessageSupported) => {
-  if (setImmediateSupported) {
-    return setImmediate;
-  }
-  return postMessageSupported ? ((token, callbacks) => {
-    _global.addEventListener("message", ({ source, data }) => {
-      if (source === _global && data === token) {
-        callbacks.length && callbacks.shift()();
-      }
-    }, false);
-    return (cb) => {
-      callbacks.push(cb);
-      _global.postMessage(token, "*");
-    };
-  })(`axios@${Math.random()}`, []) : (cb) => setTimeout(cb);
-})(typeof setImmediate === "function", isFunction(_global.postMessage));
-var asap = typeof queueMicrotask !== "undefined" ? queueMicrotask.bind(_global) : typeof process !== "undefined" && process.nextTick || _setImmediate;
-var utils_default = {
-  isArray,
-  isArrayBuffer,
-  isBuffer,
-  isFormData,
-  isArrayBufferView,
-  isString,
-  isNumber,
-  isBoolean,
-  isObject,
-  isPlainObject,
-  isReadableStream,
-  isRequest,
-  isResponse,
-  isHeaders,
-  isUndefined,
-  isDate,
-  isFile,
-  isBlob,
-  isRegExp,
-  isFunction,
-  isStream,
-  isURLSearchParams,
-  isTypedArray,
-  isFileList,
-  forEach,
-  merge,
-  extend,
-  trim,
-  stripBOM,
-  inherits,
-  toFlatObject,
-  kindOf,
-  kindOfTest,
-  endsWith,
-  toArray,
-  forEachEntry,
-  matchAll,
-  isHTMLForm,
-  hasOwnProperty,
-  hasOwnProp: hasOwnProperty,
-  reduceDescriptors,
-  freezeMethods,
-  toObjectSet,
-  toCamelCase,
-  noop,
-  toFiniteNumber,
-  findKey,
-  global: _global,
-  isContextDefined,
-  ALPHABET,
-  generateString,
-  isSpecCompliantForm,
-  toJSONObject,
-  isAsyncFn,
-  isThenable,
-  setImmediate: _setImmediate,
-  asap
-};
-
-// node_modules/axios/lib/core/AxiosError.js
-function AxiosError(message, code, config, request, response) {
-  Error.call(this);
-  if (Error.captureStackTrace) {
-    Error.captureStackTrace(this, this.constructor);
-  } else {
-    this.stack = new Error().stack;
-  }
-  this.message = message;
-  this.name = "AxiosError";
-  code && (this.code = code);
-  config && (this.config = config);
-  request && (this.request = request);
-  if (response) {
-    this.response = response;
-    this.status = response.status ? response.status : null;
-  }
-}
-utils_default.inherits(AxiosError, Error, {
-  toJSON: function toJSON() {
-    return {
-      message: this.message,
-      name: this.name,
-      description: this.description,
-      number: this.number,
-      fileName: this.fileName,
-      lineNumber: this.lineNumber,
-      columnNumber: this.columnNumber,
-      stack: this.stack,
-      config: utils_default.toJSONObject(this.config),
-      code: this.code,
-      status: this.status
-    };
-  }
-});
-var prototype = AxiosError.prototype;
-var descriptors = {};
-[
-  "ERR_BAD_OPTION_VALUE",
-  "ERR_BAD_OPTION",
-  "ECONNABORTED",
-  "ETIMEDOUT",
-  "ERR_NETWORK",
-  "ERR_FR_TOO_MANY_REDIRECTS",
-  "ERR_DEPRECATED",
-  "ERR_BAD_RESPONSE",
-  "ERR_BAD_REQUEST",
-  "ERR_CANCELED",
-  "ERR_NOT_SUPPORT",
-  "ERR_INVALID_URL"
-].forEach((code) => {
-  descriptors[code] = { value: code };
-});
-Object.defineProperties(AxiosError, descriptors);
-Object.defineProperty(prototype, "isAxiosError", { value: true });
-AxiosError.from = (error, code, config, request, response, customProps) => {
-  const axiosError = Object.create(prototype);
-  utils_default.toFlatObject(error, axiosError, function filter(obj) {
-    return obj !== Error.prototype;
-  }, (prop) => {
-    return prop !== "isAxiosError";
-  });
-  AxiosError.call(axiosError, error.message, code, config, request, response);
-  axiosError.cause = error;
-  axiosError.name = error.name;
-  customProps && Object.assign(axiosError, customProps);
-  return axiosError;
-};
-var AxiosError_default = AxiosError;
-
-// node_modules/axios/lib/helpers/null.js
-var null_default = null;
-
-// node_modules/axios/lib/helpers/toFormData.js
-function isVisitable(thing) {
-  return utils_default.isPlainObject(thing) || utils_default.isArray(thing);
-}
-function removeBrackets(key) {
-  return utils_default.endsWith(key, "[]") ? key.slice(0, -2) : key;
-}
-function renderKey(path, key, dots) {
-  if (!path)
-    return key;
-  return path.concat(key).map(function each(token, i) {
-    token = removeBrackets(token);
-    return !dots && i ? "[" + token + "]" : token;
-  }).join(dots ? "." : "");
-}
-function isFlatArray(arr) {
-  return utils_default.isArray(arr) && !arr.some(isVisitable);
-}
-var predicates = utils_default.toFlatObject(utils_default, {}, null, function filter(prop) {
-  return /^is[A-Z]/.test(prop);
-});
-function toFormData(obj, formData, options) {
-  if (!utils_default.isObject(obj)) {
-    throw new TypeError("target must be an object");
-  }
-  formData = formData || new (null_default || FormData);
-  options = utils_default.toFlatObject(options, {
-    metaTokens: true,
-    dots: false,
-    indexes: false
-  }, false, function defined(option, source) {
-    return !utils_default.isUndefined(source[option]);
-  });
-  const metaTokens = options.metaTokens;
-  const visitor = options.visitor || defaultVisitor;
-  const dots = options.dots;
-  const indexes = options.indexes;
-  const _Blob = options.Blob || typeof Blob !== "undefined" && Blob;
-  const useBlob = _Blob && utils_default.isSpecCompliantForm(formData);
-  if (!utils_default.isFunction(visitor)) {
-    throw new TypeError("visitor must be a function");
-  }
-  function convertValue(value) {
-    if (value === null)
-      return "";
-    if (utils_default.isDate(value)) {
-      return value.toISOString();
-    }
-    if (!useBlob && utils_default.isBlob(value)) {
-      throw new AxiosError_default("Blob is not supported. Use a Buffer instead.");
-    }
-    if (utils_default.isArrayBuffer(value) || utils_default.isTypedArray(value)) {
-      return useBlob && typeof Blob === "function" ? new Blob([value]) : Buffer.from(value);
-    }
-    return value;
-  }
-  function defaultVisitor(value, key, path) {
-    let arr = value;
-    if (value && !path && typeof value === "object") {
-      if (utils_default.endsWith(key, "{}")) {
-        key = metaTokens ? key : key.slice(0, -2);
-        value = JSON.stringify(value);
-      } else if (utils_default.isArray(value) && isFlatArray(value) || (utils_default.isFileList(value) || utils_default.endsWith(key, "[]")) && (arr = utils_default.toArray(value))) {
-        key = removeBrackets(key);
-        arr.forEach(function each(el, index) {
-          !(utils_default.isUndefined(el) || el === null) && formData.append(indexes === true ? renderKey([key], index, dots) : indexes === null ? key : key + "[]", convertValue(el));
-        });
-        return false;
-      }
-    }
-    if (isVisitable(value)) {
-      return true;
-    }
-    formData.append(renderKey(path, key, dots), convertValue(value));
-    return false;
-  }
-  const stack = [];
-  const exposedHelpers = Object.assign(predicates, {
-    defaultVisitor,
-    convertValue,
-    isVisitable
-  });
-  function build(value, path) {
-    if (utils_default.isUndefined(value))
-      return;
-    if (stack.indexOf(value) !== -1) {
-      throw Error("Circular reference detected in " + path.join("."));
-    }
-    stack.push(value);
-    utils_default.forEach(value, function each(el, key) {
-      const result = !(utils_default.isUndefined(el) || el === null) && visitor.call(formData, el, utils_default.isString(key) ? key.trim() : key, path, exposedHelpers);
-      if (result === true) {
-        build(el, path ? path.concat(key) : [key]);
-      }
-    });
-    stack.pop();
-  }
-  if (!utils_default.isObject(obj)) {
-    throw new TypeError("data must be an object");
-  }
-  build(obj);
-  return formData;
-}
-var toFormData_default = toFormData;
-
-// node_modules/axios/lib/helpers/AxiosURLSearchParams.js
-function encode(str) {
-  const charMap = {
-    "!": "%21",
-    "'": "%27",
-    "(": "%28",
-    ")": "%29",
-    "~": "%7E",
-    "%20": "+",
-    "%00": "\0"
-  };
-  return encodeURIComponent(str).replace(/[!'()~]|%20|%00/g, function replacer(match) {
-    return charMap[match];
-  });
-}
-function AxiosURLSearchParams(params, options) {
-  this._pairs = [];
-  params && toFormData_default(params, this, options);
-}
-var prototype2 = AxiosURLSearchParams.prototype;
-prototype2.append = function append(name, value) {
-  this._pairs.push([name, value]);
-};
-prototype2.toString = function toString2(encoder) {
-  const _encode = encoder ? function(value) {
-    return encoder.call(this, value, encode);
-  } : encode;
-  return this._pairs.map(function each(pair) {
-    return _encode(pair[0]) + "=" + _encode(pair[1]);
-  }, "").join("&");
-};
-var AxiosURLSearchParams_default = AxiosURLSearchParams;
-
-// node_modules/axios/lib/helpers/buildURL.js
-function encode2(val) {
-  return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
-}
-function buildURL(url, params, options) {
-  if (!params) {
-    return url;
-  }
-  const _encode = options && options.encode || encode2;
-  const serializeFn = options && options.serialize;
-  let serializedParams;
-  if (serializeFn) {
-    serializedParams = serializeFn(params, options);
-  } else {
-    serializedParams = utils_default.isURLSearchParams(params) ? params.toString() : new AxiosURLSearchParams_default(params, options).toString(_encode);
-  }
-  if (serializedParams) {
-    const hashmarkIndex = url.indexOf("#");
-    if (hashmarkIndex !== -1) {
-      url = url.slice(0, hashmarkIndex);
-    }
-    url += (url.indexOf("?") === -1 ? "?" : "&") + serializedParams;
-  }
-  return url;
-}
-
-// node_modules/axios/lib/core/InterceptorManager.js
-class InterceptorManager {
-  constructor() {
-    this.handlers = [];
-  }
-  use(fulfilled, rejected, options) {
-    this.handlers.push({
-      fulfilled,
-      rejected,
-      synchronous: options ? options.synchronous : false,
-      runWhen: options ? options.runWhen : null
-    });
-    return this.handlers.length - 1;
-  }
-  eject(id) {
-    if (this.handlers[id]) {
-      this.handlers[id] = null;
-    }
-  }
-  clear() {
-    if (this.handlers) {
-      this.handlers = [];
-    }
-  }
-  forEach(fn) {
-    utils_default.forEach(this.handlers, function forEachHandler(h) {
-      if (h !== null) {
-        fn(h);
-      }
-    });
-  }
-}
-var InterceptorManager_default = InterceptorManager;
-
-// node_modules/axios/lib/defaults/transitional.js
-var transitional_default = {
-  silentJSONParsing: true,
-  forcedJSONParsing: true,
-  clarifyTimeoutError: false
-};
-
-// node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
-var URLSearchParams_default = typeof URLSearchParams !== "undefined" ? URLSearchParams : AxiosURLSearchParams_default;
-
-// node_modules/axios/lib/platform/browser/classes/FormData.js
-var FormData_default = typeof FormData !== "undefined" ? FormData : null;
-
-// node_modules/axios/lib/platform/browser/classes/Blob.js
-var Blob_default = typeof Blob !== "undefined" ? Blob : null;
-
-// node_modules/axios/lib/platform/browser/index.js
-var browser_default = {
-  isBrowser: true,
-  classes: {
-    URLSearchParams: URLSearchParams_default,
-    FormData: FormData_default,
-    Blob: Blob_default
-  },
-  protocols: ["http", "https", "file", "blob", "url", "data"]
-};
-
-// node_modules/axios/lib/platform/common/utils.js
-var exports_utils = {};
-__export(exports_utils, {
-  origin: () => origin,
-  navigator: () => _navigator,
-  hasStandardBrowserWebWorkerEnv: () => hasStandardBrowserWebWorkerEnv,
-  hasStandardBrowserEnv: () => hasStandardBrowserEnv,
-  hasBrowserEnv: () => hasBrowserEnv
-});
-var hasBrowserEnv = typeof window !== "undefined" && typeof document !== "undefined";
-var _navigator = typeof navigator === "object" && navigator || undefined;
-var hasStandardBrowserEnv = hasBrowserEnv && (!_navigator || ["ReactNative", "NativeScript", "NS"].indexOf(_navigator.product) < 0);
-var hasStandardBrowserWebWorkerEnv = (() => {
-  return typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
-})();
-var origin = hasBrowserEnv && window.location.href || "http://localhost";
-
-// node_modules/axios/lib/platform/index.js
-var platform_default = {
-  ...exports_utils,
-  ...browser_default
-};
-
-// node_modules/axios/lib/helpers/toURLEncodedForm.js
-function toURLEncodedForm(data, options) {
-  return toFormData_default(data, new platform_default.classes.URLSearchParams, Object.assign({
-    visitor: function(value, key, path, helpers) {
-      if (platform_default.isNode && utils_default.isBuffer(value)) {
-        this.append(key, value.toString("base64"));
-        return false;
-      }
-      return helpers.defaultVisitor.apply(this, arguments);
-    }
-  }, options));
-}
-
-// node_modules/axios/lib/helpers/formDataToJSON.js
-function parsePropPath(name) {
-  return utils_default.matchAll(/\w+|\[(\w*)]/g, name).map((match) => {
-    return match[0] === "[]" ? "" : match[1] || match[0];
-  });
-}
-function arrayToObject(arr) {
-  const obj = {};
-  const keys = Object.keys(arr);
-  let i;
-  const len = keys.length;
-  let key;
-  for (i = 0;i < len; i++) {
-    key = keys[i];
-    obj[key] = arr[key];
-  }
-  return obj;
-}
-function formDataToJSON(formData) {
-  function buildPath(path, value, target, index) {
-    let name = path[index++];
-    if (name === "__proto__")
-      return true;
-    const isNumericKey = Number.isFinite(+name);
-    const isLast = index >= path.length;
-    name = !name && utils_default.isArray(target) ? target.length : name;
-    if (isLast) {
-      if (utils_default.hasOwnProp(target, name)) {
-        target[name] = [target[name], value];
-      } else {
-        target[name] = value;
-      }
-      return !isNumericKey;
-    }
-    if (!target[name] || !utils_default.isObject(target[name])) {
-      target[name] = [];
-    }
-    const result = buildPath(path, value, target[name], index);
-    if (result && utils_default.isArray(target[name])) {
-      target[name] = arrayToObject(target[name]);
-    }
-    return !isNumericKey;
-  }
-  if (utils_default.isFormData(formData) && utils_default.isFunction(formData.entries)) {
-    const obj = {};
-    utils_default.forEachEntry(formData, (name, value) => {
-      buildPath(parsePropPath(name), value, obj, 0);
-    });
-    return obj;
-  }
-  return null;
-}
-var formDataToJSON_default = formDataToJSON;
-
-// node_modules/axios/lib/defaults/index.js
-function stringifySafely(rawValue, parser, encoder) {
-  if (utils_default.isString(rawValue)) {
-    try {
-      (parser || JSON.parse)(rawValue);
-      return utils_default.trim(rawValue);
-    } catch (e) {
-      if (e.name !== "SyntaxError") {
-        throw e;
-      }
-    }
-  }
-  return (encoder || JSON.stringify)(rawValue);
-}
-var defaults = {
-  transitional: transitional_default,
-  adapter: ["xhr", "http", "fetch"],
-  transformRequest: [function transformRequest(data, headers) {
-    const contentType = headers.getContentType() || "";
-    const hasJSONContentType = contentType.indexOf("application/json") > -1;
-    const isObjectPayload = utils_default.isObject(data);
-    if (isObjectPayload && utils_default.isHTMLForm(data)) {
-      data = new FormData(data);
-    }
-    const isFormData2 = utils_default.isFormData(data);
-    if (isFormData2) {
-      return hasJSONContentType ? JSON.stringify(formDataToJSON_default(data)) : data;
-    }
-    if (utils_default.isArrayBuffer(data) || utils_default.isBuffer(data) || utils_default.isStream(data) || utils_default.isFile(data) || utils_default.isBlob(data) || utils_default.isReadableStream(data)) {
-      return data;
-    }
-    if (utils_default.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils_default.isURLSearchParams(data)) {
-      headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
-      return data.toString();
-    }
-    let isFileList2;
-    if (isObjectPayload) {
-      if (contentType.indexOf("application/x-www-form-urlencoded") > -1) {
-        return toURLEncodedForm(data, this.formSerializer).toString();
-      }
-      if ((isFileList2 = utils_default.isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
-        const _FormData = this.env && this.env.FormData;
-        return toFormData_default(isFileList2 ? { "files[]": data } : data, _FormData && new _FormData, this.formSerializer);
-      }
-    }
-    if (isObjectPayload || hasJSONContentType) {
-      headers.setContentType("application/json", false);
-      return stringifySafely(data);
-    }
-    return data;
-  }],
-  transformResponse: [function transformResponse(data) {
-    const transitional = this.transitional || defaults.transitional;
-    const forcedJSONParsing = transitional && transitional.forcedJSONParsing;
-    const JSONRequested = this.responseType === "json";
-    if (utils_default.isResponse(data) || utils_default.isReadableStream(data)) {
-      return data;
-    }
-    if (data && utils_default.isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {
-      const silentJSONParsing = transitional && transitional.silentJSONParsing;
-      const strictJSONParsing = !silentJSONParsing && JSONRequested;
-      try {
-        return JSON.parse(data);
-      } catch (e) {
-        if (strictJSONParsing) {
-          if (e.name === "SyntaxError") {
-            throw AxiosError_default.from(e, AxiosError_default.ERR_BAD_RESPONSE, this, null, this.response);
-          }
-          throw e;
-        }
-      }
-    }
-    return data;
-  }],
-  timeout: 0,
-  xsrfCookieName: "XSRF-TOKEN",
-  xsrfHeaderName: "X-XSRF-TOKEN",
-  maxContentLength: -1,
-  maxBodyLength: -1,
-  env: {
-    FormData: platform_default.classes.FormData,
-    Blob: platform_default.classes.Blob
-  },
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  },
-  headers: {
-    common: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": undefined
-    }
-  }
-};
-utils_default.forEach(["delete", "get", "head", "post", "put", "patch"], (method) => {
-  defaults.headers[method] = {};
-});
-var defaults_default = defaults;
-
-// node_modules/axios/lib/helpers/parseHeaders.js
-var ignoreDuplicateOf = utils_default.toObjectSet([
-  "age",
-  "authorization",
-  "content-length",
-  "content-type",
-  "etag",
-  "expires",
-  "from",
-  "host",
-  "if-modified-since",
-  "if-unmodified-since",
-  "last-modified",
-  "location",
-  "max-forwards",
-  "proxy-authorization",
-  "referer",
-  "retry-after",
-  "user-agent"
-]);
-var parseHeaders_default = (rawHeaders) => {
-  const parsed = {};
-  let key;
-  let val;
-  let i;
-  rawHeaders && rawHeaders.split("\n").forEach(function parser(line) {
-    i = line.indexOf(":");
-    key = line.substring(0, i).trim().toLowerCase();
-    val = line.substring(i + 1).trim();
-    if (!key || parsed[key] && ignoreDuplicateOf[key]) {
-      return;
-    }
-    if (key === "set-cookie") {
-      if (parsed[key]) {
-        parsed[key].push(val);
-      } else {
-        parsed[key] = [val];
-      }
-    } else {
-      parsed[key] = parsed[key] ? parsed[key] + ", " + val : val;
-    }
-  });
-  return parsed;
-};
-
-// node_modules/axios/lib/core/AxiosHeaders.js
-var $internals = Symbol("internals");
-function normalizeHeader(header) {
-  return header && String(header).trim().toLowerCase();
-}
-function normalizeValue(value) {
-  if (value === false || value == null) {
-    return value;
-  }
-  return utils_default.isArray(value) ? value.map(normalizeValue) : String(value);
-}
-function parseTokens(str) {
-  const tokens = Object.create(null);
-  const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
-  let match;
-  while (match = tokensRE.exec(str)) {
-    tokens[match[1]] = match[2];
-  }
-  return tokens;
-}
-var isValidHeaderName = (str) => /^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(str.trim());
-function matchHeaderValue(context, value, header, filter2, isHeaderNameFilter) {
-  if (utils_default.isFunction(filter2)) {
-    return filter2.call(this, value, header);
-  }
-  if (isHeaderNameFilter) {
-    value = header;
-  }
-  if (!utils_default.isString(value))
-    return;
-  if (utils_default.isString(filter2)) {
-    return value.indexOf(filter2) !== -1;
-  }
-  if (utils_default.isRegExp(filter2)) {
-    return filter2.test(value);
-  }
-}
-function formatHeader(header) {
-  return header.trim().toLowerCase().replace(/([a-z\d])(\w*)/g, (w, char, str) => {
-    return char.toUpperCase() + str;
-  });
-}
-function buildAccessors(obj, header) {
-  const accessorName = utils_default.toCamelCase(" " + header);
-  ["get", "set", "has"].forEach((methodName) => {
-    Object.defineProperty(obj, methodName + accessorName, {
-      value: function(arg1, arg2, arg3) {
-        return this[methodName].call(this, header, arg1, arg2, arg3);
-      },
-      configurable: true
-    });
-  });
-}
-
-class AxiosHeaders {
-  constructor(headers) {
-    headers && this.set(headers);
-  }
-  set(header, valueOrRewrite, rewrite) {
-    const self2 = this;
-    function setHeader(_value, _header, _rewrite) {
-      const lHeader = normalizeHeader(_header);
-      if (!lHeader) {
-        throw new Error("header name must be a non-empty string");
-      }
-      const key = utils_default.findKey(self2, lHeader);
-      if (!key || self2[key] === undefined || _rewrite === true || _rewrite === undefined && self2[key] !== false) {
-        self2[key || _header] = normalizeValue(_value);
-      }
-    }
-    const setHeaders = (headers, _rewrite) => utils_default.forEach(headers, (_value, _header) => setHeader(_value, _header, _rewrite));
-    if (utils_default.isPlainObject(header) || header instanceof this.constructor) {
-      setHeaders(header, valueOrRewrite);
-    } else if (utils_default.isString(header) && (header = header.trim()) && !isValidHeaderName(header)) {
-      setHeaders(parseHeaders_default(header), valueOrRewrite);
-    } else if (utils_default.isHeaders(header)) {
-      for (const [key, value] of header.entries()) {
-        setHeader(value, key, rewrite);
-      }
-    } else {
-      header != null && setHeader(valueOrRewrite, header, rewrite);
-    }
-    return this;
-  }
-  get(header, parser) {
-    header = normalizeHeader(header);
-    if (header) {
-      const key = utils_default.findKey(this, header);
-      if (key) {
-        const value = this[key];
-        if (!parser) {
-          return value;
-        }
-        if (parser === true) {
-          return parseTokens(value);
-        }
-        if (utils_default.isFunction(parser)) {
-          return parser.call(this, value, key);
-        }
-        if (utils_default.isRegExp(parser)) {
-          return parser.exec(value);
-        }
-        throw new TypeError("parser must be boolean|regexp|function");
-      }
-    }
-  }
-  has(header, matcher) {
-    header = normalizeHeader(header);
-    if (header) {
-      const key = utils_default.findKey(this, header);
-      return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
-    }
-    return false;
-  }
-  delete(header, matcher) {
-    const self2 = this;
-    let deleted = false;
-    function deleteHeader(_header) {
-      _header = normalizeHeader(_header);
-      if (_header) {
-        const key = utils_default.findKey(self2, _header);
-        if (key && (!matcher || matchHeaderValue(self2, self2[key], key, matcher))) {
-          delete self2[key];
-          deleted = true;
-        }
-      }
-    }
-    if (utils_default.isArray(header)) {
-      header.forEach(deleteHeader);
-    } else {
-      deleteHeader(header);
-    }
-    return deleted;
-  }
-  clear(matcher) {
-    const keys = Object.keys(this);
-    let i = keys.length;
-    let deleted = false;
-    while (i--) {
-      const key = keys[i];
-      if (!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
-        delete this[key];
-        deleted = true;
-      }
-    }
-    return deleted;
-  }
-  normalize(format) {
-    const self2 = this;
-    const headers = {};
-    utils_default.forEach(this, (value, header) => {
-      const key = utils_default.findKey(headers, header);
-      if (key) {
-        self2[key] = normalizeValue(value);
-        delete self2[header];
-        return;
-      }
-      const normalized = format ? formatHeader(header) : String(header).trim();
-      if (normalized !== header) {
-        delete self2[header];
-      }
-      self2[normalized] = normalizeValue(value);
-      headers[normalized] = true;
-    });
-    return this;
-  }
-  concat(...targets) {
-    return this.constructor.concat(this, ...targets);
-  }
-  toJSON(asStrings) {
-    const obj = Object.create(null);
-    utils_default.forEach(this, (value, header) => {
-      value != null && value !== false && (obj[header] = asStrings && utils_default.isArray(value) ? value.join(", ") : value);
-    });
-    return obj;
-  }
-  [Symbol.iterator]() {
-    return Object.entries(this.toJSON())[Symbol.iterator]();
-  }
-  toString() {
-    return Object.entries(this.toJSON()).map(([header, value]) => header + ": " + value).join("\n");
-  }
-  get [Symbol.toStringTag]() {
-    return "AxiosHeaders";
-  }
-  static from(thing) {
-    return thing instanceof this ? thing : new this(thing);
-  }
-  static concat(first, ...targets) {
-    const computed = new this(first);
-    targets.forEach((target) => computed.set(target));
-    return computed;
-  }
-  static accessor(header) {
-    const internals = this[$internals] = this[$internals] = {
-      accessors: {}
-    };
-    const accessors = internals.accessors;
-    const prototype3 = this.prototype;
-    function defineAccessor(_header) {
-      const lHeader = normalizeHeader(_header);
-      if (!accessors[lHeader]) {
-        buildAccessors(prototype3, _header);
-        accessors[lHeader] = true;
-      }
-    }
-    utils_default.isArray(header) ? header.forEach(defineAccessor) : defineAccessor(header);
-    return this;
-  }
-}
-AxiosHeaders.accessor(["Content-Type", "Content-Length", "Accept", "Accept-Encoding", "User-Agent", "Authorization"]);
-utils_default.reduceDescriptors(AxiosHeaders.prototype, ({ value }, key) => {
-  let mapped = key[0].toUpperCase() + key.slice(1);
-  return {
-    get: () => value,
-    set(headerValue) {
-      this[mapped] = headerValue;
-    }
-  };
-});
-utils_default.freezeMethods(AxiosHeaders);
-var AxiosHeaders_default = AxiosHeaders;
-
-// node_modules/axios/lib/core/transformData.js
-function transformData(fns, response) {
-  const config = this || defaults_default;
-  const context = response || config;
-  const headers = AxiosHeaders_default.from(context.headers);
-  let data = context.data;
-  utils_default.forEach(fns, function transform(fn) {
-    data = fn.call(config, data, headers.normalize(), response ? response.status : undefined);
-  });
-  headers.normalize();
-  return data;
-}
-
-// node_modules/axios/lib/cancel/isCancel.js
-function isCancel(value) {
-  return !!(value && value.__CANCEL__);
-}
-
-// node_modules/axios/lib/cancel/CanceledError.js
-function CanceledError(message, config, request) {
-  AxiosError_default.call(this, message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config, request);
-  this.name = "CanceledError";
-}
-utils_default.inherits(CanceledError, AxiosError_default, {
-  __CANCEL__: true
-});
-var CanceledError_default = CanceledError;
-
-// node_modules/axios/lib/core/settle.js
-function settle(resolve, reject, response) {
-  const validateStatus2 = response.config.validateStatus;
-  if (!response.status || !validateStatus2 || validateStatus2(response.status)) {
-    resolve(response);
-  } else {
-    reject(new AxiosError_default("Request failed with status code " + response.status, [AxiosError_default.ERR_BAD_REQUEST, AxiosError_default.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4], response.config, response.request, response));
-  }
-}
-
-// node_modules/axios/lib/helpers/parseProtocol.js
-function parseProtocol(url) {
-  const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
-  return match && match[1] || "";
-}
-
-// node_modules/axios/lib/helpers/speedometer.js
-function speedometer(samplesCount, min) {
-  samplesCount = samplesCount || 10;
-  const bytes = new Array(samplesCount);
-  const timestamps = new Array(samplesCount);
-  let head = 0;
-  let tail = 0;
-  let firstSampleTS;
-  min = min !== undefined ? min : 1000;
-  return function push(chunkLength) {
-    const now = Date.now();
-    const startedAt = timestamps[tail];
-    if (!firstSampleTS) {
-      firstSampleTS = now;
-    }
-    bytes[head] = chunkLength;
-    timestamps[head] = now;
-    let i = tail;
-    let bytesCount = 0;
-    while (i !== head) {
-      bytesCount += bytes[i++];
-      i = i % samplesCount;
-    }
-    head = (head + 1) % samplesCount;
-    if (head === tail) {
-      tail = (tail + 1) % samplesCount;
-    }
-    if (now - firstSampleTS < min) {
-      return;
-    }
-    const passed = startedAt && now - startedAt;
-    return passed ? Math.round(bytesCount * 1000 / passed) : undefined;
-  };
-}
-var speedometer_default = speedometer;
-
-// node_modules/axios/lib/helpers/throttle.js
-function throttle(fn, freq) {
-  let timestamp = 0;
-  let threshold = 1000 / freq;
-  let lastArgs;
-  let timer;
-  const invoke = (args, now = Date.now()) => {
-    timestamp = now;
-    lastArgs = null;
-    if (timer) {
-      clearTimeout(timer);
-      timer = null;
-    }
-    fn.apply(null, args);
-  };
-  const throttled = (...args) => {
-    const now = Date.now();
-    const passed = now - timestamp;
-    if (passed >= threshold) {
-      invoke(args, now);
-    } else {
-      lastArgs = args;
-      if (!timer) {
-        timer = setTimeout(() => {
-          timer = null;
-          invoke(lastArgs);
-        }, threshold - passed);
-      }
-    }
-  };
-  const flush = () => lastArgs && invoke(lastArgs);
-  return [throttled, flush];
-}
-var throttle_default = throttle;
-
-// node_modules/axios/lib/helpers/progressEventReducer.js
-var progressEventReducer = (listener, isDownloadStream, freq = 3) => {
-  let bytesNotified = 0;
-  const _speedometer = speedometer_default(50, 250);
-  return throttle_default((e) => {
-    const loaded = e.loaded;
-    const total = e.lengthComputable ? e.total : undefined;
-    const progressBytes = loaded - bytesNotified;
-    const rate = _speedometer(progressBytes);
-    const inRange = loaded <= total;
-    bytesNotified = loaded;
-    const data = {
-      loaded,
-      total,
-      progress: total ? loaded / total : undefined,
-      bytes: progressBytes,
-      rate: rate ? rate : undefined,
-      estimated: rate && total && inRange ? (total - loaded) / rate : undefined,
-      event: e,
-      lengthComputable: total != null,
-      [isDownloadStream ? "download" : "upload"]: true
-    };
-    listener(data);
-  }, freq);
-};
-var progressEventDecorator = (total, throttled) => {
-  const lengthComputable = total != null;
-  return [(loaded) => throttled[0]({
-    lengthComputable,
-    total,
-    loaded
-  }), throttled[1]];
-};
-var asyncDecorator = (fn) => (...args) => utils_default.asap(() => fn(...args));
-
-// node_modules/axios/lib/helpers/isURLSameOrigin.js
-var isURLSameOrigin_default = platform_default.hasStandardBrowserEnv ? function standardBrowserEnv() {
-  const msie = platform_default.navigator && /(msie|trident)/i.test(platform_default.navigator.userAgent);
-  const urlParsingNode = document.createElement("a");
-  let originURL;
-  function resolveURL(url) {
-    let href = url;
-    if (msie) {
-      urlParsingNode.setAttribute("href", href);
-      href = urlParsingNode.href;
-    }
-    urlParsingNode.setAttribute("href", href);
-    return {
-      href: urlParsingNode.href,
-      protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, "") : "",
-      host: urlParsingNode.host,
-      search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, "") : "",
-      hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, "") : "",
-      hostname: urlParsingNode.hostname,
-      port: urlParsingNode.port,
-      pathname: urlParsingNode.pathname.charAt(0) === "/" ? urlParsingNode.pathname : "/" + urlParsingNode.pathname
-    };
-  }
-  originURL = resolveURL(window.location.href);
-  return function isURLSameOrigin(requestURL) {
-    const parsed = utils_default.isString(requestURL) ? resolveURL(requestURL) : requestURL;
-    return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
-  };
-}() : function nonStandardBrowserEnv() {
-  return function isURLSameOrigin() {
-    return true;
-  };
-}();
-
-// node_modules/axios/lib/helpers/cookies.js
-var cookies_default = platform_default.hasStandardBrowserEnv ? {
-  write(name, value, expires, path, domain, secure) {
-    const cookie = [name + "=" + encodeURIComponent(value)];
-    utils_default.isNumber(expires) && cookie.push("expires=" + new Date(expires).toGMTString());
-    utils_default.isString(path) && cookie.push("path=" + path);
-    utils_default.isString(domain) && cookie.push("domain=" + domain);
-    secure === true && cookie.push("secure");
-    document.cookie = cookie.join("; ");
-  },
-  read(name) {
-    const match = document.cookie.match(new RegExp("(^|;\\s*)(" + name + ")=([^;]*)"));
-    return match ? decodeURIComponent(match[3]) : null;
-  },
-  remove(name) {
-    this.write(name, "", Date.now() - 86400000);
-  }
-} : {
-  write() {
-  },
-  read() {
-    return null;
-  },
-  remove() {
-  }
-};
-
-// node_modules/axios/lib/helpers/isAbsoluteURL.js
-function isAbsoluteURL(url) {
-  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
-}
-
-// node_modules/axios/lib/helpers/combineURLs.js
-function combineURLs(baseURL, relativeURL) {
-  return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
-}
-
-// node_modules/axios/lib/core/buildFullPath.js
-function buildFullPath(baseURL, requestedURL) {
-  if (baseURL && !isAbsoluteURL(requestedURL)) {
-    return combineURLs(baseURL, requestedURL);
-  }
-  return requestedURL;
-}
-
-// node_modules/axios/lib/core/mergeConfig.js
-var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? { ...thing } : thing;
-function mergeConfig(config1, config2) {
-  config2 = config2 || {};
-  const config = {};
-  function getMergedValue(target, source, caseless) {
-    if (utils_default.isPlainObject(target) && utils_default.isPlainObject(source)) {
-      return utils_default.merge.call({ caseless }, target, source);
-    } else if (utils_default.isPlainObject(source)) {
-      return utils_default.merge({}, source);
-    } else if (utils_default.isArray(source)) {
-      return source.slice();
-    }
-    return source;
-  }
-  function mergeDeepProperties(a, b, caseless) {
-    if (!utils_default.isUndefined(b)) {
-      return getMergedValue(a, b, caseless);
-    } else if (!utils_default.isUndefined(a)) {
-      return getMergedValue(undefined, a, caseless);
-    }
-  }
-  function valueFromConfig2(a, b) {
-    if (!utils_default.isUndefined(b)) {
-      return getMergedValue(undefined, b);
-    }
-  }
-  function defaultToConfig2(a, b) {
-    if (!utils_default.isUndefined(b)) {
-      return getMergedValue(undefined, b);
-    } else if (!utils_default.isUndefined(a)) {
-      return getMergedValue(undefined, a);
-    }
-  }
-  function mergeDirectKeys(a, b, prop) {
-    if (prop in config2) {
-      return getMergedValue(a, b);
-    } else if (prop in config1) {
-      return getMergedValue(undefined, a);
-    }
-  }
-  const mergeMap = {
-    url: valueFromConfig2,
-    method: valueFromConfig2,
-    data: valueFromConfig2,
-    baseURL: defaultToConfig2,
-    transformRequest: defaultToConfig2,
-    transformResponse: defaultToConfig2,
-    paramsSerializer: defaultToConfig2,
-    timeout: defaultToConfig2,
-    timeoutMessage: defaultToConfig2,
-    withCredentials: defaultToConfig2,
-    withXSRFToken: defaultToConfig2,
-    adapter: defaultToConfig2,
-    responseType: defaultToConfig2,
-    xsrfCookieName: defaultToConfig2,
-    xsrfHeaderName: defaultToConfig2,
-    onUploadProgress: defaultToConfig2,
-    onDownloadProgress: defaultToConfig2,
-    decompress: defaultToConfig2,
-    maxContentLength: defaultToConfig2,
-    maxBodyLength: defaultToConfig2,
-    beforeRedirect: defaultToConfig2,
-    transport: defaultToConfig2,
-    httpAgent: defaultToConfig2,
-    httpsAgent: defaultToConfig2,
-    cancelToken: defaultToConfig2,
-    socketPath: defaultToConfig2,
-    responseEncoding: defaultToConfig2,
-    validateStatus: mergeDirectKeys,
-    headers: (a, b) => mergeDeepProperties(headersToObject(a), headersToObject(b), true)
-  };
-  utils_default.forEach(Object.keys(Object.assign({}, config1, config2)), function computeConfigValue(prop) {
-    const merge2 = mergeMap[prop] || mergeDeepProperties;
-    const configValue = merge2(config1[prop], config2[prop], prop);
-    utils_default.isUndefined(configValue) && merge2 !== mergeDirectKeys || (config[prop] = configValue);
-  });
-  return config;
-}
-
-// node_modules/axios/lib/helpers/resolveConfig.js
-var resolveConfig_default = (config) => {
-  const newConfig = mergeConfig({}, config);
-  let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers, auth } = newConfig;
-  newConfig.headers = headers = AxiosHeaders_default.from(headers);
-  newConfig.url = buildURL(buildFullPath(newConfig.baseURL, newConfig.url), config.params, config.paramsSerializer);
-  if (auth) {
-    headers.set("Authorization", "Basic " + btoa((auth.username || "") + ":" + (auth.password ? unescape(encodeURIComponent(auth.password)) : "")));
-  }
-  let contentType;
-  if (utils_default.isFormData(data)) {
-    if (platform_default.hasStandardBrowserEnv || platform_default.hasStandardBrowserWebWorkerEnv) {
-      headers.setContentType(undefined);
-    } else if ((contentType = headers.getContentType()) !== false) {
-      const [type, ...tokens] = contentType ? contentType.split(";").map((token) => token.trim()).filter(Boolean) : [];
-      headers.setContentType([type || "multipart/form-data", ...tokens].join("; "));
-    }
-  }
-  if (platform_default.hasStandardBrowserEnv) {
-    withXSRFToken && utils_default.isFunction(withXSRFToken) && (withXSRFToken = withXSRFToken(newConfig));
-    if (withXSRFToken || withXSRFToken !== false && isURLSameOrigin_default(newConfig.url)) {
-      const xsrfValue = xsrfHeaderName && xsrfCookieName && cookies_default.read(xsrfCookieName);
-      if (xsrfValue) {
-        headers.set(xsrfHeaderName, xsrfValue);
-      }
-    }
-  }
-  return newConfig;
-};
-
-// node_modules/axios/lib/adapters/xhr.js
-var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
-var xhr_default = isXHRAdapterSupported && function(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    const _config = resolveConfig_default(config);
-    let requestData = _config.data;
-    const requestHeaders = AxiosHeaders_default.from(_config.headers).normalize();
-    let { responseType, onUploadProgress, onDownloadProgress } = _config;
-    let onCanceled;
-    let uploadThrottled, downloadThrottled;
-    let flushUpload, flushDownload;
-    function done() {
-      flushUpload && flushUpload();
-      flushDownload && flushDownload();
-      _config.cancelToken && _config.cancelToken.unsubscribe(onCanceled);
-      _config.signal && _config.signal.removeEventListener("abort", onCanceled);
-    }
-    let request = new XMLHttpRequest;
-    request.open(_config.method.toUpperCase(), _config.url, true);
-    request.timeout = _config.timeout;
-    function onloadend() {
-      if (!request) {
-        return;
-      }
-      const responseHeaders = AxiosHeaders_default.from("getAllResponseHeaders" in request && request.getAllResponseHeaders());
-      const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
-      const response = {
-        data: responseData,
-        status: request.status,
-        statusText: request.statusText,
-        headers: responseHeaders,
-        config,
-        request
-      };
-      settle(function _resolve(value) {
-        resolve(value);
-        done();
-      }, function _reject(err) {
-        reject(err);
-        done();
-      }, response);
-      request = null;
-    }
-    if ("onloadend" in request) {
-      request.onloadend = onloadend;
-    } else {
-      request.onreadystatechange = function handleLoad() {
-        if (!request || request.readyState !== 4) {
-          return;
-        }
-        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf("file:") === 0)) {
-          return;
-        }
-        setTimeout(onloadend);
-      };
-    }
-    request.onabort = function handleAbort() {
-      if (!request) {
-        return;
-      }
-      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config, request));
-      request = null;
-    };
-    request.onerror = function handleError() {
-      reject(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config, request));
-      request = null;
-    };
-    request.ontimeout = function handleTimeout() {
-      let timeoutErrorMessage = _config.timeout ? "timeout of " + _config.timeout + "ms exceeded" : "timeout exceeded";
-      const transitional = _config.transitional || transitional_default;
-      if (_config.timeoutErrorMessage) {
-        timeoutErrorMessage = _config.timeoutErrorMessage;
-      }
-      reject(new AxiosError_default(timeoutErrorMessage, transitional.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED, config, request));
-      request = null;
-    };
-    requestData === undefined && requestHeaders.setContentType(null);
-    if ("setRequestHeader" in request) {
-      utils_default.forEach(requestHeaders.toJSON(), function setRequestHeader(val, key) {
-        request.setRequestHeader(key, val);
-      });
-    }
-    if (!utils_default.isUndefined(_config.withCredentials)) {
-      request.withCredentials = !!_config.withCredentials;
-    }
-    if (responseType && responseType !== "json") {
-      request.responseType = _config.responseType;
-    }
-    if (onDownloadProgress) {
-      [downloadThrottled, flushDownload] = progressEventReducer(onDownloadProgress, true);
-      request.addEventListener("progress", downloadThrottled);
-    }
-    if (onUploadProgress && request.upload) {
-      [uploadThrottled, flushUpload] = progressEventReducer(onUploadProgress);
-      request.upload.addEventListener("progress", uploadThrottled);
-      request.upload.addEventListener("loadend", flushUpload);
-    }
-    if (_config.cancelToken || _config.signal) {
-      onCanceled = (cancel) => {
-        if (!request) {
-          return;
-        }
-        reject(!cancel || cancel.type ? new CanceledError_default(null, config, request) : cancel);
-        request.abort();
-        request = null;
-      };
-      _config.cancelToken && _config.cancelToken.subscribe(onCanceled);
-      if (_config.signal) {
-        _config.signal.aborted ? onCanceled() : _config.signal.addEventListener("abort", onCanceled);
-      }
-    }
-    const protocol = parseProtocol(_config.url);
-    if (protocol && platform_default.protocols.indexOf(protocol) === -1) {
-      reject(new AxiosError_default("Unsupported protocol " + protocol + ":", AxiosError_default.ERR_BAD_REQUEST, config));
-      return;
-    }
-    request.send(requestData || null);
-  });
-};
-
-// node_modules/axios/lib/helpers/composeSignals.js
-var composeSignals = (signals, timeout) => {
-  const { length } = signals = signals ? signals.filter(Boolean) : [];
-  if (timeout || length) {
-    let controller = new AbortController;
-    let aborted;
-    const onabort = function(reason) {
-      if (!aborted) {
-        aborted = true;
-        unsubscribe();
-        const err = reason instanceof Error ? reason : this.reason;
-        controller.abort(err instanceof AxiosError_default ? err : new CanceledError_default(err instanceof Error ? err.message : err));
-      }
-    };
-    let timer = timeout && setTimeout(() => {
-      timer = null;
-      onabort(new AxiosError_default(`timeout ${timeout} of ms exceeded`, AxiosError_default.ETIMEDOUT));
-    }, timeout);
-    const unsubscribe = () => {
-      if (signals) {
-        timer && clearTimeout(timer);
-        timer = null;
-        signals.forEach((signal2) => {
-          signal2.unsubscribe ? signal2.unsubscribe(onabort) : signal2.removeEventListener("abort", onabort);
-        });
-        signals = null;
-      }
-    };
-    signals.forEach((signal2) => signal2.addEventListener("abort", onabort));
-    const { signal } = controller;
-    signal.unsubscribe = () => utils_default.asap(unsubscribe);
-    return signal;
-  }
-};
-var composeSignals_default = composeSignals;
-
-// node_modules/axios/lib/helpers/trackStream.js
-var streamChunk = function* (chunk, chunkSize) {
-  let len = chunk.byteLength;
-  if (!chunkSize || len < chunkSize) {
-    yield chunk;
-    return;
-  }
-  let pos = 0;
-  let end;
-  while (pos < len) {
-    end = pos + chunkSize;
-    yield chunk.slice(pos, end);
-    pos = end;
-  }
-};
-var readBytes = async function* (iterable, chunkSize) {
-  for await (const chunk of readStream(iterable)) {
-    yield* streamChunk(chunk, chunkSize);
-  }
-};
-var readStream = async function* (stream) {
-  if (stream[Symbol.asyncIterator]) {
-    yield* stream;
-    return;
-  }
-  const reader = stream.getReader();
-  try {
-    for (;; ) {
-      const { done, value } = await reader.read();
-      if (done) {
-        break;
-      }
-      yield value;
-    }
-  } finally {
-    await reader.cancel();
-  }
-};
-var trackStream = (stream, chunkSize, onProgress, onFinish) => {
-  const iterator = readBytes(stream, chunkSize);
-  let bytes = 0;
-  let done;
-  let _onFinish = (e) => {
-    if (!done) {
-      done = true;
-      onFinish && onFinish(e);
-    }
-  };
-  return new ReadableStream({
-    async pull(controller) {
-      try {
-        const { done: done2, value } = await iterator.next();
-        if (done2) {
-          _onFinish();
-          controller.close();
-          return;
-        }
-        let len = value.byteLength;
-        if (onProgress) {
-          let loadedBytes = bytes += len;
-          onProgress(loadedBytes);
-        }
-        controller.enqueue(new Uint8Array(value));
-      } catch (err) {
-        _onFinish(err);
-        throw err;
-      }
-    },
-    cancel(reason) {
-      _onFinish(reason);
-      return iterator.return();
-    }
-  }, {
-    highWaterMark: 2
-  });
-};
-
-// node_modules/axios/lib/adapters/fetch.js
-var isFetchSupported = typeof fetch === "function" && typeof Request === "function" && typeof Response === "function";
-var isReadableStreamSupported = isFetchSupported && typeof ReadableStream === "function";
-var encodeText = isFetchSupported && (typeof TextEncoder === "function" ? ((encoder) => (str) => encoder.encode(str))(new TextEncoder) : async (str) => new Uint8Array(await new Response(str).arrayBuffer()));
-var test = (fn, ...args) => {
-  try {
-    return !!fn(...args);
-  } catch (e) {
-    return false;
-  }
-};
-var supportsRequestStream = isReadableStreamSupported && test(() => {
-  let duplexAccessed = false;
-  const hasContentType = new Request(platform_default.origin, {
-    body: new ReadableStream,
-    method: "POST",
-    get duplex() {
-      duplexAccessed = true;
-      return "half";
-    }
-  }).headers.has("Content-Type");
-  return duplexAccessed && !hasContentType;
-});
-var DEFAULT_CHUNK_SIZE = 64 * 1024;
-var supportsResponseStream = isReadableStreamSupported && test(() => utils_default.isReadableStream(new Response("").body));
-var resolvers = {
-  stream: supportsResponseStream && ((res) => res.body)
-};
-isFetchSupported && ((res) => {
-  ["text", "arrayBuffer", "blob", "formData", "stream"].forEach((type) => {
-    !resolvers[type] && (resolvers[type] = utils_default.isFunction(res[type]) ? (res2) => res2[type]() : (_, config) => {
-      throw new AxiosError_default(`Response type '${type}' is not supported`, AxiosError_default.ERR_NOT_SUPPORT, config);
-    });
-  });
-})(new Response);
-var getBodyLength = async (body) => {
-  if (body == null) {
-    return 0;
-  }
-  if (utils_default.isBlob(body)) {
-    return body.size;
-  }
-  if (utils_default.isSpecCompliantForm(body)) {
-    const _request = new Request(platform_default.origin, {
-      method: "POST",
-      body
-    });
-    return (await _request.arrayBuffer()).byteLength;
-  }
-  if (utils_default.isArrayBufferView(body) || utils_default.isArrayBuffer(body)) {
-    return body.byteLength;
-  }
-  if (utils_default.isURLSearchParams(body)) {
-    body = body + "";
-  }
-  if (utils_default.isString(body)) {
-    return (await encodeText(body)).byteLength;
-  }
-};
-var resolveBodyLength = async (headers, body) => {
-  const length = utils_default.toFiniteNumber(headers.getContentLength());
-  return length == null ? getBodyLength(body) : length;
-};
-var fetch_default = isFetchSupported && (async (config) => {
-  let {
-    url,
-    method,
-    data,
-    signal,
-    cancelToken,
-    timeout,
-    onDownloadProgress,
-    onUploadProgress,
-    responseType,
-    headers,
-    withCredentials = "same-origin",
-    fetchOptions
-  } = resolveConfig_default(config);
-  responseType = responseType ? (responseType + "").toLowerCase() : "text";
-  let composedSignal = composeSignals_default([signal, cancelToken && cancelToken.toAbortSignal()], timeout);
-  let request;
-  const unsubscribe = composedSignal && composedSignal.unsubscribe && (() => {
-    composedSignal.unsubscribe();
-  });
-  let requestContentLength;
-  try {
-    if (onUploadProgress && supportsRequestStream && method !== "get" && method !== "head" && (requestContentLength = await resolveBodyLength(headers, data)) !== 0) {
-      let _request = new Request(url, {
-        method: "POST",
-        body: data,
-        duplex: "half"
-      });
-      let contentTypeHeader;
-      if (utils_default.isFormData(data) && (contentTypeHeader = _request.headers.get("content-type"))) {
-        headers.setContentType(contentTypeHeader);
-      }
-      if (_request.body) {
-        const [onProgress, flush] = progressEventDecorator(requestContentLength, progressEventReducer(asyncDecorator(onUploadProgress)));
-        data = trackStream(_request.body, DEFAULT_CHUNK_SIZE, onProgress, flush);
-      }
-    }
-    if (!utils_default.isString(withCredentials)) {
-      withCredentials = withCredentials ? "include" : "omit";
-    }
-    const isCredentialsSupported = "credentials" in Request.prototype;
-    request = new Request(url, {
-      ...fetchOptions,
-      signal: composedSignal,
-      method: method.toUpperCase(),
-      headers: headers.normalize().toJSON(),
-      body: data,
-      duplex: "half",
-      credentials: isCredentialsSupported ? withCredentials : undefined
-    });
-    let response = await fetch(request);
-    const isStreamResponse = supportsResponseStream && (responseType === "stream" || responseType === "response");
-    if (supportsResponseStream && (onDownloadProgress || isStreamResponse && unsubscribe)) {
-      const options = {};
-      ["status", "statusText", "headers"].forEach((prop) => {
-        options[prop] = response[prop];
-      });
-      const responseContentLength = utils_default.toFiniteNumber(response.headers.get("content-length"));
-      const [onProgress, flush] = onDownloadProgress && progressEventDecorator(responseContentLength, progressEventReducer(asyncDecorator(onDownloadProgress), true)) || [];
-      response = new Response(trackStream(response.body, DEFAULT_CHUNK_SIZE, onProgress, () => {
-        flush && flush();
-        unsubscribe && unsubscribe();
-      }), options);
-    }
-    responseType = responseType || "text";
-    let responseData = await resolvers[utils_default.findKey(resolvers, responseType) || "text"](response, config);
-    !isStreamResponse && unsubscribe && unsubscribe();
-    return await new Promise((resolve, reject) => {
-      settle(resolve, reject, {
-        data: responseData,
-        headers: AxiosHeaders_default.from(response.headers),
-        status: response.status,
-        statusText: response.statusText,
-        config,
-        request
-      });
-    });
-  } catch (err) {
-    unsubscribe && unsubscribe();
-    if (err && err.name === "TypeError" && /fetch/i.test(err.message)) {
-      throw Object.assign(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config, request), {
-        cause: err.cause || err
-      });
-    }
-    throw AxiosError_default.from(err, err && err.code, config, request);
-  }
-});
-
-// node_modules/axios/lib/adapters/adapters.js
-var knownAdapters = {
-  http: null_default,
-  xhr: xhr_default,
-  fetch: fetch_default
-};
-utils_default.forEach(knownAdapters, (fn, value) => {
-  if (fn) {
-    try {
-      Object.defineProperty(fn, "name", { value });
-    } catch (e) {
-    }
-    Object.defineProperty(fn, "adapterName", { value });
-  }
-});
-var renderReason = (reason) => `- ${reason}`;
-var isResolvedHandle = (adapter) => utils_default.isFunction(adapter) || adapter === null || adapter === false;
-var adapters_default = {
-  getAdapter: (adapters) => {
-    adapters = utils_default.isArray(adapters) ? adapters : [adapters];
-    const { length } = adapters;
-    let nameOrAdapter;
-    let adapter;
-    const rejectedReasons = {};
-    for (let i = 0;i < length; i++) {
-      nameOrAdapter = adapters[i];
-      let id;
-      adapter = nameOrAdapter;
-      if (!isResolvedHandle(nameOrAdapter)) {
-        adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
-        if (adapter === undefined) {
-          throw new AxiosError_default(`Unknown adapter '${id}'`);
-        }
-      }
-      if (adapter) {
-        break;
-      }
-      rejectedReasons[id || "#" + i] = adapter;
-    }
-    if (!adapter) {
-      const reasons = Object.entries(rejectedReasons).map(([id, state]) => `adapter ${id} ` + (state === false ? "is not supported by the environment" : "is not available in the build"));
-      let s = length ? reasons.length > 1 ? "since :\n" + reasons.map(renderReason).join("\n") : " " + renderReason(reasons[0]) : "as no adapter specified";
-      throw new AxiosError_default(`There is no suitable adapter to dispatch the request ` + s, "ERR_NOT_SUPPORT");
-    }
-    return adapter;
-  },
-  adapters: knownAdapters
-};
-
-// node_modules/axios/lib/core/dispatchRequest.js
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-  if (config.signal && config.signal.aborted) {
-    throw new CanceledError_default(null, config);
-  }
-}
-function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-  config.headers = AxiosHeaders_default.from(config.headers);
-  config.data = transformData.call(config, config.transformRequest);
-  if (["post", "put", "patch"].indexOf(config.method) !== -1) {
-    config.headers.setContentType("application/x-www-form-urlencoded", false);
-  }
-  const adapter = adapters_default.getAdapter(config.adapter || defaults_default.adapter);
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-    response.data = transformData.call(config, config.transformResponse, response);
-    response.headers = AxiosHeaders_default.from(response.headers);
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-      if (reason && reason.response) {
-        reason.response.data = transformData.call(config, config.transformResponse, reason.response);
-        reason.response.headers = AxiosHeaders_default.from(reason.response.headers);
-      }
-    }
-    return Promise.reject(reason);
-  });
-}
-
-// node_modules/axios/lib/env/data.js
-var VERSION = "1.7.7";
-
-// node_modules/axios/lib/helpers/validator.js
-var validators = {};
-["object", "boolean", "number", "function", "string", "symbol"].forEach((type, i) => {
-  validators[type] = function validator(thing) {
-    return typeof thing === type || "a" + (i < 1 ? "n " : " ") + type;
-  };
-});
-var deprecatedWarnings = {};
-validators.transitional = function transitional(validator, version, message) {
-  function formatMessage(opt, desc) {
-    return "[Axios v" + VERSION + "] Transitional option \'" + opt + "\'" + desc + (message ? ". " + message : "");
-  }
-  return (value, opt, opts) => {
-    if (validator === false) {
-      throw new AxiosError_default(formatMessage(opt, " has been removed" + (version ? " in " + version : "")), AxiosError_default.ERR_DEPRECATED);
-    }
-    if (version && !deprecatedWarnings[opt]) {
-      deprecatedWarnings[opt] = true;
-      console.warn(formatMessage(opt, " has been deprecated since v" + version + " and will be removed in the near future"));
-    }
-    return validator ? validator(value, opt, opts) : true;
-  };
-};
-function assertOptions(options, schema, allowUnknown) {
-  if (typeof options !== "object") {
-    throw new AxiosError_default("options must be an object", AxiosError_default.ERR_BAD_OPTION_VALUE);
-  }
-  const keys = Object.keys(options);
-  let i = keys.length;
-  while (i-- > 0) {
-    const opt = keys[i];
-    const validator = schema[opt];
-    if (validator) {
-      const value = options[opt];
-      const result = value === undefined || validator(value, opt, options);
-      if (result !== true) {
-        throw new AxiosError_default("option " + opt + " must be " + result, AxiosError_default.ERR_BAD_OPTION_VALUE);
-      }
-      continue;
-    }
-    if (allowUnknown !== true) {
-      throw new AxiosError_default("Unknown option " + opt, AxiosError_default.ERR_BAD_OPTION);
-    }
-  }
-}
-var validator_default = {
-  assertOptions,
-  validators
-};
-
-// node_modules/axios/lib/core/Axios.js
-var validators2 = validator_default.validators;
-
-class Axios {
-  constructor(instanceConfig) {
-    this.defaults = instanceConfig;
-    this.interceptors = {
-      request: new InterceptorManager_default,
-      response: new InterceptorManager_default
-    };
-  }
-  async request(configOrUrl, config) {
-    try {
-      return await this._request(configOrUrl, config);
-    } catch (err) {
-      if (err instanceof Error) {
-        let dummy;
-        Error.captureStackTrace ? Error.captureStackTrace(dummy = {}) : dummy = new Error;
-        const stack = dummy.stack ? dummy.stack.replace(/^.+\n/, "") : "";
-        try {
-          if (!err.stack) {
-            err.stack = stack;
-          } else if (stack && !String(err.stack).endsWith(stack.replace(/^.+\n.+\n/, ""))) {
-            err.stack += "\n" + stack;
-          }
-        } catch (e) {
-        }
-      }
-      throw err;
-    }
-  }
-  _request(configOrUrl, config) {
-    if (typeof configOrUrl === "string") {
-      config = config || {};
-      config.url = configOrUrl;
-    } else {
-      config = configOrUrl || {};
-    }
-    config = mergeConfig(this.defaults, config);
-    const { transitional: transitional2, paramsSerializer, headers } = config;
-    if (transitional2 !== undefined) {
-      validator_default.assertOptions(transitional2, {
-        silentJSONParsing: validators2.transitional(validators2.boolean),
-        forcedJSONParsing: validators2.transitional(validators2.boolean),
-        clarifyTimeoutError: validators2.transitional(validators2.boolean)
-      }, false);
-    }
-    if (paramsSerializer != null) {
-      if (utils_default.isFunction(paramsSerializer)) {
-        config.paramsSerializer = {
-          serialize: paramsSerializer
-        };
-      } else {
-        validator_default.assertOptions(paramsSerializer, {
-          encode: validators2.function,
-          serialize: validators2.function
-        }, true);
-      }
-    }
-    config.method = (config.method || this.defaults.method || "get").toLowerCase();
-    let contextHeaders = headers && utils_default.merge(headers.common, headers[config.method]);
-    headers && utils_default.forEach(["delete", "get", "head", "post", "put", "patch", "common"], (method) => {
-      delete headers[method];
-    });
-    config.headers = AxiosHeaders_default.concat(contextHeaders, headers);
-    const requestInterceptorChain = [];
-    let synchronousRequestInterceptors = true;
-    this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-      if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config) === false) {
-        return;
-      }
-      synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
-      requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
-    });
-    const responseInterceptorChain = [];
-    this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-      responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
-    });
-    let promise;
-    let i = 0;
-    let len;
-    if (!synchronousRequestInterceptors) {
-      const chain = [dispatchRequest.bind(this), undefined];
-      chain.unshift.apply(chain, requestInterceptorChain);
-      chain.push.apply(chain, responseInterceptorChain);
-      len = chain.length;
-      promise = Promise.resolve(config);
-      while (i < len) {
-        promise = promise.then(chain[i++], chain[i++]);
-      }
-      return promise;
-    }
-    len = requestInterceptorChain.length;
-    let newConfig = config;
-    i = 0;
-    while (i < len) {
-      const onFulfilled = requestInterceptorChain[i++];
-      const onRejected = requestInterceptorChain[i++];
-      try {
-        newConfig = onFulfilled(newConfig);
-      } catch (error) {
-        onRejected.call(this, error);
-        break;
-      }
-    }
-    try {
-      promise = dispatchRequest.call(this, newConfig);
-    } catch (error) {
-      return Promise.reject(error);
-    }
-    i = 0;
-    len = responseInterceptorChain.length;
-    while (i < len) {
-      promise = promise.then(responseInterceptorChain[i++], responseInterceptorChain[i++]);
-    }
-    return promise;
-  }
-  getUri(config) {
-    config = mergeConfig(this.defaults, config);
-    const fullPath = buildFullPath(config.baseURL, config.url);
-    return buildURL(fullPath, config.params, config.paramsSerializer);
-  }
-}
-utils_default.forEach(["delete", "get", "head", "options"], function forEachMethodNoData(method) {
-  Axios.prototype[method] = function(url, config) {
-    return this.request(mergeConfig(config || {}, {
-      method,
-      url,
-      data: (config || {}).data
-    }));
-  };
-});
-utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData(method) {
-  function generateHTTPMethod(isForm) {
-    return function httpMethod(url, data, config) {
-      return this.request(mergeConfig(config || {}, {
-        method,
-        headers: isForm ? {
-          "Content-Type": "multipart/form-data"
-        } : {},
-        url,
-        data
-      }));
-    };
-  }
-  Axios.prototype[method] = generateHTTPMethod();
-  Axios.prototype[method + "Form"] = generateHTTPMethod(true);
-});
-var Axios_default = Axios;
-
-// node_modules/axios/lib/cancel/CancelToken.js
-class CancelToken {
-  constructor(executor) {
-    if (typeof executor !== "function") {
-      throw new TypeError("executor must be a function.");
-    }
-    let resolvePromise;
-    this.promise = new Promise(function promiseExecutor(resolve) {
-      resolvePromise = resolve;
-    });
-    const token = this;
-    this.promise.then((cancel) => {
-      if (!token._listeners)
-        return;
-      let i = token._listeners.length;
-      while (i-- > 0) {
-        token._listeners[i](cancel);
-      }
-      token._listeners = null;
-    });
-    this.promise.then = (onfulfilled) => {
-      let _resolve;
-      const promise = new Promise((resolve) => {
-        token.subscribe(resolve);
-        _resolve = resolve;
-      }).then(onfulfilled);
-      promise.cancel = function reject() {
-        token.unsubscribe(_resolve);
-      };
-      return promise;
-    };
-    executor(function cancel(message, config, request) {
-      if (token.reason) {
-        return;
-      }
-      token.reason = new CanceledError_default(message, config, request);
-      resolvePromise(token.reason);
-    });
-  }
-  throwIfRequested() {
-    if (this.reason) {
-      throw this.reason;
-    }
-  }
-  subscribe(listener) {
-    if (this.reason) {
-      listener(this.reason);
-      return;
-    }
-    if (this._listeners) {
-      this._listeners.push(listener);
-    } else {
-      this._listeners = [listener];
-    }
-  }
-  unsubscribe(listener) {
-    if (!this._listeners) {
-      return;
-    }
-    const index = this._listeners.indexOf(listener);
-    if (index !== -1) {
-      this._listeners.splice(index, 1);
-    }
-  }
-  toAbortSignal() {
-    const controller = new AbortController;
-    const abort = (err) => {
-      controller.abort(err);
-    };
-    this.subscribe(abort);
-    controller.signal.unsubscribe = () => this.unsubscribe(abort);
-    return controller.signal;
-  }
-  static source() {
-    let cancel;
-    const token = new CancelToken(function executor(c) {
-      cancel = c;
-    });
-    return {
-      token,
-      cancel
-    };
-  }
-}
-var CancelToken_default = CancelToken;
-
-// node_modules/axios/lib/helpers/spread.js
-function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-}
-
-// node_modules/axios/lib/helpers/isAxiosError.js
-function isAxiosError(payload) {
-  return utils_default.isObject(payload) && payload.isAxiosError === true;
-}
-
-// node_modules/axios/lib/helpers/HttpStatusCode.js
-var HttpStatusCode = {
-  Continue: 100,
-  SwitchingProtocols: 101,
-  Processing: 102,
-  EarlyHints: 103,
-  Ok: 200,
-  Created: 201,
-  Accepted: 202,
-  NonAuthoritativeInformation: 203,
-  NoContent: 204,
-  ResetContent: 205,
-  PartialContent: 206,
-  MultiStatus: 207,
-  AlreadyReported: 208,
-  ImUsed: 226,
-  MultipleChoices: 300,
-  MovedPermanently: 301,
-  Found: 302,
-  SeeOther: 303,
-  NotModified: 304,
-  UseProxy: 305,
-  Unused: 306,
-  TemporaryRedirect: 307,
-  PermanentRedirect: 308,
-  BadRequest: 400,
-  Unauthorized: 401,
-  PaymentRequired: 402,
-  Forbidden: 403,
-  NotFound: 404,
-  MethodNotAllowed: 405,
-  NotAcceptable: 406,
-  ProxyAuthenticationRequired: 407,
-  RequestTimeout: 408,
-  Conflict: 409,
-  Gone: 410,
-  LengthRequired: 411,
-  PreconditionFailed: 412,
-  PayloadTooLarge: 413,
-  UriTooLong: 414,
-  UnsupportedMediaType: 415,
-  RangeNotSatisfiable: 416,
-  ExpectationFailed: 417,
-  ImATeapot: 418,
-  MisdirectedRequest: 421,
-  UnprocessableEntity: 422,
-  Locked: 423,
-  FailedDependency: 424,
-  TooEarly: 425,
-  UpgradeRequired: 426,
-  PreconditionRequired: 428,
-  TooManyRequests: 429,
-  RequestHeaderFieldsTooLarge: 431,
-  UnavailableForLegalReasons: 451,
-  InternalServerError: 500,
-  NotImplemented: 501,
-  BadGateway: 502,
-  ServiceUnavailable: 503,
-  GatewayTimeout: 504,
-  HttpVersionNotSupported: 505,
-  VariantAlsoNegotiates: 506,
-  InsufficientStorage: 507,
-  LoopDetected: 508,
-  NotExtended: 510,
-  NetworkAuthenticationRequired: 511
-};
-Object.entries(HttpStatusCode).forEach(([key, value]) => {
-  HttpStatusCode[value] = key;
-});
-var HttpStatusCode_default = HttpStatusCode;
-
-// node_modules/axios/lib/axios.js
-function createInstance(defaultConfig) {
-  const context = new Axios_default(defaultConfig);
-  const instance = bind(Axios_default.prototype.request, context);
-  utils_default.extend(instance, Axios_default.prototype, context, { allOwnKeys: true });
-  utils_default.extend(instance, context, null, { allOwnKeys: true });
-  instance.create = function create(instanceConfig) {
-    return createInstance(mergeConfig(defaultConfig, instanceConfig));
-  };
-  return instance;
-}
-var axios = createInstance(defaults_default);
-axios.Axios = Axios_default;
-axios.CanceledError = CanceledError_default;
-axios.CancelToken = CancelToken_default;
-axios.isCancel = isCancel;
-axios.VERSION = VERSION;
-axios.toFormData = toFormData_default;
-axios.AxiosError = AxiosError_default;
-axios.Cancel = axios.CanceledError;
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = spread;
-axios.isAxiosError = isAxiosError;
-axios.mergeConfig = mergeConfig;
-axios.AxiosHeaders = AxiosHeaders_default;
-axios.formToJSON = (thing) => formDataToJSON_default(utils_default.isHTMLForm(thing) ? new FormData(thing) : thing);
-axios.getAdapter = adapters_default.getAdapter;
-axios.HttpStatusCode = HttpStatusCode_default;
-axios.default = axios;
-var axios_default = axios;
-
-// src/web/util/Assert.ts
-function assert(condition, errcode) {
-  if (condition)
-    return;
-  if (errcode)
-    throw Error(errcode);
-  throw Error("CRIT_ERR");
-}
-
-// src/web/core/Server.ts
-async function products() {
-  let response = await axios_default.get("/get/products");
-  let data = response.data;
-  let errcode = "SERVER_ERR_UNSUPPORTED_RESPONSE";
-  assert(Array.isArray(data), errcode);
-  data.forEach((product) => assert(!!product && typeof product === "object" && "name" in product && "description" in product && "price" in product && "stock" in product && typeof product.name === "string" && typeof product.description === "string" && typeof product.price === "bigint" && typeof product.stock === "bigint", errcode));
-  return data;
-}
-var _user = null;
-function user() {
-  return _user;
-}
-function loggedIn() {
-  return !!_user;
-}
-async function signIn(request) {
-  if (loggedIn())
-    return _user;
-  let response = await axios_default.post("/user/sign-in", request);
-  let data = response.data;
-  let errcode = "SERVER_ERR_UNSUPPORTED_RESPONSE";
-  assert(!!data && typeof data === "object" && "username" in data && "hash" in data && typeof data.username === "string" && typeof data.hash === "string", errcode);
-  return data;
-}
-
-// src/web/components/Nav.tsx
-var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
-function Nav() {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        width: "100%",
-        flexGrow: 1,
-        paddingTop: 10
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavTop, {}, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottom, {}, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavTop() {
-  let [products2, setProducts] = import_react.useState([]);
-  import_react3.useEffect(() => {
-    return;
-  }, []);
-  const suggestables = () => products2.map((product) => NavTopSearchBarSuggestable({ product }));
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        alignItems: "center",
-        gap: 20,
-        flexGrow: 1,
-        width: "100%"
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 5
-          },
-          children: [
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavTopButton, {
-              label: "Sign In",
-              to: "/sign-in"
-            }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavTopButton, {
-              label: "Sign Up",
-              to: "/sign-up"
-            }, undefined, false, undefined, this)
-          ]
-        }, undefined, true, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavTopSearchBar, {
-          icon: "../icon/Search.png",
-          suggestionThreshold: 4n,
-          suggestionCount: 8n,
-          suggestables: suggestables()
-        }, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavTopSearchBarSuggestable({
-  product
-}) {
-  let { name, price, stock } = product;
-  let available = stock > 0n;
-  return [name, /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Link2, {
-      to: "/product",
-      children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-        style: {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "start",
-          alignItems: "center",
-          width: "100%",
-          flexGrow: 1,
-          pointerEvents: available ? "auto" : "none",
-          cursor: available ? "pointer" : "auto",
-          opacity: available ? 1 : 0.5,
-          fontSize: "0.75em",
-          fontWeight: "bold",
-          fontFamily: "suisse-intl-regular",
-          color: OBSIDIAN
-        },
-        children: [
-          name,
-          /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-            style: {
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: 5,
-              boxShadow: TAILWIND_0,
-              background: available ? OFFCUT_YELLOW : SNOW,
-              borderRadius: "5px"
-            },
-            children: price.toLocaleString()
-          }, undefined, false, undefined, this)
-        ]
-      }, undefined, true, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this)];
-}
-function NavTopSearchBar({
-  icon,
-  suggestionThreshold = 4n,
-  suggestionCount = 8n,
-  suggestables = []
-}) {
-  let [suggestions, setSuggestions] = import_react.useState(null);
-  let [input, setInput] = import_react.useState(null);
-  let ref = import_react2.useRef(null);
-  const removeDuplicateSuggestable = () => suggestables.filter((item, index, self2) => index === self2.findIndex((t) => t[0] === item[0]));
-  const sort = () => {
-    if (input === null)
-      return null;
-    if (input === undefined)
-      return null;
-    if (input === "")
-      return null;
-    if (suggestables === null)
-      return null;
-    return suggestables.map((item) => item[0]).map((item) => ({ item, distance: Lev.get(input.toLocaleLowerCase(), item.toLocaleLowerCase()) })).filter((item) => item.distance <= Number(suggestionThreshold)).sort((x, y) => x.distance - y.distance).map((result) => result.item).slice(0, Number(suggestionCount));
-  };
-  const close = (e) => {
-    if (!ref.current)
-      return;
-    if (ref.current.contains(e.target))
-      return;
-    setSuggestions([]);
-    return;
-  };
-  const lookup = (suggestion) => {
-    for (let i = 0;i < suggestables.length; i++)
-      if (suggestion === suggestables[i][0])
-        return suggestables[1];
-    return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      children: "ERR_ITEM_NOT_FOUND"
-    }, undefined, false, undefined, this);
-  };
-  suggestables = removeDuplicateSuggestable();
-  import_react3.useEffect(() => setSuggestions(sort()), [input, suggestables]);
-  import_react3.useEffect(() => {
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, []);
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      ref,
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        flexGrow: 1,
-        position: "relative"
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "start",
-            alignItems: "center",
-            boxShadow: TAILWIND_0,
-            gap: 5,
-            paddingLeft: 10,
-            paddingRight: 10,
-            width: "100%",
-            flexGrow: 1,
-            position: "relative"
-          },
-          children: [
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-              style: {
-                backgroundImage: `url(${icon})`,
-                backgroundSize: "contain",
-                backgroundPositionX: "center",
-                backgroundPositionY: "center",
-                backgroundRepeat: "no-repeat",
-                width: 10,
-                aspectRatio: "1/1"
-              }
-            }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("input", {
-              type: "text",
-              onChange: (e) => setInput(e.target.value),
-              style: {
-                all: "unset",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                fontSize: "0.75em",
-                fontWeight: "normal",
-                fontFamily: "suiss-intl-regular",
-                flexGrow: 1,
-                padding: 5
-              }
-            }, undefined, false, undefined, this)
-          ]
-        }, undefined, true, undefined, this),
-        suggestions && suggestions.length > 0 && /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "start",
-            alignItems: "center",
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            width: "100%",
-            background: SNOW,
-            boxShadow: TAILWIND_0,
-            zIndex: 10 ** 18,
-            padding: 10,
-            gap: 10
-          },
-          children: suggestions.map((suggestion, key) => /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-            style: {
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "start",
-              alignItems: "center",
-              width: "100%",
-              fontSize: "0.75em",
-              fontWeight: "normal",
-              fontFamily: "suisse-intl-regular",
-              gap: 10
-            },
-            children: lookup(suggestion)
-          }, key, false, undefined, this))
-        }, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavTopButton({
-  label,
-  to
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Link2, {
-      to,
-      children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("button", {
-        style: {
-          all: "unset",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          pointerEvents: "auto",
-          cursor: "pointer",
-          color: OBSIDIAN,
-          boxShadow: TAILWIND_0,
-          padding: 5,
-          borderRadius: 5,
-          fontSize: "0.75em",
-          fontWeight: "normal",
-          fontFamily: "suisse-intl-regular"
-        },
-        children: label
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottom() {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        alignItems: "center",
-        width: "100%",
-        flexGrow: 1,
-        gap: 20
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomLogo, {}, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "start",
-            width: "100%",
-            flexGrow: 1
-          },
-          children: [
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomGotoGroup, {
-              children: [
-                /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomGotoButton, {
-                  label: "Home",
-                  to: "/"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomGotoButton, {
-                  label: "Products",
-                  to: "/products"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomGotoButton, {
-                  label: "Inspo",
-                  to: "/inspo"
-                }, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomUtilGroup, {
-              children: [
-                /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomAccountButton, {}, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(NavBottomCartButton, {}, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this)
-          ]
-        }, undefined, true, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomLogo() {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundImage: "url(../img/Logo.png)",
-        backgroundSize: "contain",
-        backgroundPositionX: "center",
-        backgroundPositionY: "center",
-        backgroundRepeat: "no-repeat",
-        width: 150,
-        aspectRatio: 2 / 1
-      }
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomGotoGroup({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        alignItems: "center",
-        width: "100%",
-        flexGrow: 1,
-        gap: 20
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomGotoButton({
-  label,
-  to
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Link2, {
-      to,
-      children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-        style: {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "1em",
-          fontWeight: "normal",
-          fontFamily: "suisse-intl-regular",
-          color: OBSIDIAN,
-          pointerEvents: "auto",
-          cursor: "pointer"
-        },
-        children: label
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomUtilGroup({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "end",
-        alignItems: "center",
-        width: "100%",
-        flexGrow: 1,
-        gap: 10
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomAccountButton() {
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Link2, {
-      to: "/account",
-      children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-        style: {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: TAILWIND_0,
-          padding: 5,
-          pointerEvents: "auto",
-          cursor: "pointer",
-          borderRadius: 5
-        },
-        children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            background: "url(../icon/Account.png)",
-            backgroundSize: "contain",
-            backgroundPositionX: "center",
-            backgroundPositionY: "center",
-            backgroundRepeat: "no-repeat",
-            width: 20,
-            aspectRatio: 1 / 1
-          }
-        }, undefined, false, undefined, this)
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function NavBottomCartButton() {
-  let [count, setCount] = import_react.useState(0n);
-  import_react3.useEffect(() => {
-    (async () => {
-      let user2 = user();
-      if (!user2)
-        return;
-      let cart = user2.orders?.at(-1);
-      if (!cart)
-        return;
-      if (cart.status !== "waiting")
-        return;
-      let count2 = BigInt(cart.items.length);
-      setCount(count2);
-      return;
-    })();
-    return;
-  });
-  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 5
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Link2, {
-          to: "/cart",
-          children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-            style: {
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "start",
-              alignItems: "center",
-              boxShadow: TAILWIND_0,
-              pointerEvents: "auto",
-              cursor: "pointer",
-              padding: 5,
-              gap: 5,
-              borderRadius: 5
-            },
-            children: [
-              /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-                style: {
-                  backgroundImage: "url(../icon/Cart.png)",
-                  backgroundSize: "contain",
-                  backgroundPositionX: "center",
-                  backgroundPositionY: "center",
-                  backgroundRepeat: "no-repeat",
-                  width: 20,
-                  aspectRatio: 1 / 1
-                }
-              }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-                style: {
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontSize: "1em",
-                  fontWeight: "normal",
-                  fontFamily: "suisse-intl-regular",
-                  color: OBSIDIAN
-                },
-                children: "Cart"
-              }, undefined, false, undefined, this)
-            ]
-          }, undefined, true, undefined, this)
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime2.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            background: `linear-gradient(to bottom, ${LIGHT_SEA_GREEN}, ${MOONSTONE})`,
-            backgroundClip: "text",
-            backgroundSize: "cover",
-            backgroundPositionX: "center",
-            backgroundPositionY: "center",
-            color: "transparent",
-            boxShadow: TAILWIND_0,
-            fontSize: "1em",
-            fontWeight: "bold",
-            fontFamily: "suisse-intl-regular",
-            padding: 5
-          },
-          children: count.toLocaleString()
-        }, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-
-// src/web/hook/Device.ts
-var import_react4 = __toESM(require_react(), 1);
-var import_react5 = __toESM(require_react(), 1);
 function useDevice() {
-  const [device, setDevice] = import_react4.useState("laptop");
-  import_react5.useEffect(() => {
+  const [device, setDevice] = import_react.useState("laptop");
+  import_react2.useEffect(() => {
     function resize() {
       if (window.innerWidth >= 1024)
         setDevice("laptop");
@@ -28991,18 +26035,18 @@ function eachSafely(values, each) {
 }
 
 // node_modules/@react-spring/shared/dist/react-spring_shared.modern.mjs
+var import_react3 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
+var import_react5 = __toESM(require_react(), 1);
 var import_react6 = __toESM(require_react(), 1);
 var import_react7 = __toESM(require_react(), 1);
 var import_react8 = __toESM(require_react(), 1);
 var import_react9 = __toESM(require_react(), 1);
 var import_react10 = __toESM(require_react(), 1);
-var import_react11 = __toESM(require_react(), 1);
-var import_react12 = __toESM(require_react(), 1);
-var import_react13 = __toESM(require_react(), 1);
 var __defProp2 = Object.defineProperty;
-var __export2 = (target, all2) => {
-  for (var name in all2)
-    __defProp2(target, name, { get: all2[name], enumerable: true });
+var __export2 = (target, all) => {
+  for (var name in all)
+    __defProp2(target, name, { get: all[name], enumerable: true });
 };
 var globals_exports = {};
 __export2(globals_exports, {
@@ -29013,7 +26057,7 @@ __export2(globals_exports, {
   to: () => to,
   willAdvance: () => willAdvance
 });
-function noop2() {
+function noop() {
 }
 var defineHidden = (obj, key, value) => Object.defineProperty(obj, key, { value, writable: true, configurable: true });
 var is = {
@@ -29050,7 +26094,7 @@ function eachProp(obj, fn, ctx) {
     }
   }
 }
-var toArray2 = (a) => is.und(a) ? [] : is.arr(a) ? a : [a];
+var toArray = (a) => is.und(a) ? [] : is.arr(a) ? a : [a];
 function flush(queue, iterator) {
   if (queue.size) {
     const items = Array.from(queue);
@@ -29064,7 +26108,7 @@ var createStringInterpolator;
 var to;
 var colors = null;
 var skipAnimation = false;
-var willAdvance = noop2;
+var willAdvance = noop;
 var assign = (globals) => {
   if (globals.to)
     to = globals.to;
@@ -29150,8 +26194,8 @@ function advance(dt) {
   currentFrame = nextFrame;
   return currentFrame.length > 0;
 }
-function findIndex(arr, test2) {
-  const index = arr.findIndex(test2);
+function findIndex(arr, test) {
+  const index = arr.findIndex(test);
   return index < 0 ? arr.length : index;
 }
 var clamp = (min, max, v) => Math.min(Math.max(v, min), max);
@@ -29555,14 +26599,14 @@ function callFluidObservers(target, event) {
   }
 }
 var FluidValue = class {
-  constructor(get2) {
-    if (!get2 && !(get2 = this.get)) {
+  constructor(get) {
+    if (!get && !(get = this.get)) {
       throw Error("Unknown getter");
     }
-    setFluidGetter(this, get2);
+    setFluidGetter(this, get);
   }
 };
-var setFluidGetter = (target, get2) => setHidden(target, $get, get2);
+var setFluidGetter = (target, get) => setHidden(target, $get, get);
 function addFluidObserver(target, observer2) {
   if (target[$get]) {
     let observers = target[$observers];
@@ -29678,9 +26722,9 @@ function deprecateDirectCall() {
 function isAnimatedString(value) {
   return is.str(value) && (value[0] == "#" || /\d/.test(value) || !isSSR() && cssVariableRegex.test(value) || (value in (colors || {})));
 }
-var useIsomorphicLayoutEffect2 = isSSR() ? import_react9.useEffect : import_react9.useLayoutEffect;
+var useIsomorphicLayoutEffect2 = isSSR() ? import_react6.useEffect : import_react6.useLayoutEffect;
 var useIsMounted = () => {
-  const isMounted = import_react8.useRef(false);
+  const isMounted = import_react5.useRef(false);
   useIsomorphicLayoutEffect2(() => {
     isMounted.current = true;
     return () => {
@@ -29690,7 +26734,7 @@ var useIsMounted = () => {
   return isMounted;
 };
 function useForceUpdate() {
-  const update2 = import_react7.useState()[1];
+  const update2 = import_react4.useState()[1];
   const isMounted = useIsMounted();
   return () => {
     if (isMounted.current) {
@@ -29699,11 +26743,11 @@ function useForceUpdate() {
   };
 }
 function useMemoOne(getResult, inputs) {
-  const [initial] = import_react10.useState(() => ({
+  const [initial] = import_react7.useState(() => ({
     inputs,
     result: getResult()
   }));
-  const committed = import_react10.useRef();
+  const committed = import_react7.useRef();
   const prevCache = committed.current;
   let cache = prevCache;
   if (cache) {
@@ -29717,7 +26761,7 @@ function useMemoOne(getResult, inputs) {
   } else {
     cache = initial;
   }
-  import_react10.useEffect(() => {
+  import_react7.useEffect(() => {
     committed.current = cache;
     if (prevCache == initial) {
       initial.inputs = initial.result = undefined;
@@ -29736,22 +26780,22 @@ function areInputsEqual(next, prev) {
   }
   return true;
 }
-var useOnce = (effect) => import_react11.useEffect(effect, emptyDeps);
+var useOnce = (effect) => import_react8.useEffect(effect, emptyDeps);
 var emptyDeps = [];
 function usePrev(value) {
-  const prevRef = import_react12.useRef();
-  import_react12.useEffect(() => {
+  const prevRef = import_react9.useRef();
+  import_react9.useEffect(() => {
     prevRef.current = value;
   });
   return prevRef.current;
 }
 
 // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
-var import_react15 = __toESM(require_react(), 1);
+var import_react12 = __toESM(require_react(), 1);
 
 // node_modules/@react-spring/animated/dist/react-spring_animated.modern.mjs
 var React3 = __toESM(require_react(), 1);
-var import_react14 = __toESM(require_react(), 1);
+var import_react11 = __toESM(require_react(), 1);
 var $node = Symbol.for("Animated:node");
 var isAnimated = (value) => !!value && value[$node] === value;
 var getAnimated = (owner) => owner && owner[$node];
@@ -29927,9 +26971,9 @@ function getAnimatedType(value) {
 }
 var withAnimated = (Component2, host) => {
   const hasInstance = !is.fun(Component2) || Component2.prototype && Component2.prototype.isReactComponent;
-  return import_react14.forwardRef((givenProps, givenRef) => {
-    const instanceRef = import_react14.useRef(null);
-    const ref = hasInstance && import_react14.useCallback((value) => {
+  return import_react11.forwardRef((givenProps, givenRef) => {
+    const instanceRef = import_react11.useRef(null);
+    const ref = hasInstance && import_react11.useCallback((value) => {
       instanceRef.current = updateRef(givenRef, value);
     }, [givenRef]);
     const [props, deps] = getAnimatedState(givenProps, host);
@@ -29945,7 +26989,7 @@ var withAnimated = (Component2, host) => {
       }
     };
     const observer = new PropsObserver(callback, deps);
-    const observerRef = import_react14.useRef();
+    const observerRef = import_react11.useRef();
     useIsomorphicLayoutEffect2(() => {
       observerRef.current = observer;
       each(deps, (dep) => addFluidObserver(dep, observer));
@@ -29956,7 +27000,7 @@ var withAnimated = (Component2, host) => {
         }
       };
     });
-    import_react14.useEffect(callback, []);
+    import_react11.useEffect(callback, []);
     useOnce(() => () => {
       const observer2 = observerRef.current;
       each(observer2.deps, (dep) => removeFluidObserver(dep, observer2));
@@ -30032,15 +27076,15 @@ var getDisplayName = (arg) => is.str(arg) ? arg : arg && is.str(arg.displayName)
 
 // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
 var React4 = __toESM(require_react(), 1);
-var import_react16 = __toESM(require_react(), 1);
-var import_react17 = __toESM(require_react(), 1);
+var import_react13 = __toESM(require_react(), 1);
+var import_react14 = __toESM(require_react(), 1);
 var React22 = __toESM(require_react(), 1);
-var import_react18 = __toESM(require_react(), 1);
-var import_react19 = __toESM(require_react(), 1);
+var import_react15 = __toESM(require_react(), 1);
+var import_react16 = __toESM(require_react(), 1);
 function callProp(value, ...args) {
   return is.fun(value) ? value(...args) : value;
 }
-var matchProp = (value, key) => value === true || !!(key && value && (is.fun(value) ? value(key) : toArray2(value).includes(key)));
+var matchProp = (value, key) => value === true || !!(key && value && (is.fun(value) ? value(key) : toArray(value).includes(key)));
 var resolveProp = (prop, key) => is.obj(prop) ? key && prop[key] : prop;
 var getDefaultProp = (props, key) => props.default === true ? props[key] : props.default ? props.default[key] : undefined;
 var noopTransform = (value) => value;
@@ -30158,7 +27202,7 @@ var config = {
   slow: { tension: 280, friction: 60 },
   molasses: { tension: 280, friction: 120 }
 };
-var defaults2 = {
+var defaults = {
   ...config.default,
   mass: 1,
   damping: 1,
@@ -30168,10 +27212,10 @@ var defaults2 = {
 var AnimationConfig = class {
   constructor() {
     this.velocity = 0;
-    Object.assign(this, defaults2);
+    Object.assign(this, defaults);
   }
 };
-function mergeConfig2(config2, newConfig, defaultConfig) {
+function mergeConfig(config2, newConfig, defaultConfig) {
   if (defaultConfig) {
     defaultConfig = { ...defaultConfig };
     sanitizeConfig(defaultConfig, newConfig);
@@ -30179,9 +27223,9 @@ function mergeConfig2(config2, newConfig, defaultConfig) {
   }
   sanitizeConfig(config2, newConfig);
   Object.assign(config2, newConfig);
-  for (const key in defaults2) {
+  for (const key in defaults) {
     if (config2[key] == null) {
-      config2[key] = defaults2[key];
+      config2[key] = defaults[key];
     }
   }
   let { frequency, damping } = config2;
@@ -30528,7 +27572,7 @@ var SpringValue = class extends FrameValue {
     const { config: config2 } = anim;
     const payload = getPayload(anim.to);
     if (!payload && hasFluidValue(anim.to)) {
-      toValues = toArray2(getFluidValue(anim.to));
+      toValues = toArray(getFluidValue(anim.to));
     }
     anim.values.forEach((node2, i) => {
       if (node2.done)
@@ -30805,7 +27849,7 @@ var SpringValue = class extends FrameValue {
       config2.velocity = 0;
     }
     if (props.config && !hasAsyncTo) {
-      mergeConfig2(config2, callProp(props.config, key), props.config !== defaultProps.config ? callProp(defaultProps.config, key) : undefined);
+      mergeConfig(config2, callProp(props.config, key), props.config !== defaultProps.config ? callProp(defaultProps.config, key) : undefined);
     }
     let node = getAnimated(this);
     if (!node || is.und(to2)) {
@@ -30848,7 +27892,7 @@ var SpringValue = class extends FrameValue {
     if (!hasAsyncTo) {
       if (started || hasFluidValue(prevTo)) {
         anim.values = node.getPayload();
-        anim.toValues = hasFluidValue(to2) ? null : goalType == AnimatedString ? [1] : toArray2(goal);
+        anim.toValues = hasFluidValue(to2) ? null : goalType == AnimatedString ? [1] : toArray(goal);
       }
       if (anim.immediate != immediate) {
         anim.immediate = immediate;
@@ -31114,7 +28158,7 @@ var Controller = class {
   start(props) {
     let { queue } = this;
     if (props) {
-      queue = toArray2(props).map(createUpdate);
+      queue = toArray(props).map(createUpdate);
     } else {
       this.queue = [];
     }
@@ -31130,7 +28174,7 @@ var Controller = class {
     }
     if (keys) {
       const springs = this.springs;
-      each(toArray2(keys), (key) => springs[key].stop(!!arg));
+      each(toArray(keys), (key) => springs[key].stop(!!arg));
     } else {
       stopAsync(this._state, this._lastAsyncId);
       this.each((spring) => spring.stop(!!arg));
@@ -31142,7 +28186,7 @@ var Controller = class {
       this.start({ pause: true });
     } else {
       const springs = this.springs;
-      each(toArray2(keys), (key) => springs[key].pause());
+      each(toArray(keys), (key) => springs[key].pause());
     }
     return this;
   }
@@ -31151,7 +28195,7 @@ var Controller = class {
       this.start({ pause: false });
     } else {
       const springs = this.springs;
-      each(toArray2(keys), (key) => springs[key].resume());
+      each(toArray(keys), (key) => springs[key].resume());
     }
     return this;
   }
@@ -31203,7 +28247,7 @@ function flushUpdateQueue(ctrl, queue) {
 }
 async function flushUpdate(ctrl, props, isLoop) {
   const { keys, to: to2, from, loop: loop2, onRest, onResolve } = props;
-  const defaults22 = is.obj(props.default) && props.default;
+  const defaults2 = is.obj(props.default) && props.default;
   if (loop2) {
     props.loop = false;
   }
@@ -31215,8 +28259,8 @@ async function flushUpdate(ctrl, props, isLoop) {
   if (asyncTo) {
     props.to = undefined;
     props.onRest = undefined;
-    if (defaults22) {
-      defaults22.onRest = undefined;
+    if (defaults2) {
+      defaults2.onRest = undefined;
     }
   } else {
     each(BATCHED_EVENTS, (key) => {
@@ -31238,8 +28282,8 @@ async function flushUpdate(ctrl, props, isLoop) {
             });
           }
         };
-        if (defaults22) {
-          defaults22[key] = props[key];
+        if (defaults2) {
+          defaults2[key] = props[key];
         }
       }
     });
@@ -31258,8 +28302,8 @@ async function flushUpdate(ctrl, props, isLoop) {
       props,
       state,
       actions: {
-        pause: noop2,
-        resume: noop2,
+        pause: noop,
+        resume: noop,
         start(props2, resolve) {
           if (cancel) {
             stopAsync(state, ctrl["_lastAsyncId"]);
@@ -31293,7 +28337,7 @@ async function flushUpdate(ctrl, props, isLoop) {
 function getSprings(ctrl, props) {
   const springs = { ...ctrl.springs };
   if (props) {
-    each(toArray2(props), (props2) => {
+    each(toArray(props), (props2) => {
       if (is.und(props2.keys)) {
         props2 = createUpdate(props2);
       }
@@ -31343,7 +28387,7 @@ var SpringContext = ({
   children,
   ...props
 }) => {
-  const inherited = import_react16.useContext(ctx);
+  const inherited = import_react13.useContext(ctx);
   const pause = props.pause || !!inherited.pause, immediate = props.immediate || !!inherited.immediate;
   props = useMemoOne(() => ({ pause, immediate }), [pause, immediate]);
   const { Provider } = ctx;
@@ -31434,10 +28478,10 @@ function useSprings(length, props, deps) {
   const propsFn = is.fun(props) && props;
   if (propsFn && !deps)
     deps = [];
-  const ref = import_react15.useMemo(() => propsFn || arguments.length == 3 ? SpringRef() : undefined, []);
-  const layoutId = import_react15.useRef(0);
+  const ref = import_react12.useMemo(() => propsFn || arguments.length == 3 ? SpringRef() : undefined, []);
+  const layoutId = import_react12.useRef(0);
   const forceUpdate = useForceUpdate();
-  const state = import_react15.useMemo(() => ({
+  const state = import_react12.useMemo(() => ({
     ctrls: [],
     queue: [],
     flush(ctrl, updates2) {
@@ -31452,10 +28496,10 @@ function useSprings(length, props, deps) {
       });
     }
   }), []);
-  const ctrls = import_react15.useRef([...state.ctrls]);
+  const ctrls = import_react12.useRef([...state.ctrls]);
   const updates = [];
   const prevLength = usePrev(length) || 0;
-  import_react15.useMemo(() => {
+  import_react12.useMemo(() => {
     each(ctrls.current.slice(length, prevLength), (ctrl) => {
       detachRefs(ctrl, ref);
       ctrl.stop(true);
@@ -31463,7 +28507,7 @@ function useSprings(length, props, deps) {
     ctrls.current.length = length;
     declareUpdates(prevLength, length);
   }, [length]);
-  import_react15.useMemo(() => {
+  import_react12.useMemo(() => {
     declareUpdates(0, Math.min(prevLength, length));
   }, deps);
   function declareUpdates(startIndex, endIndex) {
@@ -31476,7 +28520,7 @@ function useSprings(length, props, deps) {
     }
   }
   const springs = ctrls.current.map((ctrl, i) => getSprings(ctrl, updates[i]));
-  const context = import_react15.useContext(SpringContext);
+  const context = import_react12.useContext(SpringContext);
   const prevContext = usePrev(context);
   const hasContext = context !== prevContext && hasProps(context);
   useIsomorphicLayoutEffect2(() => {
@@ -31537,7 +28581,7 @@ var Interpolation = class extends FrameValue {
     }
   }
   _get() {
-    const inputs = is.arr(this.source) ? this.source.map(getFluidValue) : toArray2(getFluidValue(this.source));
+    const inputs = is.arr(this.source) ? this.source.map(getFluidValue) : toArray(getFluidValue(this.source));
     return this.calc(...inputs);
   }
   _start() {
@@ -31556,7 +28600,7 @@ var Interpolation = class extends FrameValue {
   }
   _attach() {
     let priority2 = 1;
-    each(toArray2(this.source), (source) => {
+    each(toArray(this.source), (source) => {
       if (hasFluidValue(source)) {
         addFluidObserver(source, this);
       }
@@ -31571,7 +28615,7 @@ var Interpolation = class extends FrameValue {
     this._start();
   }
   _detach() {
-    each(toArray2(this.source), (source) => {
+    each(toArray(this.source), (source) => {
       if (hasFluidValue(source)) {
         removeFluidObserver(source, this);
       }
@@ -31590,7 +28634,7 @@ var Interpolation = class extends FrameValue {
     } else if (event.type == "idle") {
       this._active.delete(event.parent);
     } else if (event.type == "priority") {
-      this.priority = toArray2(this.source).reduce((highest, parent) => Math.max(highest, (isFrameValue(parent) ? parent.priority : 0) + 1), 0);
+      this.priority = toArray(this.source).reduce((highest, parent) => Math.max(highest, (isFrameValue(parent) ? parent.priority : 0) + 1), 0);
     }
   }
 };
@@ -31748,7 +28792,7 @@ var AnimatedStyle = class extends AnimatedObject {
         if (is.und(value))
           return;
         const unit = pxTransforms.test(key) ? "px" : degTransforms.test(key) ? "deg" : "";
-        inputs.push(toArray2(value));
+        inputs.push(toArray(value));
         transforms.push(key === "rotate3d" ? ([x2, y2, z2, deg]) => [
           `rotate3d(${x2},${y2},${z2},${addUnit(deg, unit)})`,
           isValueIdentity(deg, 0)
@@ -31946,15 +28990,270 @@ var host = createHost(primitives, {
   getComponentProps: ({ scrollTop, scrollLeft, ...props }) => props
 });
 var animated = host.animated;
+// src/web/components/Nav.tsx
+var import_react17 = __toESM(require_react(), 1);
+
+// src/web/constant/ColorPalette.ts
+var OBSIDIAN = "#0C0527";
+var OFFCUT_YELLOW = "#F1D550";
+var SNOW = "#FAF6F6";
+var LIGHT_SEA_GREEN = "#17C3B2";
+var MOONSTONE = "#00B2CA";
+var JASPER = "#C75146";
+var GHOST_WHITE = "#ECEBF3";
+
+// src/web/components/Nav.tsx
+var jsx_dev_runtime = __toESM(require_jsx_dev_runtime(), 1);
+function Root() {
+  let container$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    paddingTop: 10,
+    paddingBottom: 10
+  };
+  let logo$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundImage: "url(../img/Logo.png)",
+    backgroundSize: "contain",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
+    backgroundRepeat: "no-repeat",
+    width: 150,
+    aspectRatio: 2 / 1
+  };
+  let button$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "grey",
+    pointerEvents: "auto",
+    cursor: "pointer",
+    fontSize: "0.75em",
+    fontWeight: "normal",
+    fontFamily: "suisse-intl-regular",
+    color: OBSIDIAN
+  };
+  let buttonWithStarContainer$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10
+  };
+  let buttonWithStarIconContainer$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
+    height: "100%",
+    position: "relative"
+  };
+  let buttonWithStarIcon$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundImage: "url(../icon/Star.png)",
+    backgroundSize: "contain",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
+    backgroundRepeat: "no-repeat",
+    width: 30,
+    aspectRatio: 1 / 1,
+    position: "absolute",
+    bottom: 0,
+    right: 2.5
+  };
+  let buttonWithStarButton$ = {
+    ...button$,
+    background: OBSIDIAN,
+    color: SNOW
+  };
+  let buttonGroup$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 20
+  };
+  let buttonContainer$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "start",
+    alignItems: "center",
+    position: "relative"
+  };
+  let searchBarContainer$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "grey",
+    pointerEvents: "auto",
+    width: 300,
+    gap: 10
+  };
+  let searchBarIcon$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundImage: "url(../icon/Search.png)",
+    backgroundSize: "contain",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
+    backgroundRepeat: "no-repeat",
+    width: 10,
+    aspectRatio: 1 / 1
+  };
+  let searchBarInput$ = {
+    style: {
+      all: "unset",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      flexGrow: 1,
+      color: OBSIDIAN,
+      fontSize: "0.75em",
+      fontWeight: "normal",
+      fontFamily: "suisse-intl-regular",
+      height: "100%"
+    }
+  };
+  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV(jsx_dev_runtime.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+      style: container$,
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+          style: logo$
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_ButtonGroup, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+              style: buttonWithStarIconContainer$,
+              children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+                style: buttonWithStarIcon$
+              }, undefined, false, undefined, this)
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_Button, {
+              type: "inverted",
+              children: "For You"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_ButtonGroup, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_Button, {
+              children: "Materials"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_Button, {
+              children: "Sign In"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+          style: searchBarContainer$,
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+              style: searchBarIcon$
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV("input", {
+              ...searchBarInput$
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_ButtonGroup, {
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_Button, {
+              children: "Basket"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime.jsxDEV(_Button, {
+              children: "Contact Us"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _ButtonGroup(props) {
+  let container$ = {
+    style: {
+      all: "unset",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 10
+    }
+  };
+  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV(jsx_dev_runtime.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV("div", {
+      ...container$,
+      children: props.children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _Button(props) {
+  props.type ??= "standard";
+  let container$ = {
+    style: {
+      all: "unset",
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: "gray",
+      borderRadius: 10,
+      paddingTop: 5,
+      paddingBottom: 5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      background: props.type === "inverted" ? OBSIDIAN : "transparent",
+      color: props.type === "inverted" ? SNOW : OBSIDIAN,
+      fontSize: "0.75em",
+      fontWeight: "normal",
+      fontFamily: "suisse-intl-regular",
+      pointerEvents: "auto",
+      cursor: "pointer"
+    }
+  };
+  return /* @__PURE__ */ jsx_dev_runtime.jsxDEV(jsx_dev_runtime.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime.jsxDEV("button", {
+      ...container$,
+      children: props.children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+
 // src/web/components/ResponsiveAnchorPage.tsx
-var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
 function ResponsiveAnchorPage({ style, children, ...more }) {
   const device = useDevice();
   function size() {
     return device === "laptop" ? "1024px" : device === "tablet" ? "768px" : device === "mobile" ? "320px" : null;
   }
-  return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(jsx_dev_runtime3.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(animated.div, {
+  return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(animated.div, {
       style: {
         display: "flex",
         flexDirection: "column",
@@ -31966,7 +29265,7 @@ function ResponsiveAnchorPage({ style, children, ...more }) {
         ...style
       },
       ...more,
-      children: /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(animated.div, {
+      children: /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(animated.div, {
         style: {
           display: "flex",
           flexDirection: "column",
@@ -31976,8 +29275,8 @@ function ResponsiveAnchorPage({ style, children, ...more }) {
           height: "100%"
         },
         children: [
-          /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(Nav, {}, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(animated.div, {
+          /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(Root, {}, undefined, false, undefined, this),
+          /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(animated.div, {
             style: {
               display: "flex",
               flexDirection: "column",
@@ -31995,330 +29294,18 @@ function ResponsiveAnchorPage({ style, children, ...more }) {
   }, undefined, false, undefined, this);
 }
 
-// src/web/page/HomePage.tsx
-var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
-function HomePage() {
-  let duration = 5000;
-  let durationOffset = 1000;
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(ResponsiveAnchorPage, {
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageSlice, {
-          children: [
-            /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageContentArea, {
-              style: {
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 40
-              },
-              children: [
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCallToActionButton, {
-                  label: loggedIn() ? "Explore" : "Pick Your Style",
-                  to: "/inspo"
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCallToActionButton, {
-                  label: "Sign Up",
-                  to: "/sign-up"
-                }, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageContentArea, {
-              style: {
-                gap: 30,
-                justifyContent: "center"
-              },
-              children: [
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCounter, {
-                  tag: "Users",
-                  count: 2750000n,
-                  duration
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCounter, {
-                  tag: "Rating",
-                  suffix: "\u2605",
-                  precision: 2n,
-                  count: 4.25,
-                  duration: duration + durationOffset * 1
-                }, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this)
-          ]
-        }, undefined, true, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageSlice, {
-          children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageFocus, {}, undefined, false, undefined, this)
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageSlice, {
-          children: [
-            /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageContentArea, {
-              style: {
-                gap: 30,
-                justifyContent: "center"
-              },
-              children: [
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCounter, {
-                  tag: "Saved",
-                  suffix: "tons",
-                  count: 75n,
-                  duration: duration + durationOffset * 2
-                }, undefined, false, undefined, this),
-                /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageCounter, {
-                  tag: "Sold",
-                  count: 250000n,
-                  duration: duration + durationOffset * 3
-                }, undefined, false, undefined, this)
-              ]
-            }, undefined, true, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageContentArea, {
-              style: {
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "justify",
-                paddingLeft: 25,
-                paddingRight: 25,
-                fontSize: "0.75em",
-                fontWeight: "normal",
-                fontFamily: "suisse-intl-regular"
-              },
-              children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("p", {
-                children: [
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("strong", {
-                    children: "Offcut"
-                  }, undefined, false, undefined, this),
-                  " ",
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("em", {
-                    children: "transforms construction waste into opportunity"
-                  }, undefined, false, undefined, this),
-                  " by purchasing ",
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("em", {
-                    children: "excess materials"
-                  }, undefined, false, undefined, this),
-                  " and reselling them to ",
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("em", {
-                    children: "reduce waste and carbon emissions"
-                  }, undefined, false, undefined, this),
-                  ". We help builders access ",
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("em", {
-                    children: "sustainable, cost-effective resources"
-                  }, undefined, false, undefined, this),
-                  " while promoting a ",
-                  /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("em", {
-                    children: "circular economy"
-                  }, undefined, false, undefined, this),
-                  " in construction."
-                ]
-              }, undefined, true, undefined, this)
-            }, undefined, false, undefined, this)
-          ]
-        }, undefined, true, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageContentArea({
-  style,
-  children,
-  ...more
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "start",
-        width: "100%",
-        height: "100%",
-        flexGrow: 1,
-        padding: 20,
-        ...style
-      },
-      ...more,
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageSlice({
-  children
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-        flexGrow: 1
-      },
-      children
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageFocus() {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        width: "100%",
-        gap: "20px"
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageFocusHeading, {}, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(HomePageFocusSubHeading, {}, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageFocusHeading() {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 10
-      },
-      children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-        style: {
-          fontWeight: "bold",
-          fontFamily: "suisse-intl-regular",
-          fontSize: "10em",
-          background: OBSIDIAN,
-          backgroundClip: "text",
-          backgroundSize: "cover",
-          backgroundPositionX: "center",
-          backgroundPositionY: "center",
-          color: "transparent"
-        },
-        children: "Eco Friendly"
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageFocusSubHeading() {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        alignItems: "center",
-        fontWeight: 500,
-        fontFamily: "suisse-intl-regular",
-        fontSize: "2.5em",
-        width: "100%",
-        color: OBSIDIAN
-      },
-      children: "Construction Materials."
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageCounter({
-  tag,
-  count,
-  precision = 0n,
-  prefix: prefix2,
-  suffix,
-  duration = 2500
-}) {
-  let counter = useSpring({
-    to: {
-      number: Number(count)
-    },
-    from: {
-      number: 0
-    },
-    reset: false,
-    config: {
-      duration,
-      easing: easings.easeInOutExpo
-    }
-  });
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-      style: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "start",
-        alignItems: "center",
-        fontWeight: "normal",
-        fontFamily: "suisse-intl-regular",
-        width: "100%"
-      },
-      children: [
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(animated.div, {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "start",
-            alignItems: "center",
-            fontSize: "1.8em",
-            width: "100%"
-          },
-          children: counter.number.to((count2) => `${prefix2 ?? ""} ${Number(count2.toFixed(Number(precision))).toLocaleString()} ${suffix ?? ""}`)
-        }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("div", {
-          style: {
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "start",
-            alignItems: "center",
-            width: "100%",
-            fontWeight: "normal",
-            fontSize: "0.65em"
-          },
-          children: tag
-        }, undefined, false, undefined, this)
-      ]
-    }, undefined, true, undefined, this)
-  }, undefined, false, undefined, this);
-}
-function HomePageCallToActionButton({
-  label,
-  to: to2
-}) {
-  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(Link2, {
-      to: to2,
-      children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(animated.div, {
-        style: {
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: TAILWIND_0,
-          fontSize: "1.12em",
-          fontWeight: "normal",
-          fontFamily: "suisse-intl-regular",
-          borderRadius: 5,
-          padding: 10,
-          pointerEvents: "auto",
-          cursor: "pointer"
-        },
-        children: label
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this)
-  }, undefined, false, undefined, this);
-}
-
 // src/web/components/TextInputField.tsx
-var import_react20 = __toESM(require_react(), 1);
-var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
+var import_react18 = __toESM(require_react(), 1);
+var jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime(), 1);
 function TextInputField({
   label,
   setInput,
   placeholder,
   validate
 }) {
-  let [errmsg, setErrMsg] = import_react20.useState("");
-  return /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(jsx_dev_runtime5.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
+  let [errmsg, setErrMsg] = import_react18.useState("");
+  return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(jsx_dev_runtime3.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime3.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "column",
@@ -32329,7 +29316,7 @@ function TextInputField({
         gap: 10
       },
       children: [
-        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
+        /* @__PURE__ */ jsx_dev_runtime3.jsxDEV("div", {
           style: {
             display: "flex",
             flexDirection: "row",
@@ -32344,7 +29331,7 @@ function TextInputField({
           },
           children: label
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("input", {
+        /* @__PURE__ */ jsx_dev_runtime3.jsxDEV("input", {
           onChange: (e) => {
             let input = e.target.value;
             if (!validate) {
@@ -32378,7 +29365,7 @@ function TextInputField({
             color: OBSIDIAN
           }
         }, undefined, false, undefined, this),
-        errmsg.length > 0 && /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
+        errmsg.length > 0 && /* @__PURE__ */ jsx_dev_runtime3.jsxDEV("div", {
           style: {
             display: "flex",
             flexDirection: "row",
@@ -32398,14 +29385,17 @@ function TextInputField({
   }, undefined, false, undefined, this);
 }
 
+// src/web/constant/BoxShadow.ts
+var TAILWIND_0 = "rgba(0, 0, 0, 0.05) 0px 0px 0px 1px";
+
 // src/web/components/FormButton.tsx
-var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime(), 1);
 function FormButton({
   label,
   onClick
 }) {
-  return /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime6.jsxDEV("button", {
+  return /* @__PURE__ */ jsx_dev_runtime4.jsxDEV(jsx_dev_runtime4.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime4.jsxDEV("button", {
       onClick,
       style: {
         all: "unset",
@@ -32435,20 +29425,2410 @@ function FormButton({
 var SignInRequest = ({ username, password }) => ({ username, password });
 
 // src/web/page/SignInPage.tsx
-var import_react21 = __toESM(require_react(), 1);
-var import_react22 = __toESM(require_react(), 1);
-var jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime(), 1);
+var import_react19 = __toESM(require_react(), 1);
+var import_react20 = __toESM(require_react(), 1);
+
+// node_modules/axios/lib/helpers/bind.js
+function bind(fn, thisArg) {
+  return function wrap() {
+    return fn.apply(thisArg, arguments);
+  };
+}
+
+// node_modules/axios/lib/utils.js
+var { toString } = Object.prototype;
+var { getPrototypeOf } = Object;
+var kindOf = ((cache) => (thing) => {
+  const str = toString.call(thing);
+  return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
+})(Object.create(null));
+var kindOfTest = (type) => {
+  type = type.toLowerCase();
+  return (thing) => kindOf(thing) === type;
+};
+var typeOfTest = (type) => (thing) => typeof thing === type;
+var { isArray } = Array;
+var isUndefined = typeOfTest("undefined");
+function isBuffer(val) {
+  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && isFunction(val.constructor.isBuffer) && val.constructor.isBuffer(val);
+}
+var isArrayBuffer = kindOfTest("ArrayBuffer");
+function isArrayBufferView(val) {
+  let result;
+  if (typeof ArrayBuffer !== "undefined" && ArrayBuffer.isView) {
+    result = ArrayBuffer.isView(val);
+  } else {
+    result = val && val.buffer && isArrayBuffer(val.buffer);
+  }
+  return result;
+}
+var isString = typeOfTest("string");
+var isFunction = typeOfTest("function");
+var isNumber = typeOfTest("number");
+var isObject = (thing) => thing !== null && typeof thing === "object";
+var isBoolean = (thing) => thing === true || thing === false;
+var isPlainObject = (val) => {
+  if (kindOf(val) !== "object") {
+    return false;
+  }
+  const prototype = getPrototypeOf(val);
+  return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in val) && !(Symbol.iterator in val);
+};
+var isDate = kindOfTest("Date");
+var isFile = kindOfTest("File");
+var isBlob = kindOfTest("Blob");
+var isFileList = kindOfTest("FileList");
+var isStream = (val) => isObject(val) && isFunction(val.pipe);
+var isFormData = (thing) => {
+  let kind;
+  return thing && (typeof FormData === "function" && thing instanceof FormData || isFunction(thing.append) && ((kind = kindOf(thing)) === "formdata" || kind === "object" && isFunction(thing.toString) && thing.toString() === "[object FormData]"));
+};
+var isURLSearchParams = kindOfTest("URLSearchParams");
+var [isReadableStream, isRequest, isResponse, isHeaders] = ["ReadableStream", "Request", "Response", "Headers"].map(kindOfTest);
+var trim = (str) => str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+function forEach(obj, fn, { allOwnKeys = false } = {}) {
+  if (obj === null || typeof obj === "undefined") {
+    return;
+  }
+  let i;
+  let l;
+  if (typeof obj !== "object") {
+    obj = [obj];
+  }
+  if (isArray(obj)) {
+    for (i = 0, l = obj.length;i < l; i++) {
+      fn.call(null, obj[i], i, obj);
+    }
+  } else {
+    const keys = allOwnKeys ? Object.getOwnPropertyNames(obj) : Object.keys(obj);
+    const len = keys.length;
+    let key;
+    for (i = 0;i < len; i++) {
+      key = keys[i];
+      fn.call(null, obj[key], key, obj);
+    }
+  }
+}
+function findKey(obj, key) {
+  key = key.toLowerCase();
+  const keys = Object.keys(obj);
+  let i = keys.length;
+  let _key;
+  while (i-- > 0) {
+    _key = keys[i];
+    if (key === _key.toLowerCase()) {
+      return _key;
+    }
+  }
+  return null;
+}
+var _global = (() => {
+  if (typeof globalThis !== "undefined")
+    return globalThis;
+  return typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : global;
+})();
+var isContextDefined = (context) => !isUndefined(context) && context !== _global;
+function merge() {
+  const { caseless } = isContextDefined(this) && this || {};
+  const result = {};
+  const assignValue = (val, key) => {
+    const targetKey = caseless && findKey(result, key) || key;
+    if (isPlainObject(result[targetKey]) && isPlainObject(val)) {
+      result[targetKey] = merge(result[targetKey], val);
+    } else if (isPlainObject(val)) {
+      result[targetKey] = merge({}, val);
+    } else if (isArray(val)) {
+      result[targetKey] = val.slice();
+    } else {
+      result[targetKey] = val;
+    }
+  };
+  for (let i = 0, l = arguments.length;i < l; i++) {
+    arguments[i] && forEach(arguments[i], assignValue);
+  }
+  return result;
+}
+var extend = (a, b, thisArg, { allOwnKeys } = {}) => {
+  forEach(b, (val, key) => {
+    if (thisArg && isFunction(val)) {
+      a[key] = bind(val, thisArg);
+    } else {
+      a[key] = val;
+    }
+  }, { allOwnKeys });
+  return a;
+};
+var stripBOM = (content) => {
+  if (content.charCodeAt(0) === 65279) {
+    content = content.slice(1);
+  }
+  return content;
+};
+var inherits = (constructor, superConstructor, props, descriptors) => {
+  constructor.prototype = Object.create(superConstructor.prototype, descriptors);
+  constructor.prototype.constructor = constructor;
+  Object.defineProperty(constructor, "super", {
+    value: superConstructor.prototype
+  });
+  props && Object.assign(constructor.prototype, props);
+};
+var toFlatObject = (sourceObj, destObj, filter, propFilter) => {
+  let props;
+  let i;
+  let prop;
+  const merged = {};
+  destObj = destObj || {};
+  if (sourceObj == null)
+    return destObj;
+  do {
+    props = Object.getOwnPropertyNames(sourceObj);
+    i = props.length;
+    while (i-- > 0) {
+      prop = props[i];
+      if ((!propFilter || propFilter(prop, sourceObj, destObj)) && !merged[prop]) {
+        destObj[prop] = sourceObj[prop];
+        merged[prop] = true;
+      }
+    }
+    sourceObj = filter !== false && getPrototypeOf(sourceObj);
+  } while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
+  return destObj;
+};
+var endsWith = (str, searchString, position) => {
+  str = String(str);
+  if (position === undefined || position > str.length) {
+    position = str.length;
+  }
+  position -= searchString.length;
+  const lastIndex = str.indexOf(searchString, position);
+  return lastIndex !== -1 && lastIndex === position;
+};
+var toArray2 = (thing) => {
+  if (!thing)
+    return null;
+  if (isArray(thing))
+    return thing;
+  let i = thing.length;
+  if (!isNumber(i))
+    return null;
+  const arr = new Array(i);
+  while (i-- > 0) {
+    arr[i] = thing[i];
+  }
+  return arr;
+};
+var isTypedArray = ((TypedArray) => {
+  return (thing) => {
+    return TypedArray && thing instanceof TypedArray;
+  };
+})(typeof Uint8Array !== "undefined" && getPrototypeOf(Uint8Array));
+var forEachEntry = (obj, fn) => {
+  const generator = obj && obj[Symbol.iterator];
+  const iterator = generator.call(obj);
+  let result;
+  while ((result = iterator.next()) && !result.done) {
+    const pair = result.value;
+    fn.call(obj, pair[0], pair[1]);
+  }
+};
+var matchAll = (regExp, str) => {
+  let matches;
+  const arr = [];
+  while ((matches = regExp.exec(str)) !== null) {
+    arr.push(matches);
+  }
+  return arr;
+};
+var isHTMLForm = kindOfTest("HTMLFormElement");
+var toCamelCase = (str) => {
+  return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function replacer(m, p1, p2) {
+    return p1.toUpperCase() + p2;
+  });
+};
+var hasOwnProperty = (({ hasOwnProperty: hasOwnProperty2 }) => (obj, prop) => hasOwnProperty2.call(obj, prop))(Object.prototype);
+var isRegExp = kindOfTest("RegExp");
+var reduceDescriptors = (obj, reducer) => {
+  const descriptors = Object.getOwnPropertyDescriptors(obj);
+  const reducedDescriptors = {};
+  forEach(descriptors, (descriptor, name) => {
+    let ret;
+    if ((ret = reducer(descriptor, name, obj)) !== false) {
+      reducedDescriptors[name] = ret || descriptor;
+    }
+  });
+  Object.defineProperties(obj, reducedDescriptors);
+};
+var freezeMethods = (obj) => {
+  reduceDescriptors(obj, (descriptor, name) => {
+    if (isFunction(obj) && ["arguments", "caller", "callee"].indexOf(name) !== -1) {
+      return false;
+    }
+    const value = obj[name];
+    if (!isFunction(value))
+      return;
+    descriptor.enumerable = false;
+    if ("writable" in descriptor) {
+      descriptor.writable = false;
+      return;
+    }
+    if (!descriptor.set) {
+      descriptor.set = () => {
+        throw Error("Can not rewrite read-only method \'" + name + "\'");
+      };
+    }
+  });
+};
+var toObjectSet = (arrayOrString, delimiter) => {
+  const obj = {};
+  const define2 = (arr) => {
+    arr.forEach((value) => {
+      obj[value] = true;
+    });
+  };
+  isArray(arrayOrString) ? define2(arrayOrString) : define2(String(arrayOrString).split(delimiter));
+  return obj;
+};
+var noop2 = () => {
+};
+var toFiniteNumber = (value, defaultValue) => {
+  return value != null && Number.isFinite(value = +value) ? value : defaultValue;
+};
+var ALPHA = "abcdefghijklmnopqrstuvwxyz";
+var DIGIT = "0123456789";
+var ALPHABET = {
+  DIGIT,
+  ALPHA,
+  ALPHA_DIGIT: ALPHA + ALPHA.toUpperCase() + DIGIT
+};
+var generateString = (size = 16, alphabet = ALPHABET.ALPHA_DIGIT) => {
+  let str = "";
+  const { length } = alphabet;
+  while (size--) {
+    str += alphabet[Math.random() * length | 0];
+  }
+  return str;
+};
+function isSpecCompliantForm(thing) {
+  return !!(thing && isFunction(thing.append) && thing[Symbol.toStringTag] === "FormData" && thing[Symbol.iterator]);
+}
+var toJSONObject = (obj) => {
+  const stack = new Array(10);
+  const visit = (source, i) => {
+    if (isObject(source)) {
+      if (stack.indexOf(source) >= 0) {
+        return;
+      }
+      if (!("toJSON" in source)) {
+        stack[i] = source;
+        const target = isArray(source) ? [] : {};
+        forEach(source, (value, key) => {
+          const reducedValue = visit(value, i + 1);
+          !isUndefined(reducedValue) && (target[key] = reducedValue);
+        });
+        stack[i] = undefined;
+        return target;
+      }
+    }
+    return source;
+  };
+  return visit(obj, 0);
+};
+var isAsyncFn = kindOfTest("AsyncFunction");
+var isThenable = (thing) => thing && (isObject(thing) || isFunction(thing)) && isFunction(thing.then) && isFunction(thing.catch);
+var _setImmediate = ((setImmediateSupported, postMessageSupported) => {
+  if (setImmediateSupported) {
+    return setImmediate;
+  }
+  return postMessageSupported ? ((token, callbacks) => {
+    _global.addEventListener("message", ({ source, data }) => {
+      if (source === _global && data === token) {
+        callbacks.length && callbacks.shift()();
+      }
+    }, false);
+    return (cb) => {
+      callbacks.push(cb);
+      _global.postMessage(token, "*");
+    };
+  })(`axios@${Math.random()}`, []) : (cb) => setTimeout(cb);
+})(typeof setImmediate === "function", isFunction(_global.postMessage));
+var asap = typeof queueMicrotask !== "undefined" ? queueMicrotask.bind(_global) : typeof process !== "undefined" && process.nextTick || _setImmediate;
+var utils_default = {
+  isArray,
+  isArrayBuffer,
+  isBuffer,
+  isFormData,
+  isArrayBufferView,
+  isString,
+  isNumber,
+  isBoolean,
+  isObject,
+  isPlainObject,
+  isReadableStream,
+  isRequest,
+  isResponse,
+  isHeaders,
+  isUndefined,
+  isDate,
+  isFile,
+  isBlob,
+  isRegExp,
+  isFunction,
+  isStream,
+  isURLSearchParams,
+  isTypedArray,
+  isFileList,
+  forEach,
+  merge,
+  extend,
+  trim,
+  stripBOM,
+  inherits,
+  toFlatObject,
+  kindOf,
+  kindOfTest,
+  endsWith,
+  toArray: toArray2,
+  forEachEntry,
+  matchAll,
+  isHTMLForm,
+  hasOwnProperty,
+  hasOwnProp: hasOwnProperty,
+  reduceDescriptors,
+  freezeMethods,
+  toObjectSet,
+  toCamelCase,
+  noop: noop2,
+  toFiniteNumber,
+  findKey,
+  global: _global,
+  isContextDefined,
+  ALPHABET,
+  generateString,
+  isSpecCompliantForm,
+  toJSONObject,
+  isAsyncFn,
+  isThenable,
+  setImmediate: _setImmediate,
+  asap
+};
+
+// node_modules/axios/lib/core/AxiosError.js
+function AxiosError(message, code, config2, request, response) {
+  Error.call(this);
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, this.constructor);
+  } else {
+    this.stack = new Error().stack;
+  }
+  this.message = message;
+  this.name = "AxiosError";
+  code && (this.code = code);
+  config2 && (this.config = config2);
+  request && (this.request = request);
+  if (response) {
+    this.response = response;
+    this.status = response.status ? response.status : null;
+  }
+}
+utils_default.inherits(AxiosError, Error, {
+  toJSON: function toJSON() {
+    return {
+      message: this.message,
+      name: this.name,
+      description: this.description,
+      number: this.number,
+      fileName: this.fileName,
+      lineNumber: this.lineNumber,
+      columnNumber: this.columnNumber,
+      stack: this.stack,
+      config: utils_default.toJSONObject(this.config),
+      code: this.code,
+      status: this.status
+    };
+  }
+});
+var prototype = AxiosError.prototype;
+var descriptors = {};
+[
+  "ERR_BAD_OPTION_VALUE",
+  "ERR_BAD_OPTION",
+  "ECONNABORTED",
+  "ETIMEDOUT",
+  "ERR_NETWORK",
+  "ERR_FR_TOO_MANY_REDIRECTS",
+  "ERR_DEPRECATED",
+  "ERR_BAD_RESPONSE",
+  "ERR_BAD_REQUEST",
+  "ERR_CANCELED",
+  "ERR_NOT_SUPPORT",
+  "ERR_INVALID_URL"
+].forEach((code) => {
+  descriptors[code] = { value: code };
+});
+Object.defineProperties(AxiosError, descriptors);
+Object.defineProperty(prototype, "isAxiosError", { value: true });
+AxiosError.from = (error, code, config2, request, response, customProps) => {
+  const axiosError = Object.create(prototype);
+  utils_default.toFlatObject(error, axiosError, function filter(obj) {
+    return obj !== Error.prototype;
+  }, (prop) => {
+    return prop !== "isAxiosError";
+  });
+  AxiosError.call(axiosError, error.message, code, config2, request, response);
+  axiosError.cause = error;
+  axiosError.name = error.name;
+  customProps && Object.assign(axiosError, customProps);
+  return axiosError;
+};
+var AxiosError_default = AxiosError;
+
+// node_modules/axios/lib/helpers/null.js
+var null_default = null;
+
+// node_modules/axios/lib/helpers/toFormData.js
+function isVisitable(thing) {
+  return utils_default.isPlainObject(thing) || utils_default.isArray(thing);
+}
+function removeBrackets(key) {
+  return utils_default.endsWith(key, "[]") ? key.slice(0, -2) : key;
+}
+function renderKey(path, key, dots) {
+  if (!path)
+    return key;
+  return path.concat(key).map(function each(token, i) {
+    token = removeBrackets(token);
+    return !dots && i ? "[" + token + "]" : token;
+  }).join(dots ? "." : "");
+}
+function isFlatArray(arr) {
+  return utils_default.isArray(arr) && !arr.some(isVisitable);
+}
+var predicates = utils_default.toFlatObject(utils_default, {}, null, function filter(prop) {
+  return /^is[A-Z]/.test(prop);
+});
+function toFormData(obj, formData, options) {
+  if (!utils_default.isObject(obj)) {
+    throw new TypeError("target must be an object");
+  }
+  formData = formData || new (null_default || FormData);
+  options = utils_default.toFlatObject(options, {
+    metaTokens: true,
+    dots: false,
+    indexes: false
+  }, false, function defined(option, source) {
+    return !utils_default.isUndefined(source[option]);
+  });
+  const metaTokens = options.metaTokens;
+  const visitor = options.visitor || defaultVisitor;
+  const dots = options.dots;
+  const indexes = options.indexes;
+  const _Blob = options.Blob || typeof Blob !== "undefined" && Blob;
+  const useBlob = _Blob && utils_default.isSpecCompliantForm(formData);
+  if (!utils_default.isFunction(visitor)) {
+    throw new TypeError("visitor must be a function");
+  }
+  function convertValue(value) {
+    if (value === null)
+      return "";
+    if (utils_default.isDate(value)) {
+      return value.toISOString();
+    }
+    if (!useBlob && utils_default.isBlob(value)) {
+      throw new AxiosError_default("Blob is not supported. Use a Buffer instead.");
+    }
+    if (utils_default.isArrayBuffer(value) || utils_default.isTypedArray(value)) {
+      return useBlob && typeof Blob === "function" ? new Blob([value]) : Buffer.from(value);
+    }
+    return value;
+  }
+  function defaultVisitor(value, key, path) {
+    let arr = value;
+    if (value && !path && typeof value === "object") {
+      if (utils_default.endsWith(key, "{}")) {
+        key = metaTokens ? key : key.slice(0, -2);
+        value = JSON.stringify(value);
+      } else if (utils_default.isArray(value) && isFlatArray(value) || (utils_default.isFileList(value) || utils_default.endsWith(key, "[]")) && (arr = utils_default.toArray(value))) {
+        key = removeBrackets(key);
+        arr.forEach(function each(el, index) {
+          !(utils_default.isUndefined(el) || el === null) && formData.append(indexes === true ? renderKey([key], index, dots) : indexes === null ? key : key + "[]", convertValue(el));
+        });
+        return false;
+      }
+    }
+    if (isVisitable(value)) {
+      return true;
+    }
+    formData.append(renderKey(path, key, dots), convertValue(value));
+    return false;
+  }
+  const stack = [];
+  const exposedHelpers = Object.assign(predicates, {
+    defaultVisitor,
+    convertValue,
+    isVisitable
+  });
+  function build(value, path) {
+    if (utils_default.isUndefined(value))
+      return;
+    if (stack.indexOf(value) !== -1) {
+      throw Error("Circular reference detected in " + path.join("."));
+    }
+    stack.push(value);
+    utils_default.forEach(value, function each(el, key) {
+      const result = !(utils_default.isUndefined(el) || el === null) && visitor.call(formData, el, utils_default.isString(key) ? key.trim() : key, path, exposedHelpers);
+      if (result === true) {
+        build(el, path ? path.concat(key) : [key]);
+      }
+    });
+    stack.pop();
+  }
+  if (!utils_default.isObject(obj)) {
+    throw new TypeError("data must be an object");
+  }
+  build(obj);
+  return formData;
+}
+var toFormData_default = toFormData;
+
+// node_modules/axios/lib/helpers/AxiosURLSearchParams.js
+function encode(str) {
+  const charMap = {
+    "!": "%21",
+    "'": "%27",
+    "(": "%28",
+    ")": "%29",
+    "~": "%7E",
+    "%20": "+",
+    "%00": "\0"
+  };
+  return encodeURIComponent(str).replace(/[!'()~]|%20|%00/g, function replacer(match) {
+    return charMap[match];
+  });
+}
+function AxiosURLSearchParams(params, options) {
+  this._pairs = [];
+  params && toFormData_default(params, this, options);
+}
+var prototype2 = AxiosURLSearchParams.prototype;
+prototype2.append = function append(name, value) {
+  this._pairs.push([name, value]);
+};
+prototype2.toString = function toString2(encoder) {
+  const _encode = encoder ? function(value) {
+    return encoder.call(this, value, encode);
+  } : encode;
+  return this._pairs.map(function each(pair) {
+    return _encode(pair[0]) + "=" + _encode(pair[1]);
+  }, "").join("&");
+};
+var AxiosURLSearchParams_default = AxiosURLSearchParams;
+
+// node_modules/axios/lib/helpers/buildURL.js
+function encode2(val) {
+  return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
+}
+function buildURL(url, params, options) {
+  if (!params) {
+    return url;
+  }
+  const _encode = options && options.encode || encode2;
+  const serializeFn = options && options.serialize;
+  let serializedParams;
+  if (serializeFn) {
+    serializedParams = serializeFn(params, options);
+  } else {
+    serializedParams = utils_default.isURLSearchParams(params) ? params.toString() : new AxiosURLSearchParams_default(params, options).toString(_encode);
+  }
+  if (serializedParams) {
+    const hashmarkIndex = url.indexOf("#");
+    if (hashmarkIndex !== -1) {
+      url = url.slice(0, hashmarkIndex);
+    }
+    url += (url.indexOf("?") === -1 ? "?" : "&") + serializedParams;
+  }
+  return url;
+}
+
+// node_modules/axios/lib/core/InterceptorManager.js
+class InterceptorManager {
+  constructor() {
+    this.handlers = [];
+  }
+  use(fulfilled, rejected, options) {
+    this.handlers.push({
+      fulfilled,
+      rejected,
+      synchronous: options ? options.synchronous : false,
+      runWhen: options ? options.runWhen : null
+    });
+    return this.handlers.length - 1;
+  }
+  eject(id) {
+    if (this.handlers[id]) {
+      this.handlers[id] = null;
+    }
+  }
+  clear() {
+    if (this.handlers) {
+      this.handlers = [];
+    }
+  }
+  forEach(fn) {
+    utils_default.forEach(this.handlers, function forEachHandler(h) {
+      if (h !== null) {
+        fn(h);
+      }
+    });
+  }
+}
+var InterceptorManager_default = InterceptorManager;
+
+// node_modules/axios/lib/defaults/transitional.js
+var transitional_default = {
+  silentJSONParsing: true,
+  forcedJSONParsing: true,
+  clarifyTimeoutError: false
+};
+
+// node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
+var URLSearchParams_default = typeof URLSearchParams !== "undefined" ? URLSearchParams : AxiosURLSearchParams_default;
+
+// node_modules/axios/lib/platform/browser/classes/FormData.js
+var FormData_default = typeof FormData !== "undefined" ? FormData : null;
+
+// node_modules/axios/lib/platform/browser/classes/Blob.js
+var Blob_default = typeof Blob !== "undefined" ? Blob : null;
+
+// node_modules/axios/lib/platform/browser/index.js
+var browser_default = {
+  isBrowser: true,
+  classes: {
+    URLSearchParams: URLSearchParams_default,
+    FormData: FormData_default,
+    Blob: Blob_default
+  },
+  protocols: ["http", "https", "file", "blob", "url", "data"]
+};
+
+// node_modules/axios/lib/platform/common/utils.js
+var exports_utils = {};
+__export(exports_utils, {
+  origin: () => origin,
+  navigator: () => _navigator,
+  hasStandardBrowserWebWorkerEnv: () => hasStandardBrowserWebWorkerEnv,
+  hasStandardBrowserEnv: () => hasStandardBrowserEnv,
+  hasBrowserEnv: () => hasBrowserEnv
+});
+var hasBrowserEnv = typeof window !== "undefined" && typeof document !== "undefined";
+var _navigator = typeof navigator === "object" && navigator || undefined;
+var hasStandardBrowserEnv = hasBrowserEnv && (!_navigator || ["ReactNative", "NativeScript", "NS"].indexOf(_navigator.product) < 0);
+var hasStandardBrowserWebWorkerEnv = (() => {
+  return typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
+})();
+var origin = hasBrowserEnv && window.location.href || "http://localhost";
+
+// node_modules/axios/lib/platform/index.js
+var platform_default = {
+  ...exports_utils,
+  ...browser_default
+};
+
+// node_modules/axios/lib/helpers/toURLEncodedForm.js
+function toURLEncodedForm(data, options) {
+  return toFormData_default(data, new platform_default.classes.URLSearchParams, Object.assign({
+    visitor: function(value, key, path, helpers) {
+      if (platform_default.isNode && utils_default.isBuffer(value)) {
+        this.append(key, value.toString("base64"));
+        return false;
+      }
+      return helpers.defaultVisitor.apply(this, arguments);
+    }
+  }, options));
+}
+
+// node_modules/axios/lib/helpers/formDataToJSON.js
+function parsePropPath(name) {
+  return utils_default.matchAll(/\w+|\[(\w*)]/g, name).map((match) => {
+    return match[0] === "[]" ? "" : match[1] || match[0];
+  });
+}
+function arrayToObject(arr) {
+  const obj = {};
+  const keys = Object.keys(arr);
+  let i;
+  const len = keys.length;
+  let key;
+  for (i = 0;i < len; i++) {
+    key = keys[i];
+    obj[key] = arr[key];
+  }
+  return obj;
+}
+function formDataToJSON(formData) {
+  function buildPath(path, value, target, index) {
+    let name = path[index++];
+    if (name === "__proto__")
+      return true;
+    const isNumericKey = Number.isFinite(+name);
+    const isLast = index >= path.length;
+    name = !name && utils_default.isArray(target) ? target.length : name;
+    if (isLast) {
+      if (utils_default.hasOwnProp(target, name)) {
+        target[name] = [target[name], value];
+      } else {
+        target[name] = value;
+      }
+      return !isNumericKey;
+    }
+    if (!target[name] || !utils_default.isObject(target[name])) {
+      target[name] = [];
+    }
+    const result = buildPath(path, value, target[name], index);
+    if (result && utils_default.isArray(target[name])) {
+      target[name] = arrayToObject(target[name]);
+    }
+    return !isNumericKey;
+  }
+  if (utils_default.isFormData(formData) && utils_default.isFunction(formData.entries)) {
+    const obj = {};
+    utils_default.forEachEntry(formData, (name, value) => {
+      buildPath(parsePropPath(name), value, obj, 0);
+    });
+    return obj;
+  }
+  return null;
+}
+var formDataToJSON_default = formDataToJSON;
+
+// node_modules/axios/lib/defaults/index.js
+function stringifySafely(rawValue, parser, encoder) {
+  if (utils_default.isString(rawValue)) {
+    try {
+      (parser || JSON.parse)(rawValue);
+      return utils_default.trim(rawValue);
+    } catch (e) {
+      if (e.name !== "SyntaxError") {
+        throw e;
+      }
+    }
+  }
+  return (encoder || JSON.stringify)(rawValue);
+}
+var defaults2 = {
+  transitional: transitional_default,
+  adapter: ["xhr", "http", "fetch"],
+  transformRequest: [function transformRequest(data, headers) {
+    const contentType = headers.getContentType() || "";
+    const hasJSONContentType = contentType.indexOf("application/json") > -1;
+    const isObjectPayload = utils_default.isObject(data);
+    if (isObjectPayload && utils_default.isHTMLForm(data)) {
+      data = new FormData(data);
+    }
+    const isFormData2 = utils_default.isFormData(data);
+    if (isFormData2) {
+      return hasJSONContentType ? JSON.stringify(formDataToJSON_default(data)) : data;
+    }
+    if (utils_default.isArrayBuffer(data) || utils_default.isBuffer(data) || utils_default.isStream(data) || utils_default.isFile(data) || utils_default.isBlob(data) || utils_default.isReadableStream(data)) {
+      return data;
+    }
+    if (utils_default.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils_default.isURLSearchParams(data)) {
+      headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
+      return data.toString();
+    }
+    let isFileList2;
+    if (isObjectPayload) {
+      if (contentType.indexOf("application/x-www-form-urlencoded") > -1) {
+        return toURLEncodedForm(data, this.formSerializer).toString();
+      }
+      if ((isFileList2 = utils_default.isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
+        const _FormData = this.env && this.env.FormData;
+        return toFormData_default(isFileList2 ? { "files[]": data } : data, _FormData && new _FormData, this.formSerializer);
+      }
+    }
+    if (isObjectPayload || hasJSONContentType) {
+      headers.setContentType("application/json", false);
+      return stringifySafely(data);
+    }
+    return data;
+  }],
+  transformResponse: [function transformResponse(data) {
+    const transitional = this.transitional || defaults2.transitional;
+    const forcedJSONParsing = transitional && transitional.forcedJSONParsing;
+    const JSONRequested = this.responseType === "json";
+    if (utils_default.isResponse(data) || utils_default.isReadableStream(data)) {
+      return data;
+    }
+    if (data && utils_default.isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {
+      const silentJSONParsing = transitional && transitional.silentJSONParsing;
+      const strictJSONParsing = !silentJSONParsing && JSONRequested;
+      try {
+        return JSON.parse(data);
+      } catch (e) {
+        if (strictJSONParsing) {
+          if (e.name === "SyntaxError") {
+            throw AxiosError_default.from(e, AxiosError_default.ERR_BAD_RESPONSE, this, null, this.response);
+          }
+          throw e;
+        }
+      }
+    }
+    return data;
+  }],
+  timeout: 0,
+  xsrfCookieName: "XSRF-TOKEN",
+  xsrfHeaderName: "X-XSRF-TOKEN",
+  maxContentLength: -1,
+  maxBodyLength: -1,
+  env: {
+    FormData: platform_default.classes.FormData,
+    Blob: platform_default.classes.Blob
+  },
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  },
+  headers: {
+    common: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": undefined
+    }
+  }
+};
+utils_default.forEach(["delete", "get", "head", "post", "put", "patch"], (method) => {
+  defaults2.headers[method] = {};
+});
+var defaults_default = defaults2;
+
+// node_modules/axios/lib/helpers/parseHeaders.js
+var ignoreDuplicateOf = utils_default.toObjectSet([
+  "age",
+  "authorization",
+  "content-length",
+  "content-type",
+  "etag",
+  "expires",
+  "from",
+  "host",
+  "if-modified-since",
+  "if-unmodified-since",
+  "last-modified",
+  "location",
+  "max-forwards",
+  "proxy-authorization",
+  "referer",
+  "retry-after",
+  "user-agent"
+]);
+var parseHeaders_default = (rawHeaders) => {
+  const parsed = {};
+  let key;
+  let val;
+  let i;
+  rawHeaders && rawHeaders.split("\n").forEach(function parser(line) {
+    i = line.indexOf(":");
+    key = line.substring(0, i).trim().toLowerCase();
+    val = line.substring(i + 1).trim();
+    if (!key || parsed[key] && ignoreDuplicateOf[key]) {
+      return;
+    }
+    if (key === "set-cookie") {
+      if (parsed[key]) {
+        parsed[key].push(val);
+      } else {
+        parsed[key] = [val];
+      }
+    } else {
+      parsed[key] = parsed[key] ? parsed[key] + ", " + val : val;
+    }
+  });
+  return parsed;
+};
+
+// node_modules/axios/lib/core/AxiosHeaders.js
+var $internals = Symbol("internals");
+function normalizeHeader(header) {
+  return header && String(header).trim().toLowerCase();
+}
+function normalizeValue(value) {
+  if (value === false || value == null) {
+    return value;
+  }
+  return utils_default.isArray(value) ? value.map(normalizeValue) : String(value);
+}
+function parseTokens(str) {
+  const tokens = Object.create(null);
+  const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
+  let match;
+  while (match = tokensRE.exec(str)) {
+    tokens[match[1]] = match[2];
+  }
+  return tokens;
+}
+var isValidHeaderName = (str) => /^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(str.trim());
+function matchHeaderValue(context, value, header, filter2, isHeaderNameFilter) {
+  if (utils_default.isFunction(filter2)) {
+    return filter2.call(this, value, header);
+  }
+  if (isHeaderNameFilter) {
+    value = header;
+  }
+  if (!utils_default.isString(value))
+    return;
+  if (utils_default.isString(filter2)) {
+    return value.indexOf(filter2) !== -1;
+  }
+  if (utils_default.isRegExp(filter2)) {
+    return filter2.test(value);
+  }
+}
+function formatHeader(header) {
+  return header.trim().toLowerCase().replace(/([a-z\d])(\w*)/g, (w, char, str) => {
+    return char.toUpperCase() + str;
+  });
+}
+function buildAccessors(obj, header) {
+  const accessorName = utils_default.toCamelCase(" " + header);
+  ["get", "set", "has"].forEach((methodName) => {
+    Object.defineProperty(obj, methodName + accessorName, {
+      value: function(arg1, arg2, arg3) {
+        return this[methodName].call(this, header, arg1, arg2, arg3);
+      },
+      configurable: true
+    });
+  });
+}
+
+class AxiosHeaders {
+  constructor(headers) {
+    headers && this.set(headers);
+  }
+  set(header, valueOrRewrite, rewrite) {
+    const self2 = this;
+    function setHeader(_value, _header, _rewrite) {
+      const lHeader = normalizeHeader(_header);
+      if (!lHeader) {
+        throw new Error("header name must be a non-empty string");
+      }
+      const key = utils_default.findKey(self2, lHeader);
+      if (!key || self2[key] === undefined || _rewrite === true || _rewrite === undefined && self2[key] !== false) {
+        self2[key || _header] = normalizeValue(_value);
+      }
+    }
+    const setHeaders = (headers, _rewrite) => utils_default.forEach(headers, (_value, _header) => setHeader(_value, _header, _rewrite));
+    if (utils_default.isPlainObject(header) || header instanceof this.constructor) {
+      setHeaders(header, valueOrRewrite);
+    } else if (utils_default.isString(header) && (header = header.trim()) && !isValidHeaderName(header)) {
+      setHeaders(parseHeaders_default(header), valueOrRewrite);
+    } else if (utils_default.isHeaders(header)) {
+      for (const [key, value] of header.entries()) {
+        setHeader(value, key, rewrite);
+      }
+    } else {
+      header != null && setHeader(valueOrRewrite, header, rewrite);
+    }
+    return this;
+  }
+  get(header, parser) {
+    header = normalizeHeader(header);
+    if (header) {
+      const key = utils_default.findKey(this, header);
+      if (key) {
+        const value = this[key];
+        if (!parser) {
+          return value;
+        }
+        if (parser === true) {
+          return parseTokens(value);
+        }
+        if (utils_default.isFunction(parser)) {
+          return parser.call(this, value, key);
+        }
+        if (utils_default.isRegExp(parser)) {
+          return parser.exec(value);
+        }
+        throw new TypeError("parser must be boolean|regexp|function");
+      }
+    }
+  }
+  has(header, matcher) {
+    header = normalizeHeader(header);
+    if (header) {
+      const key = utils_default.findKey(this, header);
+      return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
+    }
+    return false;
+  }
+  delete(header, matcher) {
+    const self2 = this;
+    let deleted = false;
+    function deleteHeader(_header) {
+      _header = normalizeHeader(_header);
+      if (_header) {
+        const key = utils_default.findKey(self2, _header);
+        if (key && (!matcher || matchHeaderValue(self2, self2[key], key, matcher))) {
+          delete self2[key];
+          deleted = true;
+        }
+      }
+    }
+    if (utils_default.isArray(header)) {
+      header.forEach(deleteHeader);
+    } else {
+      deleteHeader(header);
+    }
+    return deleted;
+  }
+  clear(matcher) {
+    const keys = Object.keys(this);
+    let i = keys.length;
+    let deleted = false;
+    while (i--) {
+      const key = keys[i];
+      if (!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
+        delete this[key];
+        deleted = true;
+      }
+    }
+    return deleted;
+  }
+  normalize(format) {
+    const self2 = this;
+    const headers = {};
+    utils_default.forEach(this, (value, header) => {
+      const key = utils_default.findKey(headers, header);
+      if (key) {
+        self2[key] = normalizeValue(value);
+        delete self2[header];
+        return;
+      }
+      const normalized = format ? formatHeader(header) : String(header).trim();
+      if (normalized !== header) {
+        delete self2[header];
+      }
+      self2[normalized] = normalizeValue(value);
+      headers[normalized] = true;
+    });
+    return this;
+  }
+  concat(...targets) {
+    return this.constructor.concat(this, ...targets);
+  }
+  toJSON(asStrings) {
+    const obj = Object.create(null);
+    utils_default.forEach(this, (value, header) => {
+      value != null && value !== false && (obj[header] = asStrings && utils_default.isArray(value) ? value.join(", ") : value);
+    });
+    return obj;
+  }
+  [Symbol.iterator]() {
+    return Object.entries(this.toJSON())[Symbol.iterator]();
+  }
+  toString() {
+    return Object.entries(this.toJSON()).map(([header, value]) => header + ": " + value).join("\n");
+  }
+  get [Symbol.toStringTag]() {
+    return "AxiosHeaders";
+  }
+  static from(thing) {
+    return thing instanceof this ? thing : new this(thing);
+  }
+  static concat(first, ...targets) {
+    const computed = new this(first);
+    targets.forEach((target) => computed.set(target));
+    return computed;
+  }
+  static accessor(header) {
+    const internals = this[$internals] = this[$internals] = {
+      accessors: {}
+    };
+    const accessors = internals.accessors;
+    const prototype3 = this.prototype;
+    function defineAccessor(_header) {
+      const lHeader = normalizeHeader(_header);
+      if (!accessors[lHeader]) {
+        buildAccessors(prototype3, _header);
+        accessors[lHeader] = true;
+      }
+    }
+    utils_default.isArray(header) ? header.forEach(defineAccessor) : defineAccessor(header);
+    return this;
+  }
+}
+AxiosHeaders.accessor(["Content-Type", "Content-Length", "Accept", "Accept-Encoding", "User-Agent", "Authorization"]);
+utils_default.reduceDescriptors(AxiosHeaders.prototype, ({ value }, key) => {
+  let mapped = key[0].toUpperCase() + key.slice(1);
+  return {
+    get: () => value,
+    set(headerValue) {
+      this[mapped] = headerValue;
+    }
+  };
+});
+utils_default.freezeMethods(AxiosHeaders);
+var AxiosHeaders_default = AxiosHeaders;
+
+// node_modules/axios/lib/core/transformData.js
+function transformData(fns, response) {
+  const config2 = this || defaults_default;
+  const context = response || config2;
+  const headers = AxiosHeaders_default.from(context.headers);
+  let data = context.data;
+  utils_default.forEach(fns, function transform(fn) {
+    data = fn.call(config2, data, headers.normalize(), response ? response.status : undefined);
+  });
+  headers.normalize();
+  return data;
+}
+
+// node_modules/axios/lib/cancel/isCancel.js
+function isCancel(value) {
+  return !!(value && value.__CANCEL__);
+}
+
+// node_modules/axios/lib/cancel/CanceledError.js
+function CanceledError(message, config2, request) {
+  AxiosError_default.call(this, message == null ? "canceled" : message, AxiosError_default.ERR_CANCELED, config2, request);
+  this.name = "CanceledError";
+}
+utils_default.inherits(CanceledError, AxiosError_default, {
+  __CANCEL__: true
+});
+var CanceledError_default = CanceledError;
+
+// node_modules/axios/lib/core/settle.js
+function settle(resolve, reject, response) {
+  const validateStatus2 = response.config.validateStatus;
+  if (!response.status || !validateStatus2 || validateStatus2(response.status)) {
+    resolve(response);
+  } else {
+    reject(new AxiosError_default("Request failed with status code " + response.status, [AxiosError_default.ERR_BAD_REQUEST, AxiosError_default.ERR_BAD_RESPONSE][Math.floor(response.status / 100) - 4], response.config, response.request, response));
+  }
+}
+
+// node_modules/axios/lib/helpers/parseProtocol.js
+function parseProtocol(url) {
+  const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
+  return match && match[1] || "";
+}
+
+// node_modules/axios/lib/helpers/speedometer.js
+function speedometer(samplesCount, min) {
+  samplesCount = samplesCount || 10;
+  const bytes = new Array(samplesCount);
+  const timestamps = new Array(samplesCount);
+  let head = 0;
+  let tail = 0;
+  let firstSampleTS;
+  min = min !== undefined ? min : 1000;
+  return function push(chunkLength) {
+    const now = Date.now();
+    const startedAt = timestamps[tail];
+    if (!firstSampleTS) {
+      firstSampleTS = now;
+    }
+    bytes[head] = chunkLength;
+    timestamps[head] = now;
+    let i = tail;
+    let bytesCount = 0;
+    while (i !== head) {
+      bytesCount += bytes[i++];
+      i = i % samplesCount;
+    }
+    head = (head + 1) % samplesCount;
+    if (head === tail) {
+      tail = (tail + 1) % samplesCount;
+    }
+    if (now - firstSampleTS < min) {
+      return;
+    }
+    const passed = startedAt && now - startedAt;
+    return passed ? Math.round(bytesCount * 1000 / passed) : undefined;
+  };
+}
+var speedometer_default = speedometer;
+
+// node_modules/axios/lib/helpers/throttle.js
+function throttle(fn, freq) {
+  let timestamp = 0;
+  let threshold = 1000 / freq;
+  let lastArgs;
+  let timer;
+  const invoke = (args, now = Date.now()) => {
+    timestamp = now;
+    lastArgs = null;
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+    fn.apply(null, args);
+  };
+  const throttled = (...args) => {
+    const now = Date.now();
+    const passed = now - timestamp;
+    if (passed >= threshold) {
+      invoke(args, now);
+    } else {
+      lastArgs = args;
+      if (!timer) {
+        timer = setTimeout(() => {
+          timer = null;
+          invoke(lastArgs);
+        }, threshold - passed);
+      }
+    }
+  };
+  const flush2 = () => lastArgs && invoke(lastArgs);
+  return [throttled, flush2];
+}
+var throttle_default = throttle;
+
+// node_modules/axios/lib/helpers/progressEventReducer.js
+var progressEventReducer = (listener, isDownloadStream, freq = 3) => {
+  let bytesNotified = 0;
+  const _speedometer = speedometer_default(50, 250);
+  return throttle_default((e) => {
+    const loaded = e.loaded;
+    const total = e.lengthComputable ? e.total : undefined;
+    const progressBytes = loaded - bytesNotified;
+    const rate = _speedometer(progressBytes);
+    const inRange = loaded <= total;
+    bytesNotified = loaded;
+    const data = {
+      loaded,
+      total,
+      progress: total ? loaded / total : undefined,
+      bytes: progressBytes,
+      rate: rate ? rate : undefined,
+      estimated: rate && total && inRange ? (total - loaded) / rate : undefined,
+      event: e,
+      lengthComputable: total != null,
+      [isDownloadStream ? "download" : "upload"]: true
+    };
+    listener(data);
+  }, freq);
+};
+var progressEventDecorator = (total, throttled) => {
+  const lengthComputable = total != null;
+  return [(loaded) => throttled[0]({
+    lengthComputable,
+    total,
+    loaded
+  }), throttled[1]];
+};
+var asyncDecorator = (fn) => (...args) => utils_default.asap(() => fn(...args));
+
+// node_modules/axios/lib/helpers/isURLSameOrigin.js
+var isURLSameOrigin_default = platform_default.hasStandardBrowserEnv ? function standardBrowserEnv() {
+  const msie = platform_default.navigator && /(msie|trident)/i.test(platform_default.navigator.userAgent);
+  const urlParsingNode = document.createElement("a");
+  let originURL;
+  function resolveURL(url) {
+    let href = url;
+    if (msie) {
+      urlParsingNode.setAttribute("href", href);
+      href = urlParsingNode.href;
+    }
+    urlParsingNode.setAttribute("href", href);
+    return {
+      href: urlParsingNode.href,
+      protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, "") : "",
+      host: urlParsingNode.host,
+      search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, "") : "",
+      hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, "") : "",
+      hostname: urlParsingNode.hostname,
+      port: urlParsingNode.port,
+      pathname: urlParsingNode.pathname.charAt(0) === "/" ? urlParsingNode.pathname : "/" + urlParsingNode.pathname
+    };
+  }
+  originURL = resolveURL(window.location.href);
+  return function isURLSameOrigin(requestURL) {
+    const parsed = utils_default.isString(requestURL) ? resolveURL(requestURL) : requestURL;
+    return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
+  };
+}() : function nonStandardBrowserEnv() {
+  return function isURLSameOrigin() {
+    return true;
+  };
+}();
+
+// node_modules/axios/lib/helpers/cookies.js
+var cookies_default = platform_default.hasStandardBrowserEnv ? {
+  write(name, value, expires, path, domain, secure) {
+    const cookie = [name + "=" + encodeURIComponent(value)];
+    utils_default.isNumber(expires) && cookie.push("expires=" + new Date(expires).toGMTString());
+    utils_default.isString(path) && cookie.push("path=" + path);
+    utils_default.isString(domain) && cookie.push("domain=" + domain);
+    secure === true && cookie.push("secure");
+    document.cookie = cookie.join("; ");
+  },
+  read(name) {
+    const match = document.cookie.match(new RegExp("(^|;\\s*)(" + name + ")=([^;]*)"));
+    return match ? decodeURIComponent(match[3]) : null;
+  },
+  remove(name) {
+    this.write(name, "", Date.now() - 86400000);
+  }
+} : {
+  write() {
+  },
+  read() {
+    return null;
+  },
+  remove() {
+  }
+};
+
+// node_modules/axios/lib/helpers/isAbsoluteURL.js
+function isAbsoluteURL(url) {
+  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
+}
+
+// node_modules/axios/lib/helpers/combineURLs.js
+function combineURLs(baseURL, relativeURL) {
+  return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
+}
+
+// node_modules/axios/lib/core/buildFullPath.js
+function buildFullPath(baseURL, requestedURL) {
+  if (baseURL && !isAbsoluteURL(requestedURL)) {
+    return combineURLs(baseURL, requestedURL);
+  }
+  return requestedURL;
+}
+
+// node_modules/axios/lib/core/mergeConfig.js
+var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? { ...thing } : thing;
+function mergeConfig2(config1, config2) {
+  config2 = config2 || {};
+  const config3 = {};
+  function getMergedValue(target, source, caseless) {
+    if (utils_default.isPlainObject(target) && utils_default.isPlainObject(source)) {
+      return utils_default.merge.call({ caseless }, target, source);
+    } else if (utils_default.isPlainObject(source)) {
+      return utils_default.merge({}, source);
+    } else if (utils_default.isArray(source)) {
+      return source.slice();
+    }
+    return source;
+  }
+  function mergeDeepProperties(a, b, caseless) {
+    if (!utils_default.isUndefined(b)) {
+      return getMergedValue(a, b, caseless);
+    } else if (!utils_default.isUndefined(a)) {
+      return getMergedValue(undefined, a, caseless);
+    }
+  }
+  function valueFromConfig2(a, b) {
+    if (!utils_default.isUndefined(b)) {
+      return getMergedValue(undefined, b);
+    }
+  }
+  function defaultToConfig2(a, b) {
+    if (!utils_default.isUndefined(b)) {
+      return getMergedValue(undefined, b);
+    } else if (!utils_default.isUndefined(a)) {
+      return getMergedValue(undefined, a);
+    }
+  }
+  function mergeDirectKeys(a, b, prop) {
+    if (prop in config2) {
+      return getMergedValue(a, b);
+    } else if (prop in config1) {
+      return getMergedValue(undefined, a);
+    }
+  }
+  const mergeMap = {
+    url: valueFromConfig2,
+    method: valueFromConfig2,
+    data: valueFromConfig2,
+    baseURL: defaultToConfig2,
+    transformRequest: defaultToConfig2,
+    transformResponse: defaultToConfig2,
+    paramsSerializer: defaultToConfig2,
+    timeout: defaultToConfig2,
+    timeoutMessage: defaultToConfig2,
+    withCredentials: defaultToConfig2,
+    withXSRFToken: defaultToConfig2,
+    adapter: defaultToConfig2,
+    responseType: defaultToConfig2,
+    xsrfCookieName: defaultToConfig2,
+    xsrfHeaderName: defaultToConfig2,
+    onUploadProgress: defaultToConfig2,
+    onDownloadProgress: defaultToConfig2,
+    decompress: defaultToConfig2,
+    maxContentLength: defaultToConfig2,
+    maxBodyLength: defaultToConfig2,
+    beforeRedirect: defaultToConfig2,
+    transport: defaultToConfig2,
+    httpAgent: defaultToConfig2,
+    httpsAgent: defaultToConfig2,
+    cancelToken: defaultToConfig2,
+    socketPath: defaultToConfig2,
+    responseEncoding: defaultToConfig2,
+    validateStatus: mergeDirectKeys,
+    headers: (a, b) => mergeDeepProperties(headersToObject(a), headersToObject(b), true)
+  };
+  utils_default.forEach(Object.keys(Object.assign({}, config1, config2)), function computeConfigValue(prop) {
+    const merge2 = mergeMap[prop] || mergeDeepProperties;
+    const configValue = merge2(config1[prop], config2[prop], prop);
+    utils_default.isUndefined(configValue) && merge2 !== mergeDirectKeys || (config3[prop] = configValue);
+  });
+  return config3;
+}
+
+// node_modules/axios/lib/helpers/resolveConfig.js
+var resolveConfig_default = (config2) => {
+  const newConfig = mergeConfig2({}, config2);
+  let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers, auth } = newConfig;
+  newConfig.headers = headers = AxiosHeaders_default.from(headers);
+  newConfig.url = buildURL(buildFullPath(newConfig.baseURL, newConfig.url), config2.params, config2.paramsSerializer);
+  if (auth) {
+    headers.set("Authorization", "Basic " + btoa((auth.username || "") + ":" + (auth.password ? unescape(encodeURIComponent(auth.password)) : "")));
+  }
+  let contentType;
+  if (utils_default.isFormData(data)) {
+    if (platform_default.hasStandardBrowserEnv || platform_default.hasStandardBrowserWebWorkerEnv) {
+      headers.setContentType(undefined);
+    } else if ((contentType = headers.getContentType()) !== false) {
+      const [type, ...tokens] = contentType ? contentType.split(";").map((token) => token.trim()).filter(Boolean) : [];
+      headers.setContentType([type || "multipart/form-data", ...tokens].join("; "));
+    }
+  }
+  if (platform_default.hasStandardBrowserEnv) {
+    withXSRFToken && utils_default.isFunction(withXSRFToken) && (withXSRFToken = withXSRFToken(newConfig));
+    if (withXSRFToken || withXSRFToken !== false && isURLSameOrigin_default(newConfig.url)) {
+      const xsrfValue = xsrfHeaderName && xsrfCookieName && cookies_default.read(xsrfCookieName);
+      if (xsrfValue) {
+        headers.set(xsrfHeaderName, xsrfValue);
+      }
+    }
+  }
+  return newConfig;
+};
+
+// node_modules/axios/lib/adapters/xhr.js
+var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
+var xhr_default = isXHRAdapterSupported && function(config2) {
+  return new Promise(function dispatchXhrRequest(resolve, reject) {
+    const _config = resolveConfig_default(config2);
+    let requestData = _config.data;
+    const requestHeaders = AxiosHeaders_default.from(_config.headers).normalize();
+    let { responseType, onUploadProgress, onDownloadProgress } = _config;
+    let onCanceled;
+    let uploadThrottled, downloadThrottled;
+    let flushUpload, flushDownload;
+    function done() {
+      flushUpload && flushUpload();
+      flushDownload && flushDownload();
+      _config.cancelToken && _config.cancelToken.unsubscribe(onCanceled);
+      _config.signal && _config.signal.removeEventListener("abort", onCanceled);
+    }
+    let request = new XMLHttpRequest;
+    request.open(_config.method.toUpperCase(), _config.url, true);
+    request.timeout = _config.timeout;
+    function onloadend() {
+      if (!request) {
+        return;
+      }
+      const responseHeaders = AxiosHeaders_default.from("getAllResponseHeaders" in request && request.getAllResponseHeaders());
+      const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
+      const response = {
+        data: responseData,
+        status: request.status,
+        statusText: request.statusText,
+        headers: responseHeaders,
+        config: config2,
+        request
+      };
+      settle(function _resolve(value) {
+        resolve(value);
+        done();
+      }, function _reject(err) {
+        reject(err);
+        done();
+      }, response);
+      request = null;
+    }
+    if ("onloadend" in request) {
+      request.onloadend = onloadend;
+    } else {
+      request.onreadystatechange = function handleLoad() {
+        if (!request || request.readyState !== 4) {
+          return;
+        }
+        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf("file:") === 0)) {
+          return;
+        }
+        setTimeout(onloadend);
+      };
+    }
+    request.onabort = function handleAbort() {
+      if (!request) {
+        return;
+      }
+      reject(new AxiosError_default("Request aborted", AxiosError_default.ECONNABORTED, config2, request));
+      request = null;
+    };
+    request.onerror = function handleError() {
+      reject(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config2, request));
+      request = null;
+    };
+    request.ontimeout = function handleTimeout() {
+      let timeoutErrorMessage = _config.timeout ? "timeout of " + _config.timeout + "ms exceeded" : "timeout exceeded";
+      const transitional = _config.transitional || transitional_default;
+      if (_config.timeoutErrorMessage) {
+        timeoutErrorMessage = _config.timeoutErrorMessage;
+      }
+      reject(new AxiosError_default(timeoutErrorMessage, transitional.clarifyTimeoutError ? AxiosError_default.ETIMEDOUT : AxiosError_default.ECONNABORTED, config2, request));
+      request = null;
+    };
+    requestData === undefined && requestHeaders.setContentType(null);
+    if ("setRequestHeader" in request) {
+      utils_default.forEach(requestHeaders.toJSON(), function setRequestHeader(val, key) {
+        request.setRequestHeader(key, val);
+      });
+    }
+    if (!utils_default.isUndefined(_config.withCredentials)) {
+      request.withCredentials = !!_config.withCredentials;
+    }
+    if (responseType && responseType !== "json") {
+      request.responseType = _config.responseType;
+    }
+    if (onDownloadProgress) {
+      [downloadThrottled, flushDownload] = progressEventReducer(onDownloadProgress, true);
+      request.addEventListener("progress", downloadThrottled);
+    }
+    if (onUploadProgress && request.upload) {
+      [uploadThrottled, flushUpload] = progressEventReducer(onUploadProgress);
+      request.upload.addEventListener("progress", uploadThrottled);
+      request.upload.addEventListener("loadend", flushUpload);
+    }
+    if (_config.cancelToken || _config.signal) {
+      onCanceled = (cancel) => {
+        if (!request) {
+          return;
+        }
+        reject(!cancel || cancel.type ? new CanceledError_default(null, config2, request) : cancel);
+        request.abort();
+        request = null;
+      };
+      _config.cancelToken && _config.cancelToken.subscribe(onCanceled);
+      if (_config.signal) {
+        _config.signal.aborted ? onCanceled() : _config.signal.addEventListener("abort", onCanceled);
+      }
+    }
+    const protocol = parseProtocol(_config.url);
+    if (protocol && platform_default.protocols.indexOf(protocol) === -1) {
+      reject(new AxiosError_default("Unsupported protocol " + protocol + ":", AxiosError_default.ERR_BAD_REQUEST, config2));
+      return;
+    }
+    request.send(requestData || null);
+  });
+};
+
+// node_modules/axios/lib/helpers/composeSignals.js
+var composeSignals = (signals, timeout) => {
+  const { length } = signals = signals ? signals.filter(Boolean) : [];
+  if (timeout || length) {
+    let controller = new AbortController;
+    let aborted;
+    const onabort = function(reason) {
+      if (!aborted) {
+        aborted = true;
+        unsubscribe();
+        const err = reason instanceof Error ? reason : this.reason;
+        controller.abort(err instanceof AxiosError_default ? err : new CanceledError_default(err instanceof Error ? err.message : err));
+      }
+    };
+    let timer = timeout && setTimeout(() => {
+      timer = null;
+      onabort(new AxiosError_default(`timeout ${timeout} of ms exceeded`, AxiosError_default.ETIMEDOUT));
+    }, timeout);
+    const unsubscribe = () => {
+      if (signals) {
+        timer && clearTimeout(timer);
+        timer = null;
+        signals.forEach((signal2) => {
+          signal2.unsubscribe ? signal2.unsubscribe(onabort) : signal2.removeEventListener("abort", onabort);
+        });
+        signals = null;
+      }
+    };
+    signals.forEach((signal2) => signal2.addEventListener("abort", onabort));
+    const { signal } = controller;
+    signal.unsubscribe = () => utils_default.asap(unsubscribe);
+    return signal;
+  }
+};
+var composeSignals_default = composeSignals;
+
+// node_modules/axios/lib/helpers/trackStream.js
+var streamChunk = function* (chunk, chunkSize) {
+  let len = chunk.byteLength;
+  if (!chunkSize || len < chunkSize) {
+    yield chunk;
+    return;
+  }
+  let pos = 0;
+  let end;
+  while (pos < len) {
+    end = pos + chunkSize;
+    yield chunk.slice(pos, end);
+    pos = end;
+  }
+};
+var readBytes = async function* (iterable, chunkSize) {
+  for await (const chunk of readStream(iterable)) {
+    yield* streamChunk(chunk, chunkSize);
+  }
+};
+var readStream = async function* (stream) {
+  if (stream[Symbol.asyncIterator]) {
+    yield* stream;
+    return;
+  }
+  const reader = stream.getReader();
+  try {
+    for (;; ) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      yield value;
+    }
+  } finally {
+    await reader.cancel();
+  }
+};
+var trackStream = (stream, chunkSize, onProgress, onFinish) => {
+  const iterator = readBytes(stream, chunkSize);
+  let bytes = 0;
+  let done;
+  let _onFinish = (e) => {
+    if (!done) {
+      done = true;
+      onFinish && onFinish(e);
+    }
+  };
+  return new ReadableStream({
+    async pull(controller) {
+      try {
+        const { done: done2, value } = await iterator.next();
+        if (done2) {
+          _onFinish();
+          controller.close();
+          return;
+        }
+        let len = value.byteLength;
+        if (onProgress) {
+          let loadedBytes = bytes += len;
+          onProgress(loadedBytes);
+        }
+        controller.enqueue(new Uint8Array(value));
+      } catch (err) {
+        _onFinish(err);
+        throw err;
+      }
+    },
+    cancel(reason) {
+      _onFinish(reason);
+      return iterator.return();
+    }
+  }, {
+    highWaterMark: 2
+  });
+};
+
+// node_modules/axios/lib/adapters/fetch.js
+var isFetchSupported = typeof fetch === "function" && typeof Request === "function" && typeof Response === "function";
+var isReadableStreamSupported = isFetchSupported && typeof ReadableStream === "function";
+var encodeText = isFetchSupported && (typeof TextEncoder === "function" ? ((encoder) => (str) => encoder.encode(str))(new TextEncoder) : async (str) => new Uint8Array(await new Response(str).arrayBuffer()));
+var test = (fn, ...args) => {
+  try {
+    return !!fn(...args);
+  } catch (e) {
+    return false;
+  }
+};
+var supportsRequestStream = isReadableStreamSupported && test(() => {
+  let duplexAccessed = false;
+  const hasContentType = new Request(platform_default.origin, {
+    body: new ReadableStream,
+    method: "POST",
+    get duplex() {
+      duplexAccessed = true;
+      return "half";
+    }
+  }).headers.has("Content-Type");
+  return duplexAccessed && !hasContentType;
+});
+var DEFAULT_CHUNK_SIZE = 64 * 1024;
+var supportsResponseStream = isReadableStreamSupported && test(() => utils_default.isReadableStream(new Response("").body));
+var resolvers = {
+  stream: supportsResponseStream && ((res) => res.body)
+};
+isFetchSupported && ((res) => {
+  ["text", "arrayBuffer", "blob", "formData", "stream"].forEach((type) => {
+    !resolvers[type] && (resolvers[type] = utils_default.isFunction(res[type]) ? (res2) => res2[type]() : (_, config2) => {
+      throw new AxiosError_default(`Response type '${type}' is not supported`, AxiosError_default.ERR_NOT_SUPPORT, config2);
+    });
+  });
+})(new Response);
+var getBodyLength = async (body) => {
+  if (body == null) {
+    return 0;
+  }
+  if (utils_default.isBlob(body)) {
+    return body.size;
+  }
+  if (utils_default.isSpecCompliantForm(body)) {
+    const _request = new Request(platform_default.origin, {
+      method: "POST",
+      body
+    });
+    return (await _request.arrayBuffer()).byteLength;
+  }
+  if (utils_default.isArrayBufferView(body) || utils_default.isArrayBuffer(body)) {
+    return body.byteLength;
+  }
+  if (utils_default.isURLSearchParams(body)) {
+    body = body + "";
+  }
+  if (utils_default.isString(body)) {
+    return (await encodeText(body)).byteLength;
+  }
+};
+var resolveBodyLength = async (headers, body) => {
+  const length = utils_default.toFiniteNumber(headers.getContentLength());
+  return length == null ? getBodyLength(body) : length;
+};
+var fetch_default = isFetchSupported && (async (config2) => {
+  let {
+    url,
+    method,
+    data,
+    signal,
+    cancelToken,
+    timeout,
+    onDownloadProgress,
+    onUploadProgress,
+    responseType,
+    headers,
+    withCredentials = "same-origin",
+    fetchOptions
+  } = resolveConfig_default(config2);
+  responseType = responseType ? (responseType + "").toLowerCase() : "text";
+  let composedSignal = composeSignals_default([signal, cancelToken && cancelToken.toAbortSignal()], timeout);
+  let request;
+  const unsubscribe = composedSignal && composedSignal.unsubscribe && (() => {
+    composedSignal.unsubscribe();
+  });
+  let requestContentLength;
+  try {
+    if (onUploadProgress && supportsRequestStream && method !== "get" && method !== "head" && (requestContentLength = await resolveBodyLength(headers, data)) !== 0) {
+      let _request = new Request(url, {
+        method: "POST",
+        body: data,
+        duplex: "half"
+      });
+      let contentTypeHeader;
+      if (utils_default.isFormData(data) && (contentTypeHeader = _request.headers.get("content-type"))) {
+        headers.setContentType(contentTypeHeader);
+      }
+      if (_request.body) {
+        const [onProgress, flush2] = progressEventDecorator(requestContentLength, progressEventReducer(asyncDecorator(onUploadProgress)));
+        data = trackStream(_request.body, DEFAULT_CHUNK_SIZE, onProgress, flush2);
+      }
+    }
+    if (!utils_default.isString(withCredentials)) {
+      withCredentials = withCredentials ? "include" : "omit";
+    }
+    const isCredentialsSupported = "credentials" in Request.prototype;
+    request = new Request(url, {
+      ...fetchOptions,
+      signal: composedSignal,
+      method: method.toUpperCase(),
+      headers: headers.normalize().toJSON(),
+      body: data,
+      duplex: "half",
+      credentials: isCredentialsSupported ? withCredentials : undefined
+    });
+    let response = await fetch(request);
+    const isStreamResponse = supportsResponseStream && (responseType === "stream" || responseType === "response");
+    if (supportsResponseStream && (onDownloadProgress || isStreamResponse && unsubscribe)) {
+      const options = {};
+      ["status", "statusText", "headers"].forEach((prop) => {
+        options[prop] = response[prop];
+      });
+      const responseContentLength = utils_default.toFiniteNumber(response.headers.get("content-length"));
+      const [onProgress, flush2] = onDownloadProgress && progressEventDecorator(responseContentLength, progressEventReducer(asyncDecorator(onDownloadProgress), true)) || [];
+      response = new Response(trackStream(response.body, DEFAULT_CHUNK_SIZE, onProgress, () => {
+        flush2 && flush2();
+        unsubscribe && unsubscribe();
+      }), options);
+    }
+    responseType = responseType || "text";
+    let responseData = await resolvers[utils_default.findKey(resolvers, responseType) || "text"](response, config2);
+    !isStreamResponse && unsubscribe && unsubscribe();
+    return await new Promise((resolve, reject) => {
+      settle(resolve, reject, {
+        data: responseData,
+        headers: AxiosHeaders_default.from(response.headers),
+        status: response.status,
+        statusText: response.statusText,
+        config: config2,
+        request
+      });
+    });
+  } catch (err) {
+    unsubscribe && unsubscribe();
+    if (err && err.name === "TypeError" && /fetch/i.test(err.message)) {
+      throw Object.assign(new AxiosError_default("Network Error", AxiosError_default.ERR_NETWORK, config2, request), {
+        cause: err.cause || err
+      });
+    }
+    throw AxiosError_default.from(err, err && err.code, config2, request);
+  }
+});
+
+// node_modules/axios/lib/adapters/adapters.js
+var knownAdapters = {
+  http: null_default,
+  xhr: xhr_default,
+  fetch: fetch_default
+};
+utils_default.forEach(knownAdapters, (fn, value) => {
+  if (fn) {
+    try {
+      Object.defineProperty(fn, "name", { value });
+    } catch (e) {
+    }
+    Object.defineProperty(fn, "adapterName", { value });
+  }
+});
+var renderReason = (reason) => `- ${reason}`;
+var isResolvedHandle = (adapter) => utils_default.isFunction(adapter) || adapter === null || adapter === false;
+var adapters_default = {
+  getAdapter: (adapters) => {
+    adapters = utils_default.isArray(adapters) ? adapters : [adapters];
+    const { length } = adapters;
+    let nameOrAdapter;
+    let adapter;
+    const rejectedReasons = {};
+    for (let i = 0;i < length; i++) {
+      nameOrAdapter = adapters[i];
+      let id;
+      adapter = nameOrAdapter;
+      if (!isResolvedHandle(nameOrAdapter)) {
+        adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
+        if (adapter === undefined) {
+          throw new AxiosError_default(`Unknown adapter '${id}'`);
+        }
+      }
+      if (adapter) {
+        break;
+      }
+      rejectedReasons[id || "#" + i] = adapter;
+    }
+    if (!adapter) {
+      const reasons = Object.entries(rejectedReasons).map(([id, state]) => `adapter ${id} ` + (state === false ? "is not supported by the environment" : "is not available in the build"));
+      let s = length ? reasons.length > 1 ? "since :\n" + reasons.map(renderReason).join("\n") : " " + renderReason(reasons[0]) : "as no adapter specified";
+      throw new AxiosError_default(`There is no suitable adapter to dispatch the request ` + s, "ERR_NOT_SUPPORT");
+    }
+    return adapter;
+  },
+  adapters: knownAdapters
+};
+
+// node_modules/axios/lib/core/dispatchRequest.js
+function throwIfCancellationRequested(config2) {
+  if (config2.cancelToken) {
+    config2.cancelToken.throwIfRequested();
+  }
+  if (config2.signal && config2.signal.aborted) {
+    throw new CanceledError_default(null, config2);
+  }
+}
+function dispatchRequest(config2) {
+  throwIfCancellationRequested(config2);
+  config2.headers = AxiosHeaders_default.from(config2.headers);
+  config2.data = transformData.call(config2, config2.transformRequest);
+  if (["post", "put", "patch"].indexOf(config2.method) !== -1) {
+    config2.headers.setContentType("application/x-www-form-urlencoded", false);
+  }
+  const adapter = adapters_default.getAdapter(config2.adapter || defaults_default.adapter);
+  return adapter(config2).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config2);
+    response.data = transformData.call(config2, config2.transformResponse, response);
+    response.headers = AxiosHeaders_default.from(response.headers);
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config2);
+      if (reason && reason.response) {
+        reason.response.data = transformData.call(config2, config2.transformResponse, reason.response);
+        reason.response.headers = AxiosHeaders_default.from(reason.response.headers);
+      }
+    }
+    return Promise.reject(reason);
+  });
+}
+
+// node_modules/axios/lib/env/data.js
+var VERSION = "1.7.7";
+
+// node_modules/axios/lib/helpers/validator.js
+var validators = {};
+["object", "boolean", "number", "function", "string", "symbol"].forEach((type, i) => {
+  validators[type] = function validator(thing) {
+    return typeof thing === type || "a" + (i < 1 ? "n " : " ") + type;
+  };
+});
+var deprecatedWarnings = {};
+validators.transitional = function transitional(validator, version, message) {
+  function formatMessage(opt, desc) {
+    return "[Axios v" + VERSION + "] Transitional option \'" + opt + "\'" + desc + (message ? ". " + message : "");
+  }
+  return (value, opt, opts) => {
+    if (validator === false) {
+      throw new AxiosError_default(formatMessage(opt, " has been removed" + (version ? " in " + version : "")), AxiosError_default.ERR_DEPRECATED);
+    }
+    if (version && !deprecatedWarnings[opt]) {
+      deprecatedWarnings[opt] = true;
+      console.warn(formatMessage(opt, " has been deprecated since v" + version + " and will be removed in the near future"));
+    }
+    return validator ? validator(value, opt, opts) : true;
+  };
+};
+function assertOptions(options, schema, allowUnknown) {
+  if (typeof options !== "object") {
+    throw new AxiosError_default("options must be an object", AxiosError_default.ERR_BAD_OPTION_VALUE);
+  }
+  const keys = Object.keys(options);
+  let i = keys.length;
+  while (i-- > 0) {
+    const opt = keys[i];
+    const validator = schema[opt];
+    if (validator) {
+      const value = options[opt];
+      const result = value === undefined || validator(value, opt, options);
+      if (result !== true) {
+        throw new AxiosError_default("option " + opt + " must be " + result, AxiosError_default.ERR_BAD_OPTION_VALUE);
+      }
+      continue;
+    }
+    if (allowUnknown !== true) {
+      throw new AxiosError_default("Unknown option " + opt, AxiosError_default.ERR_BAD_OPTION);
+    }
+  }
+}
+var validator_default = {
+  assertOptions,
+  validators
+};
+
+// node_modules/axios/lib/core/Axios.js
+var validators2 = validator_default.validators;
+
+class Axios {
+  constructor(instanceConfig) {
+    this.defaults = instanceConfig;
+    this.interceptors = {
+      request: new InterceptorManager_default,
+      response: new InterceptorManager_default
+    };
+  }
+  async request(configOrUrl, config2) {
+    try {
+      return await this._request(configOrUrl, config2);
+    } catch (err) {
+      if (err instanceof Error) {
+        let dummy;
+        Error.captureStackTrace ? Error.captureStackTrace(dummy = {}) : dummy = new Error;
+        const stack = dummy.stack ? dummy.stack.replace(/^.+\n/, "") : "";
+        try {
+          if (!err.stack) {
+            err.stack = stack;
+          } else if (stack && !String(err.stack).endsWith(stack.replace(/^.+\n.+\n/, ""))) {
+            err.stack += "\n" + stack;
+          }
+        } catch (e) {
+        }
+      }
+      throw err;
+    }
+  }
+  _request(configOrUrl, config2) {
+    if (typeof configOrUrl === "string") {
+      config2 = config2 || {};
+      config2.url = configOrUrl;
+    } else {
+      config2 = configOrUrl || {};
+    }
+    config2 = mergeConfig2(this.defaults, config2);
+    const { transitional: transitional2, paramsSerializer, headers } = config2;
+    if (transitional2 !== undefined) {
+      validator_default.assertOptions(transitional2, {
+        silentJSONParsing: validators2.transitional(validators2.boolean),
+        forcedJSONParsing: validators2.transitional(validators2.boolean),
+        clarifyTimeoutError: validators2.transitional(validators2.boolean)
+      }, false);
+    }
+    if (paramsSerializer != null) {
+      if (utils_default.isFunction(paramsSerializer)) {
+        config2.paramsSerializer = {
+          serialize: paramsSerializer
+        };
+      } else {
+        validator_default.assertOptions(paramsSerializer, {
+          encode: validators2.function,
+          serialize: validators2.function
+        }, true);
+      }
+    }
+    config2.method = (config2.method || this.defaults.method || "get").toLowerCase();
+    let contextHeaders = headers && utils_default.merge(headers.common, headers[config2.method]);
+    headers && utils_default.forEach(["delete", "get", "head", "post", "put", "patch", "common"], (method) => {
+      delete headers[method];
+    });
+    config2.headers = AxiosHeaders_default.concat(contextHeaders, headers);
+    const requestInterceptorChain = [];
+    let synchronousRequestInterceptors = true;
+    this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+      if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config2) === false) {
+        return;
+      }
+      synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
+      requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
+    });
+    const responseInterceptorChain = [];
+    this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+      responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
+    });
+    let promise;
+    let i = 0;
+    let len;
+    if (!synchronousRequestInterceptors) {
+      const chain = [dispatchRequest.bind(this), undefined];
+      chain.unshift.apply(chain, requestInterceptorChain);
+      chain.push.apply(chain, responseInterceptorChain);
+      len = chain.length;
+      promise = Promise.resolve(config2);
+      while (i < len) {
+        promise = promise.then(chain[i++], chain[i++]);
+      }
+      return promise;
+    }
+    len = requestInterceptorChain.length;
+    let newConfig = config2;
+    i = 0;
+    while (i < len) {
+      const onFulfilled = requestInterceptorChain[i++];
+      const onRejected = requestInterceptorChain[i++];
+      try {
+        newConfig = onFulfilled(newConfig);
+      } catch (error) {
+        onRejected.call(this, error);
+        break;
+      }
+    }
+    try {
+      promise = dispatchRequest.call(this, newConfig);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+    i = 0;
+    len = responseInterceptorChain.length;
+    while (i < len) {
+      promise = promise.then(responseInterceptorChain[i++], responseInterceptorChain[i++]);
+    }
+    return promise;
+  }
+  getUri(config2) {
+    config2 = mergeConfig2(this.defaults, config2);
+    const fullPath = buildFullPath(config2.baseURL, config2.url);
+    return buildURL(fullPath, config2.params, config2.paramsSerializer);
+  }
+}
+utils_default.forEach(["delete", "get", "head", "options"], function forEachMethodNoData(method) {
+  Axios.prototype[method] = function(url, config2) {
+    return this.request(mergeConfig2(config2 || {}, {
+      method,
+      url,
+      data: (config2 || {}).data
+    }));
+  };
+});
+utils_default.forEach(["post", "put", "patch"], function forEachMethodWithData(method) {
+  function generateHTTPMethod(isForm) {
+    return function httpMethod(url, data, config2) {
+      return this.request(mergeConfig2(config2 || {}, {
+        method,
+        headers: isForm ? {
+          "Content-Type": "multipart/form-data"
+        } : {},
+        url,
+        data
+      }));
+    };
+  }
+  Axios.prototype[method] = generateHTTPMethod();
+  Axios.prototype[method + "Form"] = generateHTTPMethod(true);
+});
+var Axios_default = Axios;
+
+// node_modules/axios/lib/cancel/CancelToken.js
+class CancelToken {
+  constructor(executor) {
+    if (typeof executor !== "function") {
+      throw new TypeError("executor must be a function.");
+    }
+    let resolvePromise;
+    this.promise = new Promise(function promiseExecutor(resolve) {
+      resolvePromise = resolve;
+    });
+    const token = this;
+    this.promise.then((cancel) => {
+      if (!token._listeners)
+        return;
+      let i = token._listeners.length;
+      while (i-- > 0) {
+        token._listeners[i](cancel);
+      }
+      token._listeners = null;
+    });
+    this.promise.then = (onfulfilled) => {
+      let _resolve;
+      const promise = new Promise((resolve) => {
+        token.subscribe(resolve);
+        _resolve = resolve;
+      }).then(onfulfilled);
+      promise.cancel = function reject() {
+        token.unsubscribe(_resolve);
+      };
+      return promise;
+    };
+    executor(function cancel(message, config2, request) {
+      if (token.reason) {
+        return;
+      }
+      token.reason = new CanceledError_default(message, config2, request);
+      resolvePromise(token.reason);
+    });
+  }
+  throwIfRequested() {
+    if (this.reason) {
+      throw this.reason;
+    }
+  }
+  subscribe(listener) {
+    if (this.reason) {
+      listener(this.reason);
+      return;
+    }
+    if (this._listeners) {
+      this._listeners.push(listener);
+    } else {
+      this._listeners = [listener];
+    }
+  }
+  unsubscribe(listener) {
+    if (!this._listeners) {
+      return;
+    }
+    const index = this._listeners.indexOf(listener);
+    if (index !== -1) {
+      this._listeners.splice(index, 1);
+    }
+  }
+  toAbortSignal() {
+    const controller = new AbortController;
+    const abort = (err) => {
+      controller.abort(err);
+    };
+    this.subscribe(abort);
+    controller.signal.unsubscribe = () => this.unsubscribe(abort);
+    return controller.signal;
+  }
+  static source() {
+    let cancel;
+    const token = new CancelToken(function executor(c) {
+      cancel = c;
+    });
+    return {
+      token,
+      cancel
+    };
+  }
+}
+var CancelToken_default = CancelToken;
+
+// node_modules/axios/lib/helpers/spread.js
+function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+}
+
+// node_modules/axios/lib/helpers/isAxiosError.js
+function isAxiosError(payload) {
+  return utils_default.isObject(payload) && payload.isAxiosError === true;
+}
+
+// node_modules/axios/lib/helpers/HttpStatusCode.js
+var HttpStatusCode = {
+  Continue: 100,
+  SwitchingProtocols: 101,
+  Processing: 102,
+  EarlyHints: 103,
+  Ok: 200,
+  Created: 201,
+  Accepted: 202,
+  NonAuthoritativeInformation: 203,
+  NoContent: 204,
+  ResetContent: 205,
+  PartialContent: 206,
+  MultiStatus: 207,
+  AlreadyReported: 208,
+  ImUsed: 226,
+  MultipleChoices: 300,
+  MovedPermanently: 301,
+  Found: 302,
+  SeeOther: 303,
+  NotModified: 304,
+  UseProxy: 305,
+  Unused: 306,
+  TemporaryRedirect: 307,
+  PermanentRedirect: 308,
+  BadRequest: 400,
+  Unauthorized: 401,
+  PaymentRequired: 402,
+  Forbidden: 403,
+  NotFound: 404,
+  MethodNotAllowed: 405,
+  NotAcceptable: 406,
+  ProxyAuthenticationRequired: 407,
+  RequestTimeout: 408,
+  Conflict: 409,
+  Gone: 410,
+  LengthRequired: 411,
+  PreconditionFailed: 412,
+  PayloadTooLarge: 413,
+  UriTooLong: 414,
+  UnsupportedMediaType: 415,
+  RangeNotSatisfiable: 416,
+  ExpectationFailed: 417,
+  ImATeapot: 418,
+  MisdirectedRequest: 421,
+  UnprocessableEntity: 422,
+  Locked: 423,
+  FailedDependency: 424,
+  TooEarly: 425,
+  UpgradeRequired: 426,
+  PreconditionRequired: 428,
+  TooManyRequests: 429,
+  RequestHeaderFieldsTooLarge: 431,
+  UnavailableForLegalReasons: 451,
+  InternalServerError: 500,
+  NotImplemented: 501,
+  BadGateway: 502,
+  ServiceUnavailable: 503,
+  GatewayTimeout: 504,
+  HttpVersionNotSupported: 505,
+  VariantAlsoNegotiates: 506,
+  InsufficientStorage: 507,
+  LoopDetected: 508,
+  NotExtended: 510,
+  NetworkAuthenticationRequired: 511
+};
+Object.entries(HttpStatusCode).forEach(([key, value]) => {
+  HttpStatusCode[value] = key;
+});
+var HttpStatusCode_default = HttpStatusCode;
+
+// node_modules/axios/lib/axios.js
+function createInstance(defaultConfig) {
+  const context = new Axios_default(defaultConfig);
+  const instance = bind(Axios_default.prototype.request, context);
+  utils_default.extend(instance, Axios_default.prototype, context, { allOwnKeys: true });
+  utils_default.extend(instance, context, null, { allOwnKeys: true });
+  instance.create = function create(instanceConfig) {
+    return createInstance(mergeConfig2(defaultConfig, instanceConfig));
+  };
+  return instance;
+}
+var axios = createInstance(defaults_default);
+axios.Axios = Axios_default;
+axios.CanceledError = CanceledError_default;
+axios.CancelToken = CancelToken_default;
+axios.isCancel = isCancel;
+axios.VERSION = VERSION;
+axios.toFormData = toFormData_default;
+axios.AxiosError = AxiosError_default;
+axios.Cancel = axios.CanceledError;
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = spread;
+axios.isAxiosError = isAxiosError;
+axios.mergeConfig = mergeConfig2;
+axios.AxiosHeaders = AxiosHeaders_default;
+axios.formToJSON = (thing) => formDataToJSON_default(utils_default.isHTMLForm(thing) ? new FormData(thing) : thing);
+axios.getAdapter = adapters_default.getAdapter;
+axios.HttpStatusCode = HttpStatusCode_default;
+axios.default = axios;
+var axios_default = axios;
+
+// src/web/util/Assert.ts
+function assert(condition, errcode) {
+  if (condition)
+    return;
+  if (errcode)
+    throw Error(errcode);
+  throw Error("CRIT_ERR");
+}
+
+// src/web/core/Server.ts
+async function products() {
+  let response = await axios_default.get("/get/products");
+  let data = response.data;
+  let errcode = "SERVER_ERR_UNSUPPORTED_RESPONSE";
+  assert(Array.isArray(data), errcode);
+  data.forEach((product) => assert(!!product && typeof product === "object" && "name" in product && "description" in product && "price" in product && "stock" in product && typeof product.name === "string" && typeof product.description === "string" && typeof product.price === "bigint" && typeof product.stock === "bigint", errcode));
+  return data;
+}
+var _user = null;
+function user() {
+  return _user;
+}
+function loggedIn() {
+  return !!_user;
+}
+async function signIn(request) {
+  if (loggedIn())
+    return _user;
+  let response = await axios_default.post("/user/sign-in", request);
+  let data = response.data;
+  let errcode = "SERVER_ERR_UNSUPPORTED_RESPONSE";
+  assert(!!data && typeof data === "object" && "username" in data && "hash" in data && typeof data.username === "string" && typeof data.hash === "string", errcode);
+  return data;
+}
+
+// src/web/page/SignInPage.tsx
+var jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime(), 1);
 function SignInPage() {
-  let [message, setMessage] = import_react21.useState("");
-  let [success, setSuccess] = import_react21.useState(false);
-  let [username, setUsername] = import_react21.useState("");
-  let [password, setPassword] = import_react21.useState("");
+  let [message, setMessage] = import_react19.useState("");
+  let [success, setSuccess] = import_react19.useState(false);
+  let [username, setUsername] = import_react19.useState("");
+  let [password, setPassword] = import_react19.useState("");
   let incompleteFormMessage = "The form is incomplete.";
-  import_react22.useEffect(() => {
+  import_react20.useEffect(() => {
   }, [username, password]);
-  return /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(jsx_dev_runtime7.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(ResponsiveAnchorPage, {
-      children: /* @__PURE__ */ jsx_dev_runtime7.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(jsx_dev_runtime5.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(ResponsiveAnchorPage, {
+      children: /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
         style: {
           display: "flex",
           flexDirection: "column",
@@ -32459,7 +31839,7 @@ function SignInPage() {
           gap: 40
         },
         children: [
-          /* @__PURE__ */ jsx_dev_runtime7.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
             style: {
               display: "flex",
               flexDirection: "column",
@@ -32468,7 +31848,7 @@ function SignInPage() {
               gap: 20
             },
             children: [
-              /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(TextInputField, {
+              /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(TextInputField, {
                 label: "Username",
                 placeholder: "mr_offcut200",
                 setInput: setUsername,
@@ -32482,7 +31862,7 @@ function SignInPage() {
                   return [success2, errmsg];
                 }
               }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(TextInputField, {
+              /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(TextInputField, {
                 label: "Password",
                 placeholder: "$off$cut123",
                 setInput: setPassword,
@@ -32498,7 +31878,7 @@ function SignInPage() {
               }, undefined, false, undefined, this)
             ]
           }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime7.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
             style: {
               display: "flex",
               flexDirection: "column",
@@ -32509,7 +31889,7 @@ function SignInPage() {
               gap: 10
             },
             children: [
-              message.length > 0 && /* @__PURE__ */ jsx_dev_runtime7.jsxDEV("div", {
+              message.length > 0 && /* @__PURE__ */ jsx_dev_runtime5.jsxDEV("div", {
                 style: {
                   display: "flex",
                   flexDirection: "row",
@@ -32524,7 +31904,7 @@ function SignInPage() {
                 },
                 children: message
               }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(FormButton, {
+              /* @__PURE__ */ jsx_dev_runtime5.jsxDEV(FormButton, {
                 label: "Sign In",
                 onClick: async () => {
                   if (username.length === 0 || password.length === 0) {
@@ -32556,20 +31936,20 @@ function SignInPage() {
 }
 
 // src/web/page/SignUpPage.tsx
-var import_react23 = __toESM(require_react(), 1);
-var import_react24 = __toESM(require_react(), 1);
-var jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
+var import_react21 = __toESM(require_react(), 1);
+var import_react22 = __toESM(require_react(), 1);
+var jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime(), 1);
 function SignUpPage() {
-  let [message, setMessage] = import_react23.useState("");
-  let [success, setSuccess] = import_react23.useState(false);
-  let [username, setUsername] = import_react23.useState("");
-  let [password, setPassword] = import_react23.useState("");
+  let [message, setMessage] = import_react21.useState("");
+  let [success, setSuccess] = import_react21.useState(false);
+  let [username, setUsername] = import_react21.useState("");
+  let [password, setPassword] = import_react21.useState("");
   let incompleteFormMessage = "The form is incomplete.";
-  import_react24.useEffect(() => {
+  import_react22.useEffect(() => {
   }, [username, password]);
-  return /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(ResponsiveAnchorPage, {
-      children: /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(jsx_dev_runtime6.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(ResponsiveAnchorPage, {
+      children: /* @__PURE__ */ jsx_dev_runtime6.jsxDEV("div", {
         style: {
           display: "flex",
           flexDirection: "column",
@@ -32580,7 +31960,7 @@ function SignUpPage() {
           gap: 40
         },
         children: [
-          /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV("div", {
             style: {
               display: "flex",
               flexDirection: "column",
@@ -32589,7 +31969,7 @@ function SignUpPage() {
               gap: 20
             },
             children: [
-              /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(TextInputField, {
+              /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(TextInputField, {
                 label: "Username",
                 placeholder: "mr_offcut200",
                 setInput: setUsername,
@@ -32603,7 +31983,7 @@ function SignUpPage() {
                   return [success2, errmsg];
                 }
               }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(TextInputField, {
+              /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(TextInputField, {
                 label: "Password",
                 placeholder: "$off$cut123",
                 setInput: setPassword,
@@ -32619,7 +31999,7 @@ function SignUpPage() {
               }, undefined, false, undefined, this)
             ]
           }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime6.jsxDEV("div", {
             style: {
               display: "flex",
               flexDirection: "column",
@@ -32630,7 +32010,7 @@ function SignUpPage() {
               gap: 10
             },
             children: [
-              message.length > 0 && /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+              message.length > 0 && /* @__PURE__ */ jsx_dev_runtime6.jsxDEV("div", {
                 style: {
                   display: "flex",
                   flexDirection: "row",
@@ -32645,7 +32025,7 @@ function SignUpPage() {
                 },
                 children: message
               }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(FormButton, {
+              /* @__PURE__ */ jsx_dev_runtime6.jsxDEV(FormButton, {
                 label: "Sign Up",
                 onClick: async () => {
                   if (username.length === 0 || password.length === 0) {
@@ -32677,10 +32057,10 @@ function SignUpPage() {
 }
 
 // src/web/page/ProductsPage.tsx
-var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime(), 1);
 function ProductsPage() {
-  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(ResponsiveAnchorPage, {}, undefined, false, undefined, this)
+  return /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(jsx_dev_runtime7.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime7.jsxDEV(ResponsiveAnchorPage, {}, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
 
@@ -32824,15 +32204,15 @@ var loadStripe = function loadStripe2() {
 var STRIPE_PUBLIC_KEY = "pk_test_51QKRBU2K2roHgsZDHs8cgu29fIqzRlvzF1nmV5mPdSHZhe93bgEQ9HqwoDTderzA7DWwDfFDpiJTMfjqHvgjIDQx00bF0qqWUL";
 
 // src/web/components/CheckoutButton.tsx
-var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
 function CheckoutButton({
   order,
   style,
   children,
   ...more
 }) {
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("button", {
+  return /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("button", {
       onClick: async () => {
         try {
           let response = await axios_default.post("*/checkout", order);
@@ -32878,14 +32258,14 @@ var import_fbemitter = __toESM(require_fbemitter(), 1);
 function Ref(_item) {
   let _e = new import_fbemitter.EventEmitter;
   {
-    return { get: get2, set, mount };
+    return { get, set, mount };
   }
-  function get2() {
+  function get() {
     return _item;
   }
   function set(item) {
     let now = item;
-    let old = get2();
+    let old = get();
     _item = now;
     _e.emit("change", now, old);
     return;
@@ -33205,8 +32585,8 @@ var Result;
   Result2.isResult = isResult;
 })(Result || (Result = {}));
 // src/web/page/Cart.tsx
-var React5 = __toESM(require_react(), 1);
-var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
+var React6 = __toESM(require_react(), 1);
+var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
 var Item = (item) => item;
 var _set = Ref([]);
 var _user2 = Ref(None);
@@ -33240,11 +32620,11 @@ function _keyof(name) {
   return BigInt(items().findIndex((item) => item.name === name));
 }
 function Page() {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Scaffold, {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_Scaffold, {
       children: [
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Table, {}, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_Checkout, {}, undefined, false, undefined, this)
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_Table, {}, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_Checkout, {}, undefined, false, undefined, this)
       ]
     }, undefined, true, undefined, this)
   }, undefined, false, undefined, this);
@@ -33268,14 +32648,14 @@ function _Scaffold(props) {
     paddingLeft: 10,
     paddingRight: 10
   };
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(ResponsiveAnchorPage, {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(ResponsiveAnchorPage, {
       children: [
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
           style: table$,
           children: props.children[0]
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
           style: checkout$,
           children: props.children[1]
         }, undefined, false, undefined, this)
@@ -33284,7 +32664,7 @@ function _Scaffold(props) {
   }, undefined, false, undefined, this);
 }
 function _Table(props) {
-  let set = React5.useState([]);
+  let set = React6.useState([]);
   let nav = useNavigate();
   let container$ = {
     display: "flex",
@@ -33298,7 +32678,7 @@ function _Table(props) {
     padding: 20,
     gap: 20
   };
-  React5.useEffect(() => {
+  React6.useEffect(() => {
     let user2 = user();
     if (user2)
       _user2.set(Some(user2));
@@ -33309,30 +32689,30 @@ function _Table(props) {
     const del = _set.mount((copy2) => set[1](copy2));
     return () => del();
   }, []);
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: container$,
       children: [
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeadingRow, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeadingRow, {
           children: [
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeading, {
               children: "Product"
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeading, {
               children: "Amount"
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeading, {
               children: "Price"
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeading, {
               children: "Stock"
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableHeading, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableHeading, {
               children: " "
             }, undefined, false, undefined, this)
           ]
         }, undefined, true, undefined, this),
-        set[0]?.map((item) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableItem, {
+        set[0]?.map((item) => /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableItem, {
           name: item.name,
           amount: item.amount,
           price: item.price,
@@ -33356,29 +32736,29 @@ function _TableItem(props) {
     remove(props.name);
     return;
   }
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableRow, {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableRow, {
       children: [
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableCell, {
           children: props.name
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableCell, {
           children: props.amount.toLocaleString()
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableCell, {
           children: props.price
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableCell, {
           children: props.stock.toLocaleString()
         }, undefined, false, undefined, this),
-        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableCell, {
+        /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableCell, {
           children: [
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableSymbolButton, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableSymbolButton, {
               color: MOONSTONE,
               onClick: () => insertItem(),
               children: "+"
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(_TableSymbolButton, {
+            /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(_TableSymbolButton, {
               color: JASPER,
               onClick: () => removeItem(),
               children: "-"
@@ -33400,18 +32780,18 @@ function _TableHeadingRow(props) {
     boxShadow: TAILWIND_0,
     gap: 10
   };
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: style$,
-      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
         children: child
       }, undefined, false, undefined, this))
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
 function _TableRow(props) {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "row",
@@ -33420,15 +32800,15 @@ function _TableRow(props) {
         width: "100%",
         gap: 10
       },
-      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+      children: props.children.map((child) => /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
         children: child
       }, undefined, false, undefined, this))
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
 function _TableHeading(props) {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "row",
@@ -33446,8 +32826,8 @@ function _TableHeading(props) {
   }, undefined, false, undefined, this);
 }
 function _TableCell(props) {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: {
         display: "flex",
         flexDirection: "row",
@@ -33482,8 +32862,8 @@ function _TableSymbolButton(props) {
     cursor: "pointer",
     padding: 5
   };
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: style$,
       onClick: (e) => props.onClick(e),
       children: props.children
@@ -33491,7 +32871,7 @@ function _TableSymbolButton(props) {
   }, undefined, false, undefined, this);
 }
 function _Checkout() {
-  let order = React5.useState(None);
+  let order = React6.useState(None);
   let container$ = {
     display: "flex",
     flexDirection: "column",
@@ -33513,17 +32893,17 @@ function _Checkout() {
     padding: 5,
     borderRadius: 5
   };
-  React5.useEffect(() => {
+  React6.useEffect(() => {
     order[1](_order.get());
     const del = _order.mount((copy) => order[1](copy));
     return () => del();
   }, []);
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(jsx_dev_runtime9.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
       style: container$,
-      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      children: /* @__PURE__ */ jsx_dev_runtime9.jsxDEV("div", {
         style: checkoutButtonContainer$,
-        children: order[0].some ? /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(CheckoutButton, {
+        children: order[0].some ? /* @__PURE__ */ jsx_dev_runtime9.jsxDEV(CheckoutButton, {
           style: checkoutButton$,
           order: order[0].unwrap(),
           children: "Checkout"
@@ -33534,14 +32914,569 @@ function _Checkout() {
 }
 
 // src/web/components/Inspo.tsx
-var import_react27 = __toESM(require_react(), 1);
+var import_react28 = __toESM(require_react(), 1);
+
+// src/web/components/Link.tsx
+var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
+function Link2({
+  to: to2,
+  children
+}) {
+  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(Link, {
+      to: to2 ?? "/",
+      style: {
+        all: "unset"
+      },
+      children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+
+// src/web/components/Nav_.tsx
+var import_react23 = __toESM(require_react(), 1);
+var import_react24 = __toESM(require_react(), 1);
+var import_react25 = __toESM(require_react(), 1);
+var Lev = __toESM(require_levenshtein(), 1);
+var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
+function Nav() {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
+        paddingTop: 10
+      },
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavTop, {}, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottom, {}, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavTop() {
+  let [products2, setProducts] = import_react23.useState([]);
+  import_react25.useEffect(() => {
+    return;
+  }, []);
+  const suggestables = () => products2.map((product) => NavTopSearchBarSuggestable({ product }));
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
+        gap: 20,
+        flexGrow: 1,
+        width: "100%"
+      },
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 5
+          },
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavTopButton, {
+              label: "Sign In",
+              to: "/sign-in"
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavTopButton, {
+              label: "Sign Up",
+              to: "/sign-up"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavTopSearchBar, {
+          icon: "../icon/Search.png",
+          suggestionThreshold: 4n,
+          suggestionCount: 8n,
+          suggestables: suggestables()
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavTopSearchBarSuggestable({
+  product
+}) {
+  let { name, price, stock } = product;
+  let available = stock > 0n;
+  return [name, /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Link2, {
+      to: "/product",
+      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        style: {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "start",
+          alignItems: "center",
+          width: "100%",
+          flexGrow: 1,
+          pointerEvents: available ? "auto" : "none",
+          cursor: available ? "pointer" : "auto",
+          opacity: available ? 1 : 0.5,
+          fontSize: "0.75em",
+          fontWeight: "bold",
+          fontFamily: "suisse-intl-regular",
+          color: OBSIDIAN
+        },
+        children: [
+          name,
+          /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+            style: {
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: 5,
+              boxShadow: TAILWIND_0,
+              background: available ? OFFCUT_YELLOW : SNOW,
+              borderRadius: "5px"
+            },
+            children: price.toLocaleString()
+          }, undefined, false, undefined, this)
+        ]
+      }, undefined, true, undefined, this)
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this)];
+}
+function NavTopSearchBar({
+  icon,
+  suggestionThreshold = 4n,
+  suggestionCount = 8n,
+  suggestables = []
+}) {
+  let [suggestions, setSuggestions] = import_react23.useState(null);
+  let [input, setInput] = import_react23.useState(null);
+  let ref = import_react24.useRef(null);
+  const removeDuplicateSuggestable = () => suggestables.filter((item, index, self2) => index === self2.findIndex((t) => t[0] === item[0]));
+  const sort = () => {
+    if (input === null)
+      return null;
+    if (input === undefined)
+      return null;
+    if (input === "")
+      return null;
+    if (suggestables === null)
+      return null;
+    return suggestables.map((item) => item[0]).map((item) => ({ item, distance: Lev.get(input.toLocaleLowerCase(), item.toLocaleLowerCase()) })).filter((item) => item.distance <= Number(suggestionThreshold)).sort((x, y) => x.distance - y.distance).map((result2) => result2.item).slice(0, Number(suggestionCount));
+  };
+  const close = (e) => {
+    if (!ref.current)
+      return;
+    if (ref.current.contains(e.target))
+      return;
+    setSuggestions([]);
+    return;
+  };
+  const lookup = (suggestion) => {
+    for (let i = 0;i < suggestables.length; i++)
+      if (suggestion === suggestables[i][0])
+        return suggestables[1];
+    return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      children: "ERR_ITEM_NOT_FOUND"
+    }, undefined, false, undefined, this);
+  };
+  suggestables = removeDuplicateSuggestable();
+  import_react25.useEffect(() => setSuggestions(sort()), [input, suggestables]);
+  import_react25.useEffect(() => {
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      ref,
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "center",
+        flexGrow: 1,
+        position: "relative"
+      },
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "start",
+            alignItems: "center",
+            boxShadow: TAILWIND_0,
+            gap: 5,
+            paddingLeft: 10,
+            paddingRight: 10,
+            width: "100%",
+            flexGrow: 1,
+            position: "relative"
+          },
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+              style: {
+                backgroundImage: `url(${icon})`,
+                backgroundSize: "contain",
+                backgroundPositionX: "center",
+                backgroundPositionY: "center",
+                backgroundRepeat: "no-repeat",
+                width: 10,
+                aspectRatio: "1/1"
+              }
+            }, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("input", {
+              type: "text",
+              onChange: (e) => setInput(e.target.value),
+              style: {
+                all: "unset",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "0.75em",
+                fontWeight: "normal",
+                fontFamily: "suiss-intl-regular",
+                flexGrow: 1,
+                padding: 5
+              }
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        suggestions && suggestions.length > 0 && /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "center",
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            width: "100%",
+            background: SNOW,
+            boxShadow: TAILWIND_0,
+            zIndex: 10 ** 18,
+            padding: 10,
+            gap: 10
+          },
+          children: suggestions.map((suggestion, key) => /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+            style: {
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "start",
+              alignItems: "center",
+              width: "100%",
+              fontSize: "0.75em",
+              fontWeight: "normal",
+              fontFamily: "suisse-intl-regular",
+              gap: 10
+            },
+            children: lookup(suggestion)
+          }, key, false, undefined, this))
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavTopButton({
+  label,
+  to: to2
+}) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Link2, {
+      to: to2,
+      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("button", {
+        style: {
+          all: "unset",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          pointerEvents: "auto",
+          cursor: "pointer",
+          color: OBSIDIAN,
+          boxShadow: TAILWIND_0,
+          padding: 5,
+          borderRadius: 5,
+          fontSize: "0.75em",
+          fontWeight: "normal",
+          fontFamily: "suisse-intl-regular"
+        },
+        children: label
+      }, undefined, false, undefined, this)
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottom() {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
+        gap: 20
+      },
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomLogo, {}, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "start",
+            width: "100%",
+            flexGrow: 1
+          },
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomGotoGroup, {
+              children: [
+                /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomGotoButton, {
+                  label: "Home",
+                  to: "/"
+                }, undefined, false, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomGotoButton, {
+                  label: "Products",
+                  to: "/products"
+                }, undefined, false, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomGotoButton, {
+                  label: "Inspo",
+                  to: "/inspo"
+                }, undefined, false, undefined, this)
+              ]
+            }, undefined, true, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomUtilGroup, {
+              children: [
+                /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomAccountButton, {}, undefined, false, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(NavBottomCartButton, {}, undefined, false, undefined, this)
+              ]
+            }, undefined, true, undefined, this)
+          ]
+        }, undefined, true, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomLogo() {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundImage: "url(../img/Logo.png)",
+        backgroundSize: "contain",
+        backgroundPositionX: "center",
+        backgroundPositionY: "center",
+        backgroundRepeat: "no-repeat",
+        width: 150,
+        aspectRatio: 2 / 1
+      }
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomGotoGroup({
+  children
+}) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "start",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
+        gap: 20
+      },
+      children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomGotoButton({
+  label,
+  to: to2
+}) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Link2, {
+      to: to2,
+      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        style: {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "1em",
+          fontWeight: "normal",
+          fontFamily: "suisse-intl-regular",
+          color: OBSIDIAN,
+          pointerEvents: "auto",
+          cursor: "pointer"
+        },
+        children: label
+      }, undefined, false, undefined, this)
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomUtilGroup({
+  children
+}) {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "end",
+        alignItems: "center",
+        width: "100%",
+        flexGrow: 1,
+        gap: 10
+      },
+      children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomAccountButton() {
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Link2, {
+      to: "/account",
+      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+        style: {
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          boxShadow: TAILWIND_0,
+          padding: 5,
+          pointerEvents: "auto",
+          cursor: "pointer",
+          borderRadius: 5
+        },
+        children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            background: "url(../icon/Account.png)",
+            backgroundSize: "contain",
+            backgroundPositionX: "center",
+            backgroundPositionY: "center",
+            backgroundRepeat: "no-repeat",
+            width: 20,
+            aspectRatio: 1 / 1
+          }
+        }, undefined, false, undefined, this)
+      }, undefined, false, undefined, this)
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function NavBottomCartButton() {
+  let [count, setCount] = import_react23.useState(0n);
+  import_react25.useEffect(() => {
+    (async () => {
+      let user2 = user();
+      if (!user2)
+        return;
+      let cart = user2.orders?.at(-1);
+      if (!cart)
+        return;
+      if (cart.status !== "waiting")
+        return;
+      let count2 = BigInt(cart.items.length);
+      setCount(count2);
+      return;
+    })();
+    return;
+  });
+  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 5
+      },
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Link2, {
+          to: "/cart",
+          children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+            style: {
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "start",
+              alignItems: "center",
+              boxShadow: TAILWIND_0,
+              pointerEvents: "auto",
+              cursor: "pointer",
+              padding: 5,
+              gap: 5,
+              borderRadius: 5
+            },
+            children: [
+              /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+                style: {
+                  backgroundImage: "url(../icon/Cart.png)",
+                  backgroundSize: "contain",
+                  backgroundPositionX: "center",
+                  backgroundPositionY: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: 20,
+                  aspectRatio: 1 / 1
+                }
+              }, undefined, false, undefined, this),
+              /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+                style: {
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  fontSize: "1em",
+                  fontWeight: "normal",
+                  fontFamily: "suisse-intl-regular",
+                  color: OBSIDIAN
+                },
+                children: "Cart"
+              }, undefined, false, undefined, this)
+            ]
+          }, undefined, true, undefined, this)
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime11.jsxDEV("div", {
+          style: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            background: `linear-gradient(to bottom, ${LIGHT_SEA_GREEN}, ${MOONSTONE})`,
+            backgroundClip: "text",
+            backgroundSize: "cover",
+            backgroundPositionX: "center",
+            backgroundPositionY: "center",
+            color: "transparent",
+            boxShadow: TAILWIND_0,
+            fontSize: "1em",
+            fontWeight: "bold",
+            fontFamily: "suisse-intl-regular",
+            padding: 5
+          },
+          children: count.toLocaleString()
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
 
 // src/web/hook/VisibilityObserver.ts
-var import_react25 = __toESM(require_react(), 1);
 var import_react26 = __toESM(require_react(), 1);
+var import_react27 = __toESM(require_react(), 1);
 function useVisibilityObserver({ onVisible, onHidden }) {
-  let observer = import_react26.useRef(null);
-  return import_react25.useCallback((element) => {
+  let observer = import_react27.useRef(null);
+  return import_react26.useCallback((element) => {
     observer.current?.disconnect();
     observer.current = new IntersectionObserver((entries) => entries[0]?.isIntersecting ? onVisible && onVisible() : onHidden && onHidden());
     element && observer.current.observe(element);
@@ -33553,9 +33488,9 @@ function useVisibilityObserver({ onVisible, onHidden }) {
 var jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime(), 1);
 function Page2() {
   let device = useDevice();
-  let mounted = import_react27.default.useState([]);
-  let loading = import_react27.default.useState(true);
-  let hasMore = import_react27.default.useState(true);
+  let mounted = import_react28.default.useState([]);
+  let loading = import_react28.default.useState(true);
+  let hasMore = import_react28.default.useState(true);
   let page$ = {
     display: "flex",
     flexDirection: "column",
@@ -33603,35 +33538,16 @@ function Page2() {
     height: 50
   };
   let load = async () => {
-    let row$2 = {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      gap: 20,
-      paddingBottom: 19,
-      paddingTop: 10
-    };
-    let rowItem$ = {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      flexGrow: 1,
-      aspectRatio: 1 / 1,
-      boxShadow: TAILWIND_0
-    };
-    return Some(/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
-      children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
-        style: row$2,
-        children: ["h", "x"].map((content) => /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
-          style: rowItem$,
-          children: content
-        }, undefined, false, undefined, this))
-      }, undefined, false, undefined, this)
-    }, undefined, false, undefined, this));
+    return Some(/* @__PURE__ */ jsx_dev_runtime12.jsxDEV(_Slot, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+          children: "Hello"
+        }, undefined, false, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+          children: "World"
+        }, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this));
   };
   let obs = useVisibilityObserver({
     onVisible: async () => {
@@ -33679,39 +33595,367 @@ function Page2() {
     }, undefined, false, undefined, this)
   }, undefined, false, undefined, this);
 }
+function _Slot(props) {
+  let width0 = 10;
+  let width1 = 200;
+  let width = useSpring(() => ({ width: width0 }));
+  let row$ = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    gap: 20,
+    paddingTop: 10,
+    paddingBottom: 10
+  };
+  let onMouseEnter = () => width[1].start({ width: width1 });
+  let onMouseLeave = () => width[1].start({ width: width0 });
+  return /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
+      style: row$,
+      children: props.children?.map((content) => /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(_SlotItem, {
+        children: content
+      }, undefined, false, undefined, this))
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _SlotItem(props) {
+  let spring$ = useSpring({
+    height: props.isFolded ? 0 : "auto",
+    opacity: props.isFolded ? 0 : 1,
+    config: {
+      tension: 200,
+      friction: 50
+    }
+  });
+  let style$ = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    boxShadow: TAILWIND_0,
+    background: GHOST_WHITE,
+    pointerEvents: "auto",
+    cursor: "pointer"
+  };
+  return /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(animated.div, {
+      style: { ...style$, ...spring$ },
+      children: props.children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+
+// src/web/components/ResponsivePage.tsx
+var jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime(), 1);
+function ResponsivePage({ style, children, ...more }) {
+  const device = useDevice();
+  function size() {
+    return device === "laptop" ? "1024px" : device === "tablet" ? "768px" : device === "mobile" ? "320px" : null;
+  }
+  return /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(jsx_dev_runtime13.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(animated.div, {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "start",
+        alignItems: "center",
+        width: "100vw",
+        minHeight: "100vh",
+        background: SNOW,
+        ...style
+      },
+      ...more,
+      children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(animated.div, {
+        style: {
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+          alignItems: "center",
+          width: size() ?? undefined
+        },
+        children
+      }, undefined, false, undefined, this)
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
+
+// src/web/components/Home.tsx
+var jsx_dev_runtime14 = __toESM(require_jsx_dev_runtime(), 1);
+function Page3(props) {
+  let slide0$ = {
+    style: {
+      justifyContent: "space-between"
+    }
+  };
+  let hero$ = {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%"
+    }
+  };
+  let heroHeading$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      fontSize: "10em",
+      fontWeight: "bold",
+      fontFamily: "suisse-intl-regular",
+      color: OBSIDIAN
+    }
+  };
+  let heroSubHeading$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      fontSize: "3em",
+      fontWeight: "bold",
+      fontFamily: "suisse-intl-regular",
+      color: OFFCUT_YELLOW,
+      paddingBottom: 50
+    }
+  };
+  let subHero$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "start",
+      width: "100%",
+      gap: 20
+    }
+  };
+  let subHeroItem$ = {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      flexGrow: 1
+    }
+  };
+  let subHeroItemHeading$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "start",
+      alignItems: "center",
+      width: "100%",
+      fontSize: "1.5em",
+      fontWeight: "bold",
+      fontFamily: "suisse-intl-regular",
+      color: OFFCUT_YELLOW,
+      paddingBottom: 20
+    }
+  };
+  let subHeroItemBody$ = {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "start",
+      width: "100%",
+      fontSize: "1em",
+      fontWeight: "normal",
+      fontFamily: "suisse-intl-regular",
+      color: OBSIDIAN,
+      gap: 10,
+      textAlign: "justify"
+    }
+  };
+  let subHeroItemBodySegment$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "start",
+      alignItems: "center",
+      width: "100%"
+    }
+  };
+  let downArrow$ = {
+    style: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      fontSize: "2em",
+      fontWeight: "normal",
+      fontFamily: "suisse-intl-regular",
+      color: OBSIDIAN
+    }
+  };
+  return /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(jsx_dev_runtime14.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(ResponsivePage, {
+      children: [
+        /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(_Slide, {
+          ...slide0$,
+          children: [
+            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(Root, {}, undefined, false, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+              ...hero$,
+              children: [
+                /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                  ...heroHeading$,
+                  children: "OFFCUTS"
+                }, undefined, false, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                  ...heroSubHeading$,
+                  children: "Revive. Reuse. Rebuild."
+                }, undefined, false, undefined, this)
+              ]
+            }, undefined, true, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+              ...subHero$,
+              children: [
+                /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                  ...subHeroItem$,
+                  children: [
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemHeading$,
+                      children: "Why Offcuts?"
+                    }, undefined, false, undefined, this),
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemBody$,
+                      children: [
+                        /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                          ...subHeroItemBodySegment$,
+                          children: [
+                            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("strong", {
+                              style: { display: "contents" },
+                              children: "Sustainable Solutions:"
+                            }, undefined, false, undefined, this),
+                            " Divert construction waste from landfills while supporting eco-friendly practices."
+                          ]
+                        }, undefined, true, undefined, this),
+                        /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                          ...subHeroItemBodySegment$,
+                          children: [
+                            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("strong", {
+                              style: { display: "contents" },
+                              children: "Affordable Materials:"
+                            }, undefined, false, undefined, this),
+                            " Access high-quality reclaimed materials at a fraction of the cost."
+                          ]
+                        }, undefined, true, undefined, this),
+                        /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                          ...subHeroItemBodySegment$,
+                          children: [
+                            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("strong", {
+                              style: { display: "contents" },
+                              children: "Fast & Easy:"
+                            }, undefined, false, undefined, this),
+                            " List, buy, or request leftover materials with ease."
+                          ]
+                        }, undefined, true, undefined, this)
+                      ]
+                    }, undefined, true, undefined, this)
+                  ]
+                }, undefined, true, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                  ...subHeroItem$,
+                  children: [
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemHeading$,
+                      children: "For Contractos"
+                    }, undefined, false, undefined, this),
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemBody$,
+                      children: "Turn your surplus into profit with quick pickups and a seamless listing process."
+                    }, undefined, false, undefined, this)
+                  ]
+                }, undefined, true, undefined, this),
+                /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                  ...subHeroItem$,
+                  children: [
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemHeading$,
+                      children: "For Buyers"
+                    }, undefined, false, undefined, this),
+                    /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+                      ...subHeroItemBody$,
+                      children: "Find unique, sustainable materials for your next project --big or small."
+                    }, undefined, false, undefined, this)
+                  ]
+                }, undefined, true, undefined, this)
+              ]
+            }, undefined, true, undefined, this),
+            /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+              ...downArrow$,
+              children: "\u23F7"
+            }, undefined, false, undefined, this)
+          ]
+        }, undefined, true, undefined, this),
+        /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(_Slide, {}, undefined, false, undefined, this)
+      ]
+    }, undefined, true, undefined, this)
+  }, undefined, false, undefined, this);
+}
+function _Slide(props) {
+  let { style, children, ...more } = props;
+  let container$ = {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100vh",
+      ...style
+    },
+    ...more
+  };
+  return /* @__PURE__ */ jsx_dev_runtime14.jsxDEV(jsx_dev_runtime14.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime14.jsxDEV("div", {
+      ...container$,
+      children
+    }, undefined, false, undefined, this)
+  }, undefined, false, undefined, this);
+}
 
 // src/web/App.tsx
-var jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime(), 1);
 var App;
 ((_App) => {
   function App2() {
-    return /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(jsx_dev_runtime13.Fragment, {
-      children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(BrowserRouter, {
-        children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Routes, {
+    return /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(jsx_dev_runtime15.Fragment, {
+      children: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(BrowserRouter, {
+        children: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Routes, {
           children: [
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(HomePage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Page3, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/sign-in",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(SignInPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(SignInPage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/sign-up",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(SignUpPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(SignUpPage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/cart",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Page, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Page, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/products",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(ProductsPage, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(ProductsPage, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this),
-            /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
+            /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Route, {
               path: "/inspo",
-              element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Page2, {}, undefined, false, undefined, this)
+              element: /* @__PURE__ */ jsx_dev_runtime15.jsxDEV(Page2, {}, undefined, false, undefined, this)
             }, undefined, false, undefined, this)
           ]
         }, undefined, true, undefined, this)
@@ -33723,7 +33967,7 @@ var App;
     let element = document.getElementById("root");
     if (!element)
       throw "ERR_RENDER_TARGET_REQUIRED";
-    import_client.createRoot(element).render(/* @__PURE__ */ jsx_dev_runtime13.jsxDEV(App2, {}, undefined, false, undefined, this));
+    import_client.createRoot(element).render(/* @__PURE__ */ jsx_dev_runtime15.jsxDEV(App2, {}, undefined, false, undefined, this));
     return null;
   }
   _App.render = render;

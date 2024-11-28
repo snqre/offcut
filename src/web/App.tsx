@@ -12,6 +12,7 @@ import {ProductsPage} from "./page/ProductsPage";
 import {createRoot as Root} from "react-dom/client";
 import * as Cart from "./page/Cart";
 import * as Inspo from "./components/Inspo";
+import * as Home from "./components/Home";
 
 namespace App {
 
@@ -19,7 +20,7 @@ namespace App {
         return (<>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<HomePage/>}/>
+                    <Route path="/" element={<Home.Page/>}/>
                     <Route path="/sign-in" element={<SignInPage/>}/>
                     <Route path="/sign-up" element={<SignUpPage/>}/>
                     <Route path="/cart" element={<Cart.Page/>}/>
