@@ -1,41 +1,24 @@
 {
-  "name": "offcut",
-  "module": "src/index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "@hono/node-server": "^1.13.5",
-    "@mui/material": "^6.1.6",
-    "@stripe/react-stripe-js": "^2.9.0",
-    "@stripe/stripe-js": "^4.10.0",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/express": "^5.0.0",
-    "@types/fast-levenshtein": "^0.0.4",
-    "@types/fbemitter": "^2.0.35",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "axios": "^1.7.7",
-    "bcryptjs": "^2.4.3",
-    "chakra-ui": "^0.3.9",
-    "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "fast-levenshtein": "^3.0.0",
-    "fbemitter": "^3.0.0",
-    "hono": "^4.6.9",
-    "kyudo": "https://github.com/snqre/kyudo.git#main",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0",
-    "react-spring": "^9.7.4",
-    "react-stripe": "^0.1.0",
-    "redis": "^4.7.0",
-    "stripe": "^17.3.1",
-    "ts-results": "^3.3.0",
-    "xstate": "^5.18.2"
-  }
+	"name": "offcut",
+	"module": "target/node/App.js",
+	"type": "module",
+	"scripts": {
+		"build": "bun run script/BuildScript.ts",
+		"start": "bun run build && bun run target/node/App.js"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"tsup": "8.3.5"
+	},
+	"peerDependencies": {
+		"typescript": "5.0.0"
+	},
+	"dependencies": {
+		"@types/bcrypt": "5.0.2",
+		"bcrypt": "5.1.1",
+		"redis": "4.7.0",
+		"reliq": "0.7.5",
+		"validator": "13.12.0",
+		"zod": "3.24.0"
+	}
 }

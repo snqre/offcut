@@ -1,1 +1,0 @@
-export const STRIPE_PUBLIC_KEY: string = "pk_test_51QKRBU2K2roHgsZDHs8cgu29fIqzRlvzF1nmV5mPdSHZhe93bgEQ9HqwoDTderzA7DWwDfFDpiJTMfjqHvgjIDQx00bF0qqWUL";

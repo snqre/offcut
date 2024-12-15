@@ -1,42 +1,58 @@
-import type {Maybe} from "@web/util/Maybe";
-import type {State} from "./util/State";
-import type {AppState} from "./state/State";
-import {default as React} from "react";
-import {BrowserRouter} from "react-router-dom";
-import {Routes} from "react-router-dom";
-import {Route} from "react-router-dom";
-import {HomePage} from "./page/HomePage";
-import {SignInPage} from "./page/SignInPage";
-import {SignUpPage} from "./page/SignUpPage";
-import {ProductsPage} from "./page/ProductsPage";
-import {createRoot as Root} from "react-dom/client";
-import * as Cart from "./page/Cart";
-import * as Inspo from "./components/Inspo";
-import * as Home from "./components/Home";
+import type { ReactNode } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Result } from "ts-results";
+import { Ok } from "ts-results";
+import { Err } from "ts-results";
+import { createRoot as Root} from "react-dom/client";
+import { HomePage } from "@web/page";
 
-namespace App {
-
-    export function App(): React.ReactNode {
-        return (<>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home.Page/>}/>
-                    <Route path="/sign-in" element={<SignInPage/>}/>
-                    <Route path="/sign-up" element={<SignUpPage/>}/>
-                    <Route path="/cart" element={<Cart.Page/>}/>
-                    <Route path="/products" element={<ProductsPage/>}/>
-                    <Route path="/inspo" element={<Inspo.Page/>}/>
-                </Routes>
-            </BrowserRouter>
-        </>);
-    }
-
-    export function render(): null {
-        let element: Maybe<HTMLElement> = document.getElementById("root");
-        if (!element) throw "ERR_RENDER_TARGET_REQUIRED";
-        Root(element).render(<App/>);
-        return (null);
-    }
+function App(): ReactNode {
+    return <>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={ <HomePage/> }/>
+            </Routes>
+        </BrowserRouter>
+    </>;
 }
 
-App.render();
+function render(app: ReactNode):
+    | Ok<void>
+    | Err<"ERR_ROOT_REQUIRED">
+    | Err<[unknown]> {
+    _loadGoogleFont("Roboto", "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+    let element:
+        | HTMLElement
+        | null
+        = document.getElementById("root");
+    if (element) {
+        let result: Result<void, unknown> = Result.wrap(() => Root(element).render(app));
+        if (result.err) return Err<[unknown]>([result.val]);
+        return Ok(undefined);
+    }
+    return Err("ERR_ROOT_REQUIRED" as const);
+}
+
+function _loadFont(key: string, format: string, url: string): void {
+    let style: HTMLStyleElement = document.createElement("style");
+    style.textContent = `
+@font-face {
+    font-family: ${ key };
+    src: url(${ url }) format(${ format });
+}
+    `;
+    document.head.appendChild(style);
+    return;
+}
+
+function _loadGoogleFont(key: string, url: string): void {
+    let link: HTMLLinkElement = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = url;
+    document.head.appendChild(link);
+    return;
+}
+
+render(<App/>).unwrap();
