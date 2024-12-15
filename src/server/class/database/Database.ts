@@ -1,6 +1,6 @@
 import type { MaybeAsyncMaybeResult } from "@common";
 
-export type Database<T extends object> = {
-    get(key: string): MaybeAsyncMaybeResult<T, [unknown]>;
-    set(key: string, data: T): MaybeAsyncMaybeResult<void, [unknown]>;
+export type Database = {
+    get(key: string): MaybeAsyncMaybeResult<unknown, [unknown]>;
+    set(key: string, data: unknown): MaybeAsyncMaybeResult<void, [unknown]>;
 };
