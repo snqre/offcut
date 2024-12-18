@@ -1,5 +1,4 @@
 import type { RedisClientType as RedisSocketLike } from "redis";
-import { CustomResultHandler } from "@common";
 import { Result } from "reliq";
 import { Ok } from "reliq";
 import { Err } from "reliq";
@@ -16,16 +15,11 @@ export function RedisAdaptor(_host: string, _password: string, _port: bigint):
     | Err<[unknown]> {
 
     /** @constructor */ {
-        let socket: RedisSocketLike;
-
-        /***/ {
-            if (_host.length === 0) return Err("INVALID_HOST");
-            if (_port < 0) return Err("INVALID_PORT");
-            if (_password.length === 0) return Err("INVALID_PASSWORD");
-        }
-
-        /***/ {
-            let socketR: Result<RedisSocketLike, unknown> = Result.wrap(() => 
+        if (_host.length === 0) return Err<"INVALID_HOST">("INVALID_HOST");
+        if (_port < 0) return Err<"INVALID_PORT">("INVALID_PORT");
+        if (_password.length === 0) return Err<"INVALID_PASSWORD">("INVALID_PASSWORD");
+        let socket: Result<RedisAdaptor, unknown> = 
+            Result.wrap(() => 
                 RedisSocket({
                     password: _password,
                     socket: {
@@ -33,10 +27,7 @@ export function RedisAdaptor(_host: string, _password: string, _port: bigint):
                         port: Number(_port)
                     }
                 }));
-            if (socketR.err()) return Err(CustomResultHandler.wrapUnsafe(socketR.val()));
-            socket = socketR.unwrapSafely();
-        }
-
-        return Ok(socket);
+        if (socket.err()) return Err<[unknown]>([socket.val()]);
+        return Ok((socket.unwrapSafely() as RedisAdaptor));
     }
 }

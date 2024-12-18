@@ -1,6 +1,16 @@
-import type { MaybeAsyncMaybeResult } from "@common";
+import { Ok } from "reliq";
+import { Err } from "reliq";
 
 export type Database = {
-    get(key: string): MaybeAsyncMaybeResult<unknown, [unknown]>;
-    set(key: string, data: unknown): MaybeAsyncMaybeResult<void, [unknown]>;
+    get(key: string):
+        Promise<
+            | Ok<unknown>
+            | Err<[unknown]>
+        >;
+
+    set(key: string, data: unknown):
+        Promise<
+            | Ok<void>
+            | Err<[unknown]>
+        >;
 };

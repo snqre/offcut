@@ -25918,7 +25918,7 @@ function Nav(props) {
   }, undefined, false, undefined, this);
 }
 // src/web/constant/box-shadow/BoxShadow.ts
-var BoxShadow;
+var BoxShadow2;
 ((BoxShadow) => {
   BoxShadow.TOBIAS_AHLIN_0 = "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px";
   BoxShadow.TOBIAS_AHLIN_1 = "rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px";
@@ -25975,9 +25975,9 @@ var BoxShadow;
   BoxShadow.PQINA = "rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset";
   BoxShadow.SKETCH_0 = "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px";
   BoxShadow.SKETCH_1 = "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px";
-})(BoxShadow ||= {});
+})(BoxShadow2 ||= {});
 // src/web/constant/color-palette/ColorPalette.ts
-var ColorPalette;
+var ColorPalette2;
 ((ColorPalette) => {
   ColorPalette.OBSIDIAN = "#0C0527";
   ColorPalette.OFFCUT_YELLOW = "#F1D550";
@@ -25986,7 +25986,7 @@ var ColorPalette;
   ColorPalette.MOONSTONE = "#00B2CA";
   ColorPalette.JASPER = "#C75146";
   ColorPalette.GHOST_WHITE = "#ECEBF3";
-})(ColorPalette ||= {});
+})(ColorPalette2 ||= {});
 // src/web/components/nav/NavButton.tsx
 var jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime(), 1);
 function NavButton(props) {
@@ -26004,8 +26004,8 @@ function NavButton(props) {
       fontSize: "0.75em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      boxShadow: BoxShadow.TAILWIND_0,
-      color: ColorPalette.OBSIDIAN
+      boxShadow: BoxShadow2.TAILWIND_0,
+      color: ColorPalette2.OBSIDIAN
     }
   };
   return /* @__PURE__ */ jsx_dev_runtime2.jsxDEV(jsx_dev_runtime2.Fragment, {
@@ -26032,9 +26032,9 @@ function NavCallToActionButton(props) {
       fontSize: "0.75em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      boxShadow: BoxShadow.TAILWIND_0,
-      color: ColorPalette.SNOW,
-      background: ColorPalette.OBSIDIAN
+      boxShadow: BoxShadow2.TAILWIND_0,
+      color: ColorPalette2.SNOW,
+      background: ColorPalette2.OBSIDIAN
     }
   };
   return /* @__PURE__ */ jsx_dev_runtime3.jsxDEV(jsx_dev_runtime3.Fragment, {
@@ -26179,12 +26179,17 @@ function NavDropDownSubButton(props) {
     }, undefined, true, undefined, this)
   }, undefined, false, undefined, this);
 }
-// src/web/hook/device/Device.ts
+// src/web/components/nav/NavSearchBar.tsx
 var import_react = __toESM(require_react(), 1);
+var jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
+// src/web/components/nav/NavSearchBarDropDown.tsx
+var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
+// src/web/hook/device/Device.ts
 var import_react2 = __toESM(require_react(), 1);
+var import_react3 = __toESM(require_react(), 1);
 function useDevice() {
-  let [device, setDevice] = import_react.useState("LAPTOP");
-  import_react2.useEffect(() => {
+  let [device, setDevice] = import_react2.useState("LAPTOP");
+  import_react3.useEffect(() => {
     function resize() {
       if (window.innerWidth >= 1024)
         setDevice("LAPTOP");
@@ -26202,7 +26207,7 @@ function useDevice() {
   return device;
 }
 // src/web/components/page/ResponsiveAnchorPage.tsx
-var jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
 function ResponsiveAnchorPage(props) {
   let { style, children, ...more } = props;
   let device = useDevice();
@@ -26249,22 +26254,22 @@ function ResponsiveAnchorPage(props) {
       return 320;
     return 0;
   }
-  return /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
       ...wrapper$,
-      children: /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+      children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
         ...innerWrapper$,
         children: [
-          /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(Nav, {
-            categories: [/* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
+          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(Nav, {
+            categories: [/* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
               children: "Paint"
-            }, undefined, false, undefined, this), /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
+            }, undefined, false, undefined, this), /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
               children: "Wood"
-            }, undefined, false, undefined, this), /* @__PURE__ */ jsx_dev_runtime8.jsxDEV(jsx_dev_runtime8.Fragment, {
+            }, undefined, false, undefined, this), /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
               children: "Steel"
             }, undefined, false, undefined, this)]
           }, undefined, false, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime8.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
             ...contentWrapper$,
             children
           }, undefined, false, undefined, this)
@@ -26274,9 +26279,9 @@ function ResponsiveAnchorPage(props) {
   }, undefined, false, undefined, this);
 }
 // src/web/components/page/ResponsivePage.tsx
-var jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
 // src/web/page/home-page/HomePage.tsx
-var jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime(), 1);
 function HomePage() {
   let container$ = {
     style: {
@@ -26308,7 +26313,7 @@ function HomePage() {
       fontSize: "8em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      color: ColorPalette.OBSIDIAN
+      color: ColorPalette2.OBSIDIAN
     }
   };
   let heroSubHeading$ = {
@@ -26320,7 +26325,7 @@ function HomePage() {
       fontSize: "4em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      color: ColorPalette.OFFCUT_YELLOW
+      color: ColorPalette2.OFFCUT_YELLOW
     }
   };
   let about$ = {
@@ -26350,7 +26355,7 @@ function HomePage() {
       fontSize: "2em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      color: ColorPalette.OFFCUT_YELLOW,
+      color: ColorPalette2.OFFCUT_YELLOW,
       paddingBottom: 10
     }
   };
@@ -26363,7 +26368,7 @@ function HomePage() {
       fontSize: "1em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular",
-      color: ColorPalette.OBSIDIAN,
+      color: ColorPalette2.OBSIDIAN,
       gap: 10,
       textAlign: "justify"
     }
@@ -26379,67 +26384,67 @@ function HomePage() {
       flexDirection: "row",
       justifyContent: "start",
       alignItems: "center",
-      color: ColorPalette.OBSIDIAN,
+      color: ColorPalette2.OBSIDIAN,
       fontSize: "1em",
       fontWeight: "normal",
       fontFamily: "suisse-intl-regular"
     }
   };
-  return /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(jsx_dev_runtime10.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV(ResponsiveAnchorPage, {
-      children: /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+  return /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(jsx_dev_runtime12.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV(ResponsiveAnchorPage, {
+      children: /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
         ...container$,
         children: [
-          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
             ...hero$,
             children: [
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+              /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                 ...heroHeading$,
                 children: "OFFCUTS"
               }, undefined, false, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+              /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                 ...heroSubHeading$,
                 children: "Revive. Reuse. Rebuild."
               }, undefined, false, undefined, this)
             ]
           }, undefined, true, undefined, this),
-          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
             ...about$,
             children: [
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+              /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                 ...aboutCard$,
                 children: [
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardCaption$,
                     children: "Why Offcuts?"
                   }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardContent$,
                     children: [
-                      /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                      /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                         ...aboutCardContentBulletPoint$,
                         children: [
-                          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("strong", {
+                          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("strong", {
                             ...aboutCartContentBoldBulletPoint$,
                             children: "Sustainable Solutions: "
                           }, undefined, false, undefined, this),
                           "Divert construction waste from landfills while supporting eco-friendly practices."
                         ]
                       }, undefined, true, undefined, this),
-                      /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                      /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                         ...aboutCardContentBulletPoint$,
                         children: [
-                          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("strong", {
+                          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("strong", {
                             ...aboutCartContentBoldBulletPoint$,
                             children: "Affordable Materials: "
                           }, undefined, false, undefined, this),
                           "Access high-quality reclaimed materials at a fraction of the cost."
                         ]
                       }, undefined, true, undefined, this),
-                      /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                      /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                         ...aboutCardContentBulletPoint$,
                         children: [
-                          /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("strong", {
+                          /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("strong", {
                             ...aboutCartContentBoldBulletPoint$,
                             children: "Fast & Easy: "
                           }, undefined, false, undefined, this),
@@ -26450,27 +26455,27 @@ function HomePage() {
                   }, undefined, true, undefined, this)
                 ]
               }, undefined, true, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+              /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                 ...aboutCard$,
                 children: [
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardCaption$,
                     children: "For Contractors"
                   }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardContent$,
                     children: "Turn your surplus into profit with quick pickups and a seamless listing process."
                   }, undefined, false, undefined, this)
                 ]
               }, undefined, true, undefined, this),
-              /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+              /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                 ...aboutCard$,
                 children: [
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardCaption$,
                     children: "For Buyers"
                   }, undefined, false, undefined, this),
-                  /* @__PURE__ */ jsx_dev_runtime10.jsxDEV("div", {
+                  /* @__PURE__ */ jsx_dev_runtime12.jsxDEV("div", {
                     ...aboutCardContent$,
                     children: "Find unique, sustainable materials for your next project -- big or small."
                   }, undefined, false, undefined, this)
@@ -26484,14 +26489,14 @@ function HomePage() {
   }, undefined, false, undefined, this);
 }
 // src/web/App.tsx
-var jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime(), 1);
+var jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime(), 1);
 function App() {
-  return /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(jsx_dev_runtime11.Fragment, {
-    children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(BrowserRouter, {
-      children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Routes, {
-        children: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(Route, {
+  return /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(jsx_dev_runtime13.Fragment, {
+    children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(BrowserRouter, {
+      children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Routes, {
+        children: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(Route, {
           path: "/",
-          element: /* @__PURE__ */ jsx_dev_runtime11.jsxDEV(HomePage, {}, undefined, false, undefined, this)
+          element: /* @__PURE__ */ jsx_dev_runtime13.jsxDEV(HomePage, {}, undefined, false, undefined, this)
         }, undefined, false, undefined, this)
       }, undefined, false, undefined, this)
     }, undefined, false, undefined, this)
@@ -26515,4 +26520,4 @@ function _loadGoogleFont(key, url) {
   document.head.appendChild(link);
   return;
 }
-render(/* @__PURE__ */ jsx_dev_runtime11.jsxDEV(App, {}, undefined, false, undefined, this)).unwrap();
+render(/* @__PURE__ */ jsx_dev_runtime13.jsxDEV(App, {}, undefined, false, undefined, this)).unwrap();
