@@ -1,5 +1,6 @@
 import type { Database } from "src/server/class/Class";
 import type { OkValOf } from "reliq";
+import type { ErrOf } from "reliq";
 import { Product } from "src/server/class/Class";
 import { Result } from "reliq";
 import { Ok } from "reliq";
@@ -13,7 +14,7 @@ import { AppDataDto, ProductDto } from "@common";
 export type Store = {
     products(): 
         Promise<
-            | Ok<ReadonlyArray<Product>> 
+            | Ok<ReadonlyArray<Readonly<Product>>> 
             | Err<"INVALID_DATABASE_KEY_VALUE_LAYOUT">
             | Err<[unknown]>>;
     productsByName(name: string):
@@ -38,6 +39,12 @@ export type Store = {
     deListProduct(product: Product):
         | Ok<void>
         | Err<"PRODUCT_NOT_FOUND">;
+    increaseStock(name: string, amount: bigint):
+        Promise<
+            | Ok<void>
+            | Err<"INVALID_DATABASE_KEY_VALUE_LAYOUT">
+            | ErrOf<ReturnType<Product["increaseStock"]>>
+        >;
 };
 export function Store(_db: Database, _dbKey: string): Store {
 
@@ -58,13 +65,15 @@ export function Store(_db: Database, _dbKey: string): Store {
     }
 
     async function productsByName(...[name]: Parameters<Store["productsByName"]>): ReturnType<Store["productsByName"]> {
-        let response: Awaited<ReturnType<Database["get"]>> = await _db.get(_dbKey);
-        if (response.err()) return response;
-        if (!AppDataDto.Schema.safeParse(response.unwrapSafely())) return Err("INVALID_DATABASE_KEY_VALUE_LAYOUT");
+        let appDto: Awaited<ReturnType<typeof _appDto>> = await _appDto(); 
+        if (appDto.err()) return appDto;
         let product: 
             | ProductDto
             | void 
-            = (response.unwrapSafely() as AppDataDto).products.find(x => x.name === name);
+            = appDto
+                .unwrapSafely()
+                .products
+                .find(x => x.name === name);
         if (product) return Ok(Some(Product(product.name, product.price, BigInt(product.stock)).unwrap()));
         return Ok(None);
     }
