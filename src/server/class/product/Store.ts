@@ -156,6 +156,9 @@ export function Store(_db: Database, _dbKey: string): Store {
     }
 
     async function increaseStock(...[name, amount]: Parameters<Store["increaseStock"]>): ReturnType<Store["increaseStock"]> {
+        
+        // TODO
+        
         let appDtoR = await _appDto();
         if (appDtoR.err()) return appDtoR;
         let appDto = appDtoR.unwrapSafely();
@@ -224,4 +227,3 @@ export namespace Store {
             });
     }
 }
-
