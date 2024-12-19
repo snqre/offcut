@@ -1,5 +1,7 @@
 export * from "./data/AppDataDto";
+export * from "./data/AppDataDtoSchema";
 export * from "./data/ProductDto";
+export * from "./data/ProductDtoSchema";
 export * from "./data/ProductOrderDto";
 export * from "./data/UserDto";
 export * from "./data/UserDtoSchema";

@@ -1,6 +1,6 @@
 import { Ok } from "reliq";
 import { Err } from "reliq";
-import { z as ZodValidator } from "zod";
+import { ProductDtoSchema } from "@common";
 
 export type ProductDto = {
     name: string;
@@ -24,15 +24,7 @@ export function ProductDto(_instance: ProductDto):
         if (_instance.stock < 0) return Err("STOCK_BELOW_ZERO");
         if (_instance.stock > Number.MAX_SAFE_INTEGER) return Err("STOCK_ABOVE_MAX_SAFE_INTEGER");
         if (!Number.isSafeInteger(_instance.stock)) return Err("STOCK_NOT_AN_INTEGER");
-        if (!ProductDto.Schema.safeParse(_instance).success) return Err("INVALID_INSTANCE"); 
+        if (!ProductDtoSchema.safeParse(_instance).success) return Err("INVALID_INSTANCE"); 
         return Ok(_instance);
     }
-}
-export namespace ProductDto {
-    export const Schema = 
-        ZodValidator.object({
-            name: ZodValidator.string().min(1).refine(name => name.trim().length > 0),
-            price: ZodValidator.number().min(0).finite(),
-            stock: ZodValidator.number().min(0).finite().int()
-        });
 }
