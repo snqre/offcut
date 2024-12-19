@@ -8,7 +8,9 @@ export type AppDataDto = {
     users: Array<UserDto>;
     products: Array<ProductDto>;
 };
-export function AppDataDto(_instance: AppDataDto): Ok<AppDataDto> | Err<"INVALID_INSTANCE"> {
+export function AppDataDto(_instance: AppDataDto): 
+    | Ok<AppDataDto> 
+    | Err<"INVALID_INSTANCE"> {
     
     /** @constructor */ {
         if (!AppDataDtoSchema.safeParse(_instance).success) return Err("INVALID_INSTANCE");
