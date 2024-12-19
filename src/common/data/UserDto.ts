@@ -1,7 +1,7 @@
 import { default as Validator } from "validator";
 import { Ok } from "reliq";
 import { Err } from "reliq";
-import { z as ZodValidator } from "zod";
+import { UserDtoSchema } from "@common";
 
 export type UserDto = {
     username: string;
@@ -25,17 +25,7 @@ export function UserDto(_instance: UserDto):
         if (_instance.email && !Validator.isEmail(_instance.email)) return Err("INVALID_EMAIL");
         if (_instance.phoneNumber && !Validator.isMobilePhone(_instance.phoneNumber)) return Err("INVALID_PHONE_NUMBER");
         if (_instance.address && _instance.address.length === 0) return Err("INVALID_ADDRESS");
-        if (!UserDto.Schema.safeParse(_instance).success) return Err("INVALID_INSTANCE");
+        if (!UserDtoSchema.safeParse(_instance).success) return Err("INVALID_INSTANCE");
         return Ok(_instance);
     }
-}
-export namespace UserDto {
-    export const Schema =
-        ZodValidator.object({
-            username: ZodValidator.string().min(1),
-            hash: ZodValidator.string().min(1),
-            email: ZodValidator.string().optional().refine(x => x ? Validator.isEmail(x) : true),
-            phoneNumber: ZodValidator.string().optional().refine(x => x ? Validator.isMobilePhone(x) : true),
-            address: ZodValidator.string().optional().refine(x => x ? x.trim().length > 0 : true)
-        });
 }
