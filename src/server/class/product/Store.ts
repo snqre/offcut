@@ -55,6 +55,9 @@ export type Store = {
     decreaseStock(name: string, amount: bigint):
         Promise<
             | Ok<void>
+            | ErrOf<ReturnType<typeof Product>>
+            | ErrOf<ReturnType<typeof ProductDto>>
+            | ErrOf<ReturnType<Product["decreaseStock"]>>
             | Err<"INVALID_RESPONSE">
             | Err<"NOT_FOUND">
             | Err<"INSUFFICIENT_STOCK">
@@ -165,22 +168,33 @@ export function Store(_db: Database, _dbKey: string): Store {
         return Ok(undefined);
     }
 
-    async function decreaseStock(...[name, amount]: Parameters<Store["decreaseStock"]>): ReturnType<Store["decreaseStock"]> {
-        
-        // TODO VALIDATE AMOUNT
-        
+    async function decreaseStock(...[name, amount]: Parameters<Store["decreaseStock"]>): ReturnType<Store["decreaseStock"]> {       
         let appDtoR = await _appDto();
         if (appDtoR.err()) return appDtoR;
         let appDto = appDtoR.unwrapSafely();
         let at = appDto.products.findIndex(x => x.name === name);
         if (at === -1) return Err("NOT_FOUND" as const);
         let productDto = appDto.products.splice(at, 1)[0];
-        productDto.stock -= Number(amount);
+        let stockInt = BigInt(productDto.stock);
+        let productR = Product(productDto.name, productDto.price, stockInt);
+        if (productR.err()) return productR;
+        let product = productR.unwrapSafely();
+        let decreaseStockR = product.decreaseStock(amount);
+        if (decreaseStockR.err()) return decreaseStockR;
+        decreaseStockR.unwrapSafely();
+        let stockFloat = Number(product.stock());
+        let productDtoR = ProductDto({
+            name: product.name(),
+            price: product.price(),
+            stock: stockFloat
+        });
+        if (productDtoR.err()) return productDtoR;
+        productDto = productDtoR.unwrapSafely();
         appDto.products.push(productDto);
         _db.set(_dbKey, JSON.stringify(appDto));
         return Ok(undefined);
     }
-
+1
     async function _appDto():
         Promise<
             | Ok<AppDataDto>
