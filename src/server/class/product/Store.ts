@@ -1,5 +1,6 @@
 import type { Database } from "src/server/class/Class";
 import type { ErrOf } from "reliq";
+import { default as StripeSocket } from "stripe";
 import { Product } from "src/server/class/Class";
 import { Result } from "reliq";
 import { Ok } from "reliq";
@@ -7,7 +8,9 @@ import { Err } from "reliq";
 import { Some } from "reliq";
 import { None } from "reliq";
 import { Router as ExpressRouter } from "express";
-import { AppDataDto, ProductDto } from "@common";
+import { AppDataDto } from "@common";
+import { ProductDto } from "@common";
+import { z as ZodValidator } from "zod";
 
 export type Store = {
     products(): 
@@ -212,18 +215,46 @@ export function Store(_db: Database, _dbKey: string): Store {
     }
 }
 export namespace Store {
+    export const Stripe = new StripeSocket("");
 
     export function Router(store: Store): ExpressRouter {
         return ExpressRouter()
             .get("/success")
             .get("/failure")
             .post("/checkout", async (rq, rs) => {
-                Result.wrapAsync(async () => {
-                    let origin: string = `${ rq.protocol }://${ rq.get("host") }`;
-                    let url: string = `${ origin }/success`;
-
-                    // TODO
+                let urlR = await Result.wrapAsync(async () => {
+                    let origin = `${ rq.protocol }://${ rq.get("host") }`;
+                    let successUrl = `${ origin }/success`;
+                    let failureUrl = `${ origin }/failure`;
+                    let schema = ZodValidator.object({
+                        name: ZodValidator.string(),
+                        amount: ZodValidator.number().min(1)
+                    });
+                    let dto = schema.parse(rq.body);
+                    let dtoAmountInt = BigInt(dto.amount);
+                    (await store.decreaseStock(dto.name, dtoAmountInt)).unwrap();
+                    let session = await Store.Stripe.checkout.sessions.create({
+                        payment_method_types: ["card"],
+                        line_items: [{
+                            price_data: {
+                                currency: "gbp",
+                                product_data: {
+                                    name: dto.name
+                                },
+                                unit_amount: dto.amount
+                            },
+                            quantity: dto.amount
+                        }],
+                        mode: "payment",
+                        success_url: successUrl,
+                        cancel_url: failureUrl
+                    });
+                    return session.url;
                 });
+                urlR
+                    .map(x => rs.status(200).json({ ok: x }))
+                    .mapErr(x => rs.status(400).json({ err: x }));
+                return;
             });
     }
 }
