@@ -166,6 +166,9 @@ export function Store(_db: Database, _dbKey: string): Store {
     }
 
     async function decreaseStock(...[name, amount]: Parameters<Store["decreaseStock"]>): ReturnType<Store["decreaseStock"]> {
+        
+        // TODO VALIDATE AMOUNT
+        
         let appDtoR = await _appDto();
         if (appDtoR.err()) return appDtoR;
         let appDto = appDtoR.unwrapSafely();
@@ -202,10 +205,9 @@ export namespace Store {
                     let origin: string = `${ rq.protocol }://${ rq.get("host") }`;
                     let url: string = `${ origin }/success`;
 
+                    // TODO
                 });
             });
     }
 }
-
-
 
