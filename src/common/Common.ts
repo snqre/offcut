@@ -12,4 +12,3 @@ export * from "./type/Maybe";
 export * from "./type/MaybeAsync";
 export * from "./type/MaybeAsyncMaybeResult";
 export * from "./type/MaybeResult";
-export * from "./util/CustomResultHandler";
