@@ -1,5 +1,9 @@
 {
 	"compilerOptions": {
+		"plugins": [{
+			"transform": "ts-macros",
+			"noComptime": true
+		}],
 		"lib": ["ESNext", "DOM"],
 		"target": "ESNext",
 		"module": "ESNext",

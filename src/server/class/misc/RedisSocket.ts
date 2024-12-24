@@ -2,13 +2,13 @@ import type { RedisClientType as RedisSocketLike } from "redis";
 import { Result } from "reliq";
 import { Ok } from "reliq";
 import { Err } from "reliq";
-import { createClient as RedisSocket } from "redis";
+import { createClient } from "redis";
 
-export type RedisAdaptor = 
+export type RedisSocket = 
     & RedisSocketLike 
     & {};
-export function RedisAdaptor(_host: string, _password: string, _port: bigint):
-    | Ok<RedisAdaptor>
+export function RedisSocket(_host: string, _password: string, _port: bigint):
+    | Ok<RedisSocket>
     | Err<"INVALID_HOST">
     | Err<"INVALID_PORT">
     | Err<"INVALID_PASSWORD">
@@ -18,16 +18,17 @@ export function RedisAdaptor(_host: string, _password: string, _port: bigint):
         if (_host.length === 0) return Err<"INVALID_HOST">("INVALID_HOST");
         if (_port < 0) return Err<"INVALID_PORT">("INVALID_PORT");
         if (_password.length === 0) return Err<"INVALID_PASSWORD">("INVALID_PASSWORD");
-        let socket: Result<RedisAdaptor, unknown> = 
+        let socketR: Result<RedisSocket, unknown> = 
             Result.wrap(() => 
-                RedisSocket({
+                createClient({
                     password: _password,
                     socket: {
                         host: _host,
                         port: Number(_port)
                     }
                 }));
-        if (socket.err()) return Err<[unknown]>([socket.val()]);
-        return Ok((socket.unwrapSafely() as RedisAdaptor));
+        if (socketR.err()) return Err<[unknown]>([socketR.val()]);
+        let socket = socketR.unwrapSafely();
+        return Ok(socket);
     }
 }

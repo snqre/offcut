@@ -1,7 +1,9 @@
+import type { PaymentProvider } from "@server/class";
 import type { ErrOf } from "reliq";
 import { Ok } from "reliq";
 import { Err } from "reliq";
-import { StripeAdaptor } from "@server/class";
+import { Some } from "reliq";
+import { None } from "reliq";
 import { ProductOrderDto } from "@common";
 import { ProductDto } from "@common";
 
@@ -10,21 +12,21 @@ export type Product = {
     price(): number;
     stock(): bigint;
 
-    addStock(amount: bigint):
+    increaseStock(amount: bigint):
         | Ok<void>
         | Err<"AMOUNT_BELOW_ZERO">;
 
-    removeStock(amount: bigint):
-        | ReturnType<Product["addStock"]>
+    decreaseStock(amount: bigint):
+        | ReturnType<Product["increaseStock"]>
         | Err<"INSUFFICIENT_STOCK">;
 
-    buy(amount: bigint, paymentProvider: StripeAdaptor):
+    purchase(amount: bigint, provider: PaymentProvider):
         Promise<
-            | Ok<string>
+            | Ok<Some<string>>
+            | Ok<None>
             | ErrOf<ReturnType<typeof ProductOrderDto>>
             | ErrOf<ReturnType<typeof ProductDto>>
-            | ErrOf<Awaited<ReturnType<StripeAdaptor["receivePayment"]>>>
-            | Err<"SESSION_URL_UNAVAILABLE">
+            | ErrOf<Awaited<ReturnType<PaymentProvider["receivePayment"]>>>
         >;
 };
 export function Product(_name: string, _price: number, _stock: bigint):
@@ -39,7 +41,14 @@ export function Product(_name: string, _price: number, _stock: bigint):
         if (_price < 0) return Err("PRICE_BELOW_ZERO");
         if (_price > Number.MAX_SAFE_INTEGER) return Err("PRICE_ABOVE_MAX_SAFE_INTEGER");
         if (_stock < 0) return Err("STOCK_BELOW_ZERO");
-        return Ok({ name, price, stock, addStock, removeStock, buy });
+        return Ok({
+            name,
+            price,
+            stock,
+            increaseStock,
+            decreaseStock,
+            purchase
+        });
     }
 
     function name(): ReturnType<Product["name"]> {
@@ -54,38 +63,40 @@ export function Product(_name: string, _price: number, _stock: bigint):
         return _stock;
     }
 
-    function addStock(...[amount]: Parameters<Product["addStock"]>): ReturnType<Product["addStock"]> {
+    function increaseStock(... [amount]: Parameters<Product["increaseStock"]>): ReturnType<Product["increaseStock"]> {
         if (amount < 0) return Err("AMOUNT_BELOW_ZERO");
         _stock += amount;
         return Ok(undefined);
     }
 
-    function removeStock(...[amount]: Parameters<Product["removeStock"]>): ReturnType<Product["removeStock"]> {
+    function decreaseStock(... [amount]: Parameters<Product["decreaseStock"]>): ReturnType<Product["decreaseStock"]> {
         if (amount < 0) return Err("AMOUNT_BELOW_ZERO");
-        if ((stock() - amount) < 0) return Err("INSUFFICIENT_STOCK");
+        if (stock() - amount < 0) return Err("INSUFFICIENT_STOCK");
         _stock -= amount;
         return Ok(undefined);
     }
 
-    async function buy(...[amount, paymentProvider]: Parameters<Product["buy"]>): ReturnType<Product["buy"]> {
-        let productDtoR = ProductDto({
-            name: name(),
-            price: price(),
-            stock: Number(stock())
-        });
+    async function purchase(... [amount, provider]: Parameters<Product["purchase"]>): ReturnType<Product["purchase"]> {
+        let productDtoR = 
+            ProductDto({
+                name: name(),
+                price: price(),
+                stock: Number(stock())
+            });
         if (productDtoR.err()) return productDtoR;
         let productDto = productDtoR.unwrapSafely();
-        let productOrderDtoR = ProductOrderDto({
-            product: productDto,
-            amount: Number(amount)
-        });
+        let productOrderDtoR =
+            ProductOrderDto({
+                product: productDto,
+                amount: Number(amount)
+            });
         if (productOrderDtoR.err()) return productOrderDtoR;
         let productOrderDto = productOrderDtoR.unwrapSafely();
-        let sessionR = await paymentProvider.receivePayment([productOrderDto]);
-        if (sessionR.err()) return sessionR;
-        let session = sessionR.unwrapSafely();
-        let sessionUrl = session.url;
-        if (!sessionUrl) return Err("SESSION_URL_UNAVAILABLE");
-        return Ok(sessionUrl);
+        let urlR = await provider.receivePayment([productOrderDto]);
+        if (urlR.err()) return urlR;
+        let url0 = urlR.unwrapSafely();
+        if (url0.none()) return Ok(None);
+        let url = url0.unwrapSafely();
+        return Ok(Some(url));
     }
 }
