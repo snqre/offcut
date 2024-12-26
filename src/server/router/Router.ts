@@ -1,3 +1,3 @@
 export * from "./product/ProductRouter";
-export * from "./react/ReactRouter";
-export * from "./payment/StripeRouter";
+export * from "./misc/ReactRouter";
+export * from "./misc/StripeRouter";

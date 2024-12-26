@@ -18,13 +18,9 @@ export function Stripe(_apiKey: string, _successUrl: string, _failureUrl: string
     let _socket: Socket;
 
     /** @constructor */ {
-
-        /***/ {
-            let socketR = Result.wrap(() => new Socket(_apiKey));
-            if (socketR.err()) return Err<[unknown]>([socketR.val()]);
-            _socket = socketR.unwrapSafely();
-        }
-
+        let socketR = Result.wrap(() => new Socket(_apiKey));
+        if (socketR.err()) return Err<[unknown]>([socketR.val()]);
+        _socket = socketR.unwrapSafely();
         return Ok({ receivePayment, successUrl, failureUrl });
     }
 
