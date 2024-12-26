@@ -4,37 +4,32 @@ import { Ok } from "reliq";
 import { Err } from "reliq";
 import { Some } from "reliq";
 import { None } from "reliq";
-import { ProductOrderDto } from "@common";
-import { ProductDto } from "@common";
+import { ProductOrderData } from "@common";
+import { ProductData } from "@common";
 
+export type ProductR = ProductT | ProductE;
+export type ProductT = Ok<Product>;
+export type ProductE =
+    | Err<"INVALID_NAME">
+    | Err<"PRICE_BELOW_ZERO">
+    | Err<"PRICE_ABOVE_MAX_SAFE_INTEGER">
+    | Err<"STOCK_BELOW_ZERO">;
 export type Product = {
     name(): string;
     price(): number;
     stock(): bigint;
-
-    increaseStock(amount: bigint):
-        | Ok<void>
-        | Err<"AMOUNT_BELOW_ZERO">;
-
-    decreaseStock(amount: bigint):
-        | ReturnType<Product["increaseStock"]>
-        | Err<"INSUFFICIENT_STOCK">;
-
+    increaseStock(amount: bigint): Ok<void> | Err<"AMOUNT_BELOW_ZERO">;
+    decreaseStock(amount: bigint): ReturnType<Product["increaseStock"]> | Err<"INSUFFICIENT_STOCK">;
     purchase(amount: bigint, provider: PaymentProvider):
         Promise<
             | Ok<Some<string>>
             | Ok<None>
-            | ErrOf<ReturnType<typeof ProductOrderDto>>
-            | ErrOf<ReturnType<typeof ProductDto>>
+            | ErrOf<ReturnType<typeof ProductOrderData>>
+            | ErrOf<ReturnType<typeof ProductData>>
             | ErrOf<Awaited<ReturnType<PaymentProvider["receivePayment"]>>>
         >;
 };
-export function Product(_name: string, _price: number, _stock: bigint):
-    | Ok<Product>
-    | Err<"INVALID_NAME">
-    | Err<"PRICE_BELOW_ZERO">
-    | Err<"PRICE_ABOVE_MAX_SAFE_INTEGER">
-    | Err<"STOCK_BELOW_ZERO"> {
+export function Product(_name: string, _price: number, _stock: bigint): ProductR {
     
     /** @constructor */ {
         if (_name.length === 0) return Err("INVALID_NAME");
@@ -77,22 +72,22 @@ export function Product(_name: string, _price: number, _stock: bigint):
     }
 
     async function purchase(... [amount, provider]: Parameters<Product["purchase"]>): ReturnType<Product["purchase"]> {
-        let productDtoR = 
-            ProductDto({
+        let productDataR = 
+            ProductData({
                 name: name(),
                 price: price(),
                 stock: Number(stock())
             });
-        if (productDtoR.err()) return productDtoR;
-        let productDto = productDtoR.unwrapSafely();
-        let productOrderDtoR =
-            ProductOrderDto({
-                product: productDto,
+        if (productDataR.err()) return productDataR;
+        let productData = productDataR.unwrapSafely();
+        let productOrderDataR =
+            ProductOrderData({
+                product: productData,
                 amount: Number(amount)
             });
-        if (productOrderDtoR.err()) return productOrderDtoR;
-        let productOrderDto = productOrderDtoR.unwrapSafely();
-        let urlR = await provider.receivePayment([productOrderDto]);
+        if (productOrderDataR.err()) return productOrderDataR;
+        let productOrderData = productOrderDataR.unwrapSafely();
+        let urlR = await provider.receivePayment([productOrderData]);
         if (urlR.err()) return urlR;
         let url0 = urlR.unwrapSafely();
         if (url0.none()) return Ok(None);

@@ -10,7 +10,6 @@ export type Database = {
             | Ok<None>
             | Err<[unknown]>
         >;
-
     set(key: string, data: string):
         Promise<
             | Ok<void>

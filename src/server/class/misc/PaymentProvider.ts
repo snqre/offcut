@@ -1,4 +1,4 @@
-import { ProductOrderDto } from "@common";
+import { ProductOrderData } from "@common";
 import { Ok } from "reliq";
 import { Err } from "reliq";
 import { Some } from "reliq";
@@ -24,7 +24,7 @@ export type PaymentProvider = {
      *  let urlO = receivePaymentR.unwrap();
      *  let url = urlO.unwrap();
      */
-    receivePayment(orders: ReadonlyArray<Readonly<ProductOrderDto>>):
+    receivePayment(orders: ReadonlyArray<Readonly<ProductOrderData>>):
         Promise<
             | Ok<Some<string>>
             | Ok<None>

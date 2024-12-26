@@ -7,16 +7,19 @@ import { None } from "reliq";
 import { Ok } from "reliq";
 import { Err } from "reliq";
 
+export type RedisR = RedisT | RedisE;
+export type RedisT = Ok<Redis>;
+export type RedisE = ErrOf<ReturnType<typeof RedisSocket>> | Err<[unknown]>;
 export type Redis =
     & Database
     & {
-    disconnect(): Promise<Result<void, [unknown]>>;
+    disconnect(): 
+        Promise<
+            | Ok<void>
+            | Err<[unknown]>
+        >;
 };
-export async function Redis(_host: string, _password: string, _port: bigint):
-    Promise<
-        | Ok<Redis>
-        | ErrOf<ReturnType<typeof RedisSocket>>
-    > {
+export async function Redis(_host: string, _password: string, _port: bigint): Promise<RedisR> {
     let _self: Redis;
     let _socket: RedisSocket;
     
@@ -29,7 +32,7 @@ export async function Redis(_host: string, _password: string, _port: bigint):
         if (connectR.ok()) return Ok(_self);
         let disconnectR = await disconnect();
         if (disconnectR.err()) return disconnectR;
-        return Err([connectR.val()]);
+        return Err<[unknown]>([connectR.val()]);
     }
 
     async function get(... [key]: Parameters<Redis["get"]>): ReturnType<Redis["get"]> {

@@ -4,16 +4,17 @@ import { Ok } from "reliq";
 import { Err } from "reliq";
 import { createClient } from "redis";
 
-export type RedisSocket = 
-    & RedisSocketLike 
-    & {};
-export function RedisSocket(_host: string, _password: string, _port: bigint):
-    | Ok<RedisSocket>
+export type RedisSocketR = RedisSocketT | RedisSocketE;
+export type RedisSocketT = Ok<RedisSocket>;
+export type RedisSocketE =
     | Err<"INVALID_HOST">
     | Err<"INVALID_PORT">
     | Err<"INVALID_PASSWORD">
-    | Err<[unknown]> {
-
+    | Err<[unknown]>;
+export type RedisSocket = 
+    & RedisSocketLike 
+    & {};
+export function RedisSocket(_host: string, _password: string, _port: bigint): RedisSocketR {
     /** @constructor */ {
         if (_host.length === 0) return Err<"INVALID_HOST">("INVALID_HOST");
         if (_port < 0) return Err<"INVALID_PORT">("INVALID_PORT");

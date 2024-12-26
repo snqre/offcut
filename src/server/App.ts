@@ -1,10 +1,10 @@
 import { default as Express } from "express";
-import { Result } from "ts-results";
 import { Ok } from "ts-results";
 import { Err } from "ts-results";
 import { ReactRouter } from "src/server/router/Router";
 import { ProductRouter } from "src/server/router/Router";
 import { Redis } from "src/server/class/Class";
+import { Store } from "@server/class";
 import { join } from "path";
 
 type AppR = AppT | AppE;
@@ -27,8 +27,12 @@ function App(): AppR {
             | void 
             = process.env?.["REDIS_PASSWORD"];
         if (!redisPassword) return Err("REDIS_PASSWORD_REQUIRED");
-        let redis: Awaited<ReturnType<typeof Redis>> = await Redis("redis-15112.c259.us-central1-2.gce.redns.redis-cloud.com", redisPassword, 15112n);
-        let app: ReturnType<ReturnType<typeof Express>["listen"]> = 
+        let redisR = await Redis("redis-15112.c259.us-central1-2.gce.redns.redis-cloud.com", redisPassword, 15112n);
+        if (redisR.err()) return redisR;
+        let redis = redisR.unwrapSafely();
+        let storeR = Store(redis, "*");
+
+        let app = 
             Express()
                 .use(Express.static(join(__dirname, "web")))
                 .use(Express.json())
